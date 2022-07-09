@@ -9,7 +9,15 @@ class Repo
 
 	public static function readEntries()
 	{
-		return require PATH_DATA_ENTRIES;
+		$data = require PATH_DATA_ENTRIES;
+
+		ksort($data);
+
+		foreach($data as &$entries) {
+			ksort($entries);
+		}
+
+		return $data;
 	}
 
 	public static function saveEntries(array $entries): void

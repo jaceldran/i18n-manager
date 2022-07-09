@@ -14,7 +14,10 @@ define ('BLADE_VIEWS', "$base_path/src/Views");
 define ('BLADE_COMPILED', "$base_path/data/blade");
 
 /** view engine */
-Flight::register('view', BladeOne::class, [], function(BladeOne $blade) {
+Flight::register('view', BladeOne::class, [
+	BLADE_VIEWS,
+	BLADE_COMPILED
+], function(BladeOne $blade) {
 	$blade->setPath(BLADE_VIEWS, BLADE_COMPILED);
 });
 Flight::map('render', function($template, $data){

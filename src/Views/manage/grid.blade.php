@@ -15,36 +15,35 @@
 	<div
 		class="cursor-pointer flex-grow"
 		onclick="alert('EN DESARROLLO\nplegar/desplegar grupo *{{ $group }}* ')">
-		<button class="bg-slate-50 rounded-full h-8 w-8">
+		<button class="--bg-slate-50 rounded-full h-8 w-8">
 			<i class="fas fa-angle-up"></i>
 		</button>
 		<span>{{ $group }}</span>
 	</div>
-	<button class="cursor-pointer bg-slate-50 rounded-full h-8 w-8" onclick="alert('EN DESARROLLO\nAñadir entrada al grupo *{{ $group }}* ')">
-		<i class="fas fa-plus "></i>
+	<button class="cursor-pointer --bg-slate-50 rounded-full h-8 w-8" onclick="alert('EN DESARROLLO\nAñadir entrada al grupo *{{ $group }}* ')">
+		<i class="fas fa-plus"></i>
 	</button>
 </section>
 
 @foreach ($words as $id => $entry)
 <div class="flex border-b mb-1 pb-1">
 
-	<span class="px-1 py-2">
-
-	</span>
-
 	<label class="
 		text-slate-600
 		cursor-pointer
-		px-1
+		px-4
 		py-2
 		w-40
 		overflow-hidden
 		overflow-ellipsis
 		font-semibold
 		whitespace-nowrap">
-		<input type="checkbox" class="cursor-pointer accent-pink-500">
+		{{-- <input type="checkbox" class="cursor-pointer accent-pink-500"> --}}
 		{{-- <input type="checkbox" class="bg-red-100 border-red-300 text-green-500 focus:ring-red-200 --accent-green-500"> --}}
-		{{ $id }}
+
+		<span class="text-amber-700">
+			{{ $id }}
+		</span>
 	</label>
 
 	<div class="

@@ -1,3 +1,0 @@
-<?php return [
-	'data' => 'sample'
-];

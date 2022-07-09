@@ -19,7 +19,7 @@
     array (
       'es' => 'Confirmar',
       'en' => 'Confirm',
-      'pt' => 'ssss',
+      'pt' => 'Portugués',
       'fr' => '',
     ),
     'submit' => 
