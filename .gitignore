@@ -8,7 +8,7 @@
 .phpunit.result.cache
 npm-debug.log
 yarn-error.log
-/data/blade
+/.tmp
 /.ignore
 /.idea
 /.vscode
