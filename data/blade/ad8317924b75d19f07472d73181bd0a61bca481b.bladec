@@ -1,0 +1,13 @@
+<nav class="font-semibold flex">
+ <?php $__currentLoopData = $navigation; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $link): $loop = $this->incrementLoopIndices();  ?>
+ <?php if($link['active']): ?>
+ <a class="p-4 bg-amber-400 text-slate-800" href="<?php echo \htmlentities($link['url'], ENT_QUOTES, 'UTF-8', false); ?>">
+ <?php else: ?>
+ <a class="p-4" href="<?php echo \htmlentities($link['url'], ENT_QUOTES, 'UTF-8', false); ?>">
+ <?php endif; ?>
+ <?php echo \htmlentities($link['label'], ENT_QUOTES, 'UTF-8', false); ?>
+
+ </a>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+</nav>
