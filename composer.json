@@ -12,8 +12,17 @@
             "email": "jaceldran@gmail.com"
         }
     ],
+    "scripts": {
+        "phinx-create": "./vendor/bin/phinx --configuration=\"./config/phinx.php\" create",
+        "phinx-migrate": "./vendor/bin/phinx --configuration=\"./config/phinx.php\" migrate",
+        "phinx-rollback": "./vendor/bin/phinx --configuration=\"./config/phinx.php\" rollback",
+        "phinx-seed-create": "./vendor/bin/phinx --configuration=\"./config/phinx.php\" seed:create",
+        "phinx-seed-run": "./vendor/bin/phinx --configuration=\"./config/phinx.php\" seed:run"
+    },
     "require": {
         "mikecao/flight": "^2.0",
-        "eftec/bladeone": "^4.5"
+        "eftec/bladeone": "^4.5",
+        "symfony/dotenv": "^6.1",
+        "robmorgan/phinx": "^0.12.11"
     }
 }

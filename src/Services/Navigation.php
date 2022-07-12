@@ -12,6 +12,7 @@ class Navigation
 	const CONFIG = '/config';
 	const UPLOAD = '/upload';
 	const DOWNLOAD = '/download';
+	const SANDBOX = '/sandbox';
 
 	const MAIN = [
 		self::MANAGE => [
@@ -35,6 +36,18 @@ class Navigation
 		self::CONFIG => [
 			self::URL => self::CONFIG,
 			self::LABEL => 'Config',
+			self::ACTIVE => false,
+		],
+
+		self::CONFIG => [
+			self::URL => self::CONFIG,
+			self::LABEL => 'Config',
+			self::ACTIVE => false,
+		],
+
+		self::SANDBOX => [
+			self::URL => self::SANDBOX,
+			self::LABEL => 'Sandbox',
 			self::ACTIVE => false,
 		],
 	];

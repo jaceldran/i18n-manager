@@ -1,11 +1,21 @@
 <?php
 
 use eftec\bladeone\BladeOne;
+use Symfony\Component\Dotenv\Dotenv;
 
 /** autoload */
 require 'vendor/autoload.php';
 
-/** env constants */
+/** env & config */
+
+$dotenv = new Dotenv();
+$dotenv->load(__DIR__.'/.env');
+Flight::set('env', (object) $_ENV);
+
+Flight::set('phinx_config', require_once './config/phinx.php');
+
+/** paths */
+
 $base_path = str_replace('\\', '/', getcwd());
 define ('BASE_PATH', $base_path);
 define ('PATH_DATA_LANGS', "$base_path/data/i18n/langs.php");
@@ -25,4 +35,4 @@ Flight::map('render', function($template, $data){
 });
 
 /** routes */
-require 'routes.php';
+require './src/routes.php';

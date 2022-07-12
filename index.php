@@ -1,5 +1,5 @@
 <?php
 
-require './src/boot.php';
+require './boot.php';
 
 Flight::start();
