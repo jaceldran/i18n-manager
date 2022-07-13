@@ -2,25 +2,22 @@
 
 use Flight;
 
-use App\Services\Repo;
+use App\Services\DataFile;
+use App\Models\Translation;
 
 class Entries
 {
 	const ID = 'id';
-	const GROUP = 'group';
 	const LANG = 'lang';
 	const VALUE = 'value';
 
 	public static function put()
 	{
 		$req = Flight::request()->data;
-
-		$entries = Repo::readEntries();
-
-		$entries[$req[self::GROUP]][$req[self::ID]][$req[self::LANG]] = $req[self::VALUE];
-
-		Repo::saveEntries($entries);
-
-		Flight::json($entries);
+		$response['request'] = $req;
+		$data = DataFile::read(Translation::PATH);
+		$data[$req[self::ID]][$req[self::LANG]] = $req[self::VALUE];
+		DataFile::write(Translation::PATH, $data);
+		Flight::json($response);
 	}
 }

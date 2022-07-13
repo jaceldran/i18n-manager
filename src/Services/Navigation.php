@@ -8,16 +8,15 @@ class Navigation
 	const LABEL = 'label';
 	const ACTIVE = 'active';
 
-	const MANAGE = '/manage';
+	const TRANSLATIONS = '/translations';
 	const CONFIG = '/config';
 	const UPLOAD = '/upload';
 	const DOWNLOAD = '/download';
-	const SANDBOX = '/sandbox';
 
 	const MAIN = [
-		self::MANAGE => [
-			self::URL => self::MANAGE,
-			self::LABEL => 'Manage',
+		self::TRANSLATIONS => [
+			self::URL => self::TRANSLATIONS,
+			self::LABEL => 'Translations',
 			self::ACTIVE => false,
 		],
 
@@ -44,15 +43,9 @@ class Navigation
 			self::LABEL => 'Config',
 			self::ACTIVE => false,
 		],
-
-		self::SANDBOX => [
-			self::URL => self::SANDBOX,
-			self::LABEL => 'Sandbox',
-			self::ACTIVE => false,
-		],
 	];
 
-	public static function main()
+	public static function main(): array
 	{
 		$data = self::MAIN;
 		$request = Flight::request();

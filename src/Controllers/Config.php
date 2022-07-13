@@ -13,6 +13,11 @@ class Config
 			'navigation' => Navigation::main(),
 		];
 
+		$data['all']['php-version'] = phpversion();
+		$data['all']['pdo-drivers'] = \PDO::getAvailableDrivers();
+		$data['all']['env'] = Flight::get('env');
+		$data['all']['phinx_config'] = Flight::get('phinx_config');
+
 		Flight::render('config', $data);
 	}
 }

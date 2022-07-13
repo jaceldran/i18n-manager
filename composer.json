@@ -1,6 +1,6 @@
 {
     "name": "zentric/118n-manager",
-    "description": "Mini language packs Manager",
+    "description": "i18n Manager",
     "autoload": {
         "psr-4": {
             "App\\": "src/"
@@ -13,11 +13,11 @@
         }
     ],
     "scripts": {
-        "phinx-create": "./vendor/bin/phinx --configuration=\"./config/phinx.php\" create",
-        "phinx-migrate": "./vendor/bin/phinx --configuration=\"./config/phinx.php\" migrate",
-        "phinx-rollback": "./vendor/bin/phinx --configuration=\"./config/phinx.php\" rollback",
-        "phinx-seed-create": "./vendor/bin/phinx --configuration=\"./config/phinx.php\" seed:create",
-        "phinx-seed-run": "./vendor/bin/phinx --configuration=\"./config/phinx.php\" seed:run"
+        "phinx-create": "./vendor/bin/phinx --configuration=\"./boot/phinx.php\" create",
+        "phinx-migrate": "./vendor/bin/phinx --configuration=\"./boot/phinx.php\" migrate",
+        "phinx-rollback": "./vendor/bin/phinx --configuration=\"./boot/phinx.php\" rollback",
+        "phinx-seed-create": "./vendor/bin/phinx --configuration=\"./boot/phinx.php\" seed:create",
+        "phinx-seed-run": "./vendor/bin/phinx --configuration=\"./boot/phinx.php\" seed:run"
     },
     "require": {
         "mikecao/flight": "^2.0",

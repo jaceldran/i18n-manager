@@ -1,9 +1,5 @@
 <?php
 
-if (!defined('APP_PATH')) {
-    require_once __DIR__.'/../boot.php';
-}
-
 return
 [
     'paths' => [
