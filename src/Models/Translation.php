@@ -22,6 +22,19 @@ final class Translation
 		return self::compute($data, $langs);
 	}
 
+	public static function countByLang(): array
+	{
+		$count = [];
+		$data  = DataFile::read(self::PATH);
+		$langs = Lang::all();
+
+		foreach ($langs as $lang => $config) {
+			$count[$lang] = count(array_column($data, $lang));
+		}
+
+		return $count;
+	}
+
 	public static function compute(array $data, array $langs): array
 	{
 		$key_langs = [];

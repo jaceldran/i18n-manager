@@ -14,6 +14,7 @@ Flight::register('view', BladeOne::class, [
 	BLADE_COMPILED
 ], function(BladeOne $blade) {
 	$blade->setPath(BLADE_VIEWS, BLADE_COMPILED);
+	$blade->setBaseUrl(Flight::get('env')->URL_BASE);
 });
 
 Flight::map('render', function($template, $data){

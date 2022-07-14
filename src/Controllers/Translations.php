@@ -14,10 +14,6 @@ class Translations
 			'navigation' => Navigation::main(),
 		];
 
-		// $data['all']['langs'] = Lang::all();
-		// $data['all']['translations'] = Translation::all();
-		// Flight::render('translations', $data);
-
 		$data['langs'] = Lang::all();
 		$data['translations'] = Translation::all();
 		Flight::render('translations.index', $data);

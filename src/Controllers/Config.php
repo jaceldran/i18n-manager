@@ -2,8 +2,9 @@
 
 use Flight;
 
-use App\Services\Repo;
 use App\Services\Navigation;
+use App\Models\Lang;
+use App\Models\Translation;
 
 class Config
 {
@@ -18,6 +19,18 @@ class Config
 		$data['all']['env'] = Flight::get('env');
 		$data['all']['phinx_config'] = Flight::get('phinx_config');
 
-		Flight::render('config', $data);
+		Flight::render('config.index', $data);
+	}
+
+	public static function langs()
+	{
+		$data['navigation'] = Navigation::main();
+		$data['langs'] = Lang::all();
+		$data['count'] = Translation::countByLang();
+
+		// print_r($data);
+		// die(__METHOD__);
+
+		Flight::render('config.langs', $data);
 	}
 }
