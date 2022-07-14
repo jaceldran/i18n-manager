@@ -3,14 +3,14 @@
   array (
     'en' => 'Translations',
     'es' => 'Traducciones',
-    'fr' => '333',
+    'fr' => '',
     'pt' => '',
   ),
   'app.nav.upload' => 
   array (
     'en' => 'Upload',
     'es' => 'Cargar',
-    'pt' => '444',
+    'pt' => '',
     'fr' => '',
   ),
   'app.nav.download' => 

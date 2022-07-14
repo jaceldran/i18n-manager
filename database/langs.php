@@ -1,8 +1,32 @@
-<?php return [
-	'en' => ['editable' => 0, 'visible' => 1],
-	'es' => ['editable' => 0, 'visible' => 1],
-	'fr' => ['editable' => 1, 'visible' => 1],
-	'pt' => ['editable' => 1, 'visible' => 1],
-	'it' => ['editable' => 0, 'visible' => 0],
-	'de' => ['editable' => 0, 'visible' => 0],
-];
+<?php return array (
+  'es' => 
+  array (
+    'editable' => false,
+    'visible' => true,
+  ),
+  'en' => 
+  array (
+    'editable' => false,
+    'visible' => true,
+  ),
+  'pt' => 
+  array (
+    'editable' => true,
+    'visible' => true,
+  ),
+  'fr' => 
+  array (
+    'editable' => true,
+    'visible' => true,
+  ),
+  'it' => 
+  array (
+    'editable' => false,
+    'visible' => false,
+  ),
+  'de' => 
+  array (
+    'editable' => false,
+    'visible' => false,
+  ),
+);
