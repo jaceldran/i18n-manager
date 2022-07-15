@@ -14,12 +14,10 @@
 
 <body class="antialiased">
     <header class="fixed bg-slate-800 mt-0 w-full z-10 top-0 shadow-lg">
-        <div class="container mx-auto flex justify-between items-center">
-            <a href="/">
-                <span class="text-white font-semibold">
-                    <i class="fab fa-fly fa-3x --bg-cyan-500 text-amber-400 -rotate-12 p-1 rounded-lg mr-1"></i>
-                    <span class=" text-3xl">i18n</span>
-                </span>
+        <div class="container mx-auto flex justify-between">
+            <a href="/" class="flex items-center">
+                <i class="fab fa-fly fa-2x text-amber-400 -rotate-12 -bg-amber-600 p-2 rounded-md mr-1"></i>
+                <span class="text-white text-3xl">i18n</span>
             </a>
 
             @yield('navigation-main')

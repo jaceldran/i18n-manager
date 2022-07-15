@@ -11,6 +11,7 @@ class Langs extends Controller
 	{
 		$data = self::commonData();
 		$data['langs'] = Lang::all();
+		$data['count'] = Translation::countByLang();
 
 		Flight::render('langs.index', $data);
 	}
