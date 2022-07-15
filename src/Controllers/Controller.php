@@ -3,8 +3,7 @@
 use Flight;
 
 use App\Services\Navigation;
-use App\Models\Lang;
-use App\Models\Translation;
+use App\Models\Path;
 
 class Controller
 {

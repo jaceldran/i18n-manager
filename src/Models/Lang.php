@@ -30,13 +30,9 @@ final class Lang // extends DataFileModel
 	public static function update(array $values): void
 	{
 		$langs  = DataFile::read(self::PATH);
-
 		$id = $values[self::ID];
-
 		$lang = $langs[$id];
-
 		unset ($values[self::ID]);
-
 		$langs[$id] = array_merge($lang, $values);
 
 		DataFile::write(self::PATH, $langs);

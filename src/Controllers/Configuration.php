@@ -2,26 +2,15 @@
 
 use Flight;
 
-use App\Services\Navigation;
 use App\Models\Lang;
 use App\Models\Translation;
+use App\Models\Path;
 
 class Configuration extends Controller
 {
 	public static function index()
 	{
-		$data = self::commonData();
-
-		Flight::render('config.index', $data);
-	}
-
-	public static function langs()
-	{
-		$data = self::commonData();
-		$data['langs'] = Lang::all();
-		$data['count'] = Translation::countByLang();
-
-		Flight::render('config.langs', $data);
+		Flight::redirect('/configuration/paths');
 	}
 
 	public static function paths()

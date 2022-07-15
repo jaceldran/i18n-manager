@@ -64,4 +64,29 @@ final class Translation
 
 		return $groups;
 	}
+
+	public static function export()
+	{
+		$paths = Path::all();
+		$translations  = DataFile::read(self::PATH);
+
+		$export = [];
+
+		foreach ($translations as $key => $values) {
+			foreach($values as $lang => $translation) {
+				$export[$lang][$key] = $translation;
+			}
+		}
+
+		foreach ($export as $lang => $data) {
+			$export_php = $paths->{PATH::EXPORT_PHP}."/$lang.php";
+			DataFile::write($export_php, $data, DataFile::WRITE_PHP);
+
+			$export_json = $paths->{PATH::EXPORT_JSON}."/$lang.json";
+			DataFile::write($export_json, $data, DataFile::WRITE_JSON);
+		}
+
+
+		return $export;
+	}
 }

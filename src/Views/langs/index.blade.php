@@ -1,8 +1,12 @@
-@extends('config.index')
+@extends('layout.master')
 
-@section('config_content')
+@section('navigation-main')
+    @include('navigation.main')
+@endsection
 
-<table>
+@section('main')
+
+<table class="w-full sm:w-auto">
     <thead>
         <tr class="border-b text-xs  uppercase text-center bg-gray-100">
             <th class="px-6 py-4 font-medium">

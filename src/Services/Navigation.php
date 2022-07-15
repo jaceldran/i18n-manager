@@ -9,9 +9,12 @@ class Navigation
 	const ACTIVE = 'active';
 
 	const TRANSLATIONS = '/translations';
-	const CONFIG = '/configuration';
-	const UPLOAD = '/upload';
-	const DOWNLOAD = '/download';
+	const LANGS = '/langs';
+	const SANDBOX = '/sandbox';
+	const CONFIGURATION = '/configuration';
+
+	// const UPLOAD = '/upload';
+	// const DOWNLOAD = '/download';
 
 	const CONFIG_LANGS = '/configuration/langs';
 	const CONFIG_PATHS = '/configuration/paths';
@@ -22,32 +25,38 @@ class Navigation
 			self::LABEL => 'Translations',
 			self::ACTIVE => false,
 		],
-
-		self::UPLOAD => [
-			self::URL => self::UPLOAD,
-			self::LABEL => 'Upload',
+		self::LANGS => [
+			self::URL => self::LANGS,
+			self::LABEL => 'Langs',
 			self::ACTIVE => false,
 		],
 
-		self::DOWNLOAD => [
-			self::URL => self::DOWNLOAD,
-			self::LABEL => 'Download',
+		self::SANDBOX => [
+			self::URL => self::SANDBOX,
+			self::LABEL => 'Sandbox',
 			self::ACTIVE => false,
 		],
 
-		self::CONFIG => [
-			self::URL => self::CONFIG,
+		// self::UPLOAD => [
+		// 	self::URL => self::UPLOAD,
+		// 	self::LABEL => 'Upload',
+		// 	self::ACTIVE => false,
+		// ],
+
+		// self::DOWNLOAD => [
+		// 	self::URL => self::DOWNLOAD,
+		// 	self::LABEL => 'Download',
+		// 	self::ACTIVE => false,
+		// ],
+
+		self::CONFIGURATION => [
+			self::URL => self::CONFIGURATION,
 			self::LABEL => 'Configuration',
 			self::ACTIVE => false,
 		],
 	];
 
 	const CONFIG_OPTIONS =  [
-		self::CONFIG_LANGS => [
-			self::URL => self::CONFIG_LANGS,
-			self::LABEL => 'Langs',
-			self::ACTIVE => false,
-		],
 		self::CONFIG_PATHS => [
 			self::URL => self::CONFIG_PATHS,
 			self::LABEL => 'Paths',
@@ -58,7 +67,6 @@ class Navigation
 	public static function main(): array
 	{
 		$request = Flight::request();
-
 
 		foreach (self::MAIN_OPTIONS as $url => $values) {
 			$data[$url] = (object) [
