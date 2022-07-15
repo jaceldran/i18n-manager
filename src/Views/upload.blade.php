@@ -1,7 +1,7 @@
 @extends('layout.master')
 
 @section('navigation-main')
-    @include('navigation')
+    @include('navigation.main')
 @endsection
 
 @section('main')

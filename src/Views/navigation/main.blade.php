@@ -1,5 +1,5 @@
 <nav class="font-semibold flex">
-    @foreach ($navigation as $link)
+    @foreach ($navigation_main as $link)
         @if ($link['active'])
             <a class="p-4 bg-amber-400 text-slate-800" href="{{ $link['url'] }}">
             @else

@@ -18,7 +18,7 @@ final class Translation
 	{
 		$data  = DataFile::read(self::PATH);
 		$langs = Lang::all();
-
+		ksort($data);
 		return self::compute($data, $langs);
 	}
 

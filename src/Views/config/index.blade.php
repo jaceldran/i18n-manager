@@ -1,13 +1,16 @@
 @extends('layout.master')
 
 @section('navigation-main')
-    @include('navigation')
+    @include('navigation.main')
 @endsection
 
 @section('main')
-    <h1 class="text-2xl mb-4">config</h1>
+    @include('config.navigation')
 
-	<pre>
-		{{ print_r($all, 1) }}
-	</pre>
+    @include('config.paths')
+
+	<hr class="my-8">
+
+    @include('config.langs')
+
 @endsection

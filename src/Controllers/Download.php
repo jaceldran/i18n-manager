@@ -9,10 +9,7 @@ class Download
 {
 	public static function index()
 	{
-		$data = [
-			'navigation' => Navigation::main(),
-		];
-
+		$data['navigation_main'] = Navigation::main();
 		Flight::render('download', $data);
 	}
 }

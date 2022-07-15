@@ -10,10 +10,7 @@ class Translations
 {
 	public static function index()
 	{
-		$data = [
-			'navigation' => Navigation::main(),
-		];
-
+		$data['navigation_main'] = Navigation::main();
 		$data['langs'] = Lang::all();
 		$data['translations'] = Translation::all();
 		Flight::render('translations.index', $data);

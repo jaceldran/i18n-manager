@@ -1,9 +1,8 @@
-<?php namespace App\Controllers;
+<?php namespace App\Controllers\Api;
 
 use Flight;
 
 use App\Models\Lang;
-use App\Models\Translation;
 
 class Langs
 {
@@ -33,7 +32,6 @@ class Langs
 		foreach($req as $key=>$value) {
 			$values[$key] = $value;
 		}
-		// Flight::json($values);
 
 		Lang::update($values);
 

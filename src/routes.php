@@ -5,9 +5,10 @@ use App\Controllers\Translations;
 use App\Controllers\Upload;
 use App\Controllers\Download;
 use App\Controllers\Config;
-use App\Controllers\Entries;
-use App\Controllers\Langs;
 use App\Controllers\Sandbox;
+
+use App\Controllers\Api\Langs as LangsApi;
+use App\Controllers\Api\Translations as TranslationsApi;
 
 Flight::route('/',[Home::class, 'index']);
 Flight::route('/translations',[Translations::class, 'index']);
@@ -21,6 +22,6 @@ Flight::route('/sandbox',[Sandbox::class, 'index']);
 
 
 // api
-Flight::route('PUT /api/entries',[Entries::class, 'put']);
-Flight::route('PUT /api/langs',[Langs::class, 'put']);
-Flight::route('PUT /api/langs/order',[Langs::class, 'order']);
+Flight::route('PUT /api/translations',[TranslationsApi::class, 'put']);
+Flight::route('PUT /api/langs',[LangsApi::class, 'put']);
+Flight::route('PUT /api/langs/order',[LangsApi::class, 'order']);

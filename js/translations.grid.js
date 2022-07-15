@@ -7,7 +7,7 @@ window.addEventListener("DOMContentLoaded", () => {
 				value: input.value,
 			};
 
-			fetch("/api/entries", {
+			fetch("/api/translations", {
 				method: "PUT",
 				headers: {
 					"Content-Type": "application/json",

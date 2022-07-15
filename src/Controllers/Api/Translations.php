@@ -1,11 +1,11 @@
-<?php namespace App\Controllers;
+<?php namespace App\Controllers\Api;
 
 use Flight;
 
 use App\Services\DataFile;
 use App\Models\Translation;
 
-class Entries
+class Translations
 {
 	const ID = 'id';
 	const LANG = 'lang';

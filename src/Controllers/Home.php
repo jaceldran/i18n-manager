@@ -9,12 +9,8 @@ class Home
 {
 	public static function index()
 	{
-		$data = [
-			'navigation' => Navigation::main(),
-		];
-
+		$data['navigation_main'] = Navigation::main();
 		$data['langs'] = Lang::all();
-
 		Flight::render('home', $data);
 	}
 }
