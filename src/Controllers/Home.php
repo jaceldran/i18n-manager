@@ -5,12 +5,12 @@ use Flight;
 use App\Services\Navigation;
 use App\Models\Lang;
 
-class Home
+class Home extends Controller
 {
 	public static function index()
 	{
-		$data['navigation_main'] = Navigation::main();
-		$data['langs'] = Lang::all();
+		$data = self::commonData();
+
 		Flight::render('home', $data);
 	}
 }

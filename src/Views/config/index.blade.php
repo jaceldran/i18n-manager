@@ -7,10 +7,5 @@
 @section('main')
     @include('config.navigation')
 
-    @include('config.paths')
-
-	<hr class="my-8">
-
-    @include('config.langs')
-
+    @yield('config_content')
 @endsection

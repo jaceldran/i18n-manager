@@ -9,11 +9,14 @@ class Navigation
 	const ACTIVE = 'active';
 
 	const TRANSLATIONS = '/translations';
-	const CONFIG = '/config';
+	const CONFIG = '/configuration';
 	const UPLOAD = '/upload';
 	const DOWNLOAD = '/download';
 
-	const MAIN = [
+	const CONFIG_LANGS = '/configuration/langs';
+	const CONFIG_PATHS = '/configuration/paths';
+
+	const MAIN_OPTIONS = [
 		self::TRANSLATIONS => [
 			self::URL => self::TRANSLATIONS,
 			self::LABEL => 'Translations',
@@ -34,24 +37,50 @@ class Navigation
 
 		self::CONFIG => [
 			self::URL => self::CONFIG,
-			self::LABEL => 'Config',
+			self::LABEL => 'Configuration',
 			self::ACTIVE => false,
 		],
+	];
 
-		self::CONFIG => [
-			self::URL => self::CONFIG,
-			self::LABEL => 'Config',
+	const CONFIG_OPTIONS =  [
+		self::CONFIG_LANGS => [
+			self::URL => self::CONFIG_LANGS,
+			self::LABEL => 'Langs',
+			self::ACTIVE => false,
+		],
+		self::CONFIG_PATHS => [
+			self::URL => self::CONFIG_PATHS,
+			self::LABEL => 'Paths',
 			self::ACTIVE => false,
 		],
 	];
 
 	public static function main(): array
 	{
-		$data = self::MAIN;
 		$request = Flight::request();
 
-		foreach($data as $key => &$values) {
-			$values['active'] = substr_count($request->url, $key);
+
+		foreach (self::MAIN_OPTIONS as $url => $values) {
+			$data[$url] = (object) [
+				self::URL => $url,
+				self::LABEL => $values[self::LABEL],
+				self::ACTIVE => substr_count($request->url, $url),
+			];
+		}
+
+		return $data;
+	}
+
+	public static function config(): array
+	{
+		$request = Flight::request();
+
+		foreach (self::CONFIG_OPTIONS as $url => $values) {
+			$data[$url] = (object) [
+				self::URL => $url,
+				self::LABEL => $values[self::LABEL],
+				self::ACTIVE => substr_count($request->url, $url),
+			];
 		}
 
 		return $data;

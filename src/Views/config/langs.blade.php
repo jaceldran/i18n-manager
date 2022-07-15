@@ -1,16 +1,20 @@
-<table class="">
+@extends('config.index')
+
+@section('config_content')
+
+<table>
     <thead>
-        <tr class="border-b text-xs font-semibold uppercase text-center bg-gray-100 ">
-            <th class="px-6 py-4">
-                Lang
+        <tr class="border-b text-xs  uppercase text-center bg-gray-100">
+            <th class="px-6 py-4 font-medium">
+               Lang
             </th>
-            <th class="px-6 py-4">
+            <th class="px-6 py-4 font-medium">
                 Visible
             </th>
-            <th class="px-6 py-4">
+            <th class="px-6 py-4 font-medium">
                 Editable
             </th>
-            <th class="px-6 py-4">
+            <th class="px-6 py-4 font-medium">
                 Count
             </th>
         </tr>
@@ -20,7 +24,7 @@
             <tr id="{{ $code }}" class="border-b cursor-move">
                 <td class="px-6 py-4 whitespace-nowrap bg-gray-100">
                     <i class="fi fi-{{ $code }}"></i>
-                    <span class="ml-2 uppercase text-amber-700 font-semibold">{{ $code }}</span>
+                    <span class="ml-2 uppercase text-amber-700">{{ $code }}</span>
                 </td>
                 <td class="px-6 py-4">
                     @include('components.switch', [
@@ -46,6 +50,8 @@
         @endforeach
     </tbody>
 </table>
+
+@endsection
 
 
 @section('script')

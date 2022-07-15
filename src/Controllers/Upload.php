@@ -2,14 +2,11 @@
 
 use Flight;
 
-use App\Services\Repo;
-use App\Services\Navigation;
-
-class Upload
+class Upload extends Controller
 {
 	public static function index()
 	{
-		$data['navigation_main'] = Navigation::main();
+		$data = self::commonData();
 
 		Flight::render('upload', $data);
 	}

@@ -1,11 +1,11 @@
-<nav class="font-semibold flex">
+<nav class="{{$theme->navigation->main->nav}}">
     @foreach ($navigation_main as $link)
-        @if ($link['active'])
-            <a class="p-4 bg-amber-400 text-slate-800" href="{{ $link['url'] }}">
+        @if ($link->active)
+            <a class="{{ $theme->navigation->main->link_active }}" href="{{ $link->url }}">
             @else
-                <a class="p-4" href="{{ $link['url'] }}">
+                <a class="{{ $theme->navigation->main->link }}" href="{{ $link->url }}">
         @endif
-        {{ $link['label'] }}
+        {{ $link->label }}
         </a>
     @endforeach
 </nav>

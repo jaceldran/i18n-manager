@@ -26,6 +26,7 @@
     'es' => 'Configuración',
     'fr' => '',
     'pt' => '',
+    'de' => '',
   ),
   'form.button.accept' => 
   array (

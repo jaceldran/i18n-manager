@@ -2,17 +2,17 @@
 
 use Flight;
 
-use App\Services\Navigation;
 use App\Models\Lang;
 use App\Models\Translation;
 
-class Translations
+class Translations extends Controller
 {
 	public static function index()
 	{
-		$data['navigation_main'] = Navigation::main();
+		$data = self::commonData();
 		$data['langs'] = Lang::all();
 		$data['translations'] = Translation::all();
+
 		Flight::render('translations.index', $data);
 	}
 }

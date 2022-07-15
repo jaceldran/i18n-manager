@@ -2,21 +2,20 @@
 
 use Flight;
 
-use App\Services\Repo;
 use App\Services\Navigation;
 
-class Sandbox
+class Sandbox extends Controller
 {
 	public static function index()
 	{
-		$data = [
-			'navigation' => Navigation::main(),
-		];
+		$data = self::commonData();
 
 		$data['all']['php-version'] = phpversion();
 		$data['all']['pdo-drivers'] = \PDO::getAvailableDrivers();
 		$data['all']['env'] = Flight::get('env');
-		$data['all']['phinx_config'] = Flight::get('phinx_config');
+		$data['all']['navigation_config'] = Navigation::config();
+		$data['all']['navigation_main'] = Navigation::main();
+		$data['all']['theme'] = Flight::get('theme');
 
 		Flight::render('sandbox', $data);
 	}

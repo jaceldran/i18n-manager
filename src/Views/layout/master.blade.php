@@ -11,15 +11,16 @@
     <link rel="stylesheet" href="@asset('css/flags/css/flag-icons.min.css')" />
 </head>
 
-<body>
-    <header class="fixed bg-slate-800 text-white mt-0 w-full z-10 top-0">
+<body class="antialiased">
+    <header class="fixed bg-slate-800 --textwhite mt-0 w-full z-10 top-0">
         <div class="container mx-auto flex justify-between items-center">
             <a href="/">
-                <span class="text-white font-semibold  --whitespace-nowrap overflow-hidden overflow-ellipsis">
+                <span class="text-white font-semibold">
                     <i class="fab fa-fly fa-2x --bg-cyan-500 text-amber-400 -rotate-12 p-1 rounded-lg mr-1"></i>
-                    <span class="text-2xl">i18n manager</span>
+                    <span class="text-2xl">i18n</span>
                 </span>
             </a>
+
             @yield('navigation-main')
         </div>
     </header>
