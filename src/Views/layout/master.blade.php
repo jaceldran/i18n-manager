@@ -9,7 +9,8 @@
     <link rel="stylesheet" href= "@asset('css/style.css')" />
     <link rel="stylesheet" href="@asset('css/fontawesome/css/all.min.css')" />
     <link rel="stylesheet" href="@asset('css/flags/css/flag-icons.min.css')" />
-    <script src="@asset('js/device-uuid.min.js')"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script> --}}
+    {{-- <script src="@asset('js/device-uuid.min.js')"></script> --}}
 </head>
 
 <body class="antialiased">
@@ -26,17 +27,12 @@
 
     <main class="container mx-auto mt-16">
         @yield('main')
-
-        <p><span id="fingerprint"></span></p>
-        <p><span id="fingerprint-2"></span></p>
-        <p><span id="fingerprint-3"></span></p>
-
     </main>
 
 
-    <script>
+    {{-- <script>
         var uuid = new DeviceUUID().get();
-    </script>
+    </script> --}}
 
 	@yield('script')
 </body>

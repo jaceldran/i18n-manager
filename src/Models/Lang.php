@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use App\Services\DataFile;
+use App\Services\Datafile;
 
-final class Lang // extends DataFileModel
+final class Lang // extends DatafileModel
 {
 	const PATH = APP_PATH . "/database/langs.php";
 	const ID = 'id';
@@ -13,7 +13,7 @@ final class Lang // extends DataFileModel
 
 	public static function all(): array
 	{
-		$data  = DataFile::read(self::PATH);
+		$data  = Datafile::read(self::PATH);
 
 		return self::compute($data);
 	}
@@ -29,24 +29,24 @@ final class Lang // extends DataFileModel
 
 	public static function update(array $values): void
 	{
-		$langs  = DataFile::read(self::PATH);
+		$langs  = Datafile::read(self::PATH);
 		$id = $values[self::ID];
 		$lang = $langs[$id];
 		unset ($values[self::ID]);
 		$langs[$id] = array_merge($lang, $values);
 
-		DataFile::write(self::PATH, $langs);
+		Datafile::write(self::PATH, $langs);
 	}
 
 	public static function setOrder(array $order): void
 	{
 		$sorted = [];
-		$langs  = DataFile::read(self::PATH);
+		$langs  = Datafile::read(self::PATH);
 
 		foreach($order as  $lang) {
 			$sorted[$lang] = $langs[$lang];
 		}
 
-		DataFile::write(self::PATH, $sorted);
+		Datafile::write(self::PATH, $sorted);
 	}
 }

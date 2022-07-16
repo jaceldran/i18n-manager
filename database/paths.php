@@ -1,4 +1,4 @@
 <?php return [
-	'export_json' => './export/php',
-	'export_php' => './export/json',
+	'export_json' => '{APP_PATH}/export/php',
+	'export_php' => '{APP_PATH}/export/json',
 ];

@@ -1,26 +1,26 @@
 <?php return array (
-  'app.nav.translations' => 
+  'app.nav.translations' =>
   array (
     'en' => 'Translations',
     'es' => 'Traducciones',
     'fr' => '',
     'pt' => '',
   ),
-  'app.nav.upload' => 
+  'app.nav.upload' =>
   array (
     'en' => 'Upload',
     'es' => 'Cargar',
     'pt' => '',
     'fr' => '',
   ),
-  'app.nav.download' => 
+  'app.nav.download' =>
   array (
     'en' => 'Download',
     'es' => 'Descargar',
     'pt' => '',
     'fr' => '',
   ),
-  'app.nav.config' => 
+  'app.nav.config' =>
   array (
     'en' => 'Configuration',
     'es' => 'Configuración',
@@ -28,27 +28,27 @@
     'pt' => '',
     'de' => '',
   ),
-  'form.button.accept' => 
+  'form.button.accept' =>
   array (
     'en' => 'Accept',
     'es' => 'Aceptar',
   ),
-  'form.button.cancel' => 
+  'form.button.cancel' =>
   array (
     'en' => 'Cancel',
     'es' => 'Cancelar',
   ),
-  'form.button.confirm' => 
+  'form.button.confirm' =>
   array (
     'en' => 'Confirm',
     'es' => 'Confirmar',
   ),
-  'form.button.submit' => 
+  'form.button.submit' =>
   array (
     'en' => 'Submit',
     'es' => 'Enviar',
   ),
-  'form.legal.disclaimer' => 
+  'form.legal.disclaimer' =>
   array (
     'en' => 'Disclaimer',
     'es' => 'Descargo',

@@ -10,5 +10,12 @@
 			'link' => 'flex-1 px-8 py-2 text-center border-b  hover:bg-gray-100',
 			'link_active' => 'flex-1 px-8 py-2 text-center border-b-2 bg-gray-100 border-gray-400',
 		],
-	]
+	],
+	// 'form' => (object) [
+	// 	'control' => 'mb-2',
+	// 	'label' => 'text-gray-500 block font-medium',
+	// 	'input' => (object) [
+	// 		'control' => 'p-2 border-b --rounded-md w-full outline-none focus:bg-gray-100',
+	// 	],
+	// ]
 ];

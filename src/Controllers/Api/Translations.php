@@ -2,7 +2,7 @@
 
 use Flight;
 
-use App\Services\DataFile;
+use App\Services\Datafile;
 use App\Models\Translation;
 
 class Translations
@@ -15,9 +15,9 @@ class Translations
 	{
 		$req = Flight::request()->data;
 		$response['request'] = $req;
-		$data = DataFile::read(Translation::PATH);
+		$data = Datafile::read(Translation::PATH);
 		$data[$req[self::ID]][$req[self::LANG]] = $req[self::VALUE];
-		DataFile::write(Translation::PATH, $data);
+		Datafile::write(Translation::PATH, $data);
 		Flight::json($response);
 	}
 }

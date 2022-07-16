@@ -2,7 +2,7 @@
 
 namespace App\Models;
 
-use App\Services\DataFile;
+use App\Services\Datafile;
 
 final class Translation
 {
@@ -16,7 +16,7 @@ final class Translation
 
 	public static function all(): array
 	{
-		$data  = DataFile::read(self::PATH);
+		$data  = Datafile::read(self::PATH);
 		$langs = Lang::all();
 		ksort($data);
 		return self::compute($data, $langs);
@@ -25,7 +25,7 @@ final class Translation
 	public static function countByLang(): array
 	{
 		$count = [];
-		$data  = DataFile::read(self::PATH);
+		$data  = Datafile::read(self::PATH);
 		$langs = Lang::all();
 
 		foreach ($langs as $lang => $config) {
@@ -67,8 +67,8 @@ final class Translation
 
 	public static function export()
 	{
-		$paths = Path::all();
-		$translations  = DataFile::read(self::PATH);
+		$paths = Path::all(Path::COMPUTE);
+		$translations  = Datafile::read(self::PATH);
 
 		$export = [];
 
@@ -80,10 +80,10 @@ final class Translation
 
 		foreach ($export as $lang => $data) {
 			$export_php = $paths->{PATH::EXPORT_PHP}."/$lang.php";
-			DataFile::write($export_php, $data, DataFile::WRITE_PHP);
+			Datafile::write($export_php, $data, Datafile::PHP);
 
 			$export_json = $paths->{PATH::EXPORT_JSON}."/$lang.json";
-			DataFile::write($export_json, $data, DataFile::WRITE_JSON);
+			Datafile::write($export_json, $data, Datafile::JSON);
 		}
 
 

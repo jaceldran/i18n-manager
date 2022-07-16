@@ -1,17 +1,27 @@
-<div class="flex justify-center">
+<p class="flex justify-center">
+    <input type="checkbox" id="{{ $id }}" {{ $checked }} @isset($name) name="{{ $name }}" @endisset
+    class="
+        appearance-none
+        cursor-pointer
+        rounded-full
+        h-5
+        w-9
+        flex
+        items-center
+        justify-start
+        border-2
+        border-gray-300
+        bg-gray-300
+        shadow-sm
 
-    <div class="form-check form-switch">
+        after:content-[' ']
+        after:h-3.5
+        after:w-3.5
+        after:bg-white
+        after:rounded-full
 
-        <input id="{{ $id }}" {{ $checked }} @isset($name) name="{{ $name }}" @endisset
-            class="form-check-input appearance-none w-9 -ml-10 rounded-full float-left h-5 align-top bg-no-repeat bg-contain bg-gray-300 focus:outline-none cursor-pointer shadow-sm"
-            type="checkbox" role="switch">
-
-        @isset($label)
-        <label class="form-check-label inline-block text-gray-800" for="{{ $id }}">
-            {{ $label }}
-        </label>
-        @endisset
-
-    </div>
-
-</div>
+        checked:border-blue-500
+        checked:bg-blue-500
+        checked:justify-end
+        ">
+</p>

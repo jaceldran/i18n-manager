@@ -1,25 +1,34 @@
-<?php namespace App\Services;
+<?php
 
-final class DataFile
+namespace App\Services;
+
+use Exception;
+
+final class Datafile
 {
-	const WRITE_PHP = 1;
-	const WRITE_JSON = 2;
+	const PHP = 'php';
+	const JSON = 'json';
+	const CSV = 'csv';
 
 	public static function read(string $path): array
 	{
 		return require $path;
 	}
 
-	public static function write(string $path, array $data, int $write_as = self::WRITE_PHP): void
+	public static function write(string $path, array $data, string $write_as = self::PHP): void
 	{
-		if ($write_as === self::WRITE_PHP) {
-			$content = '<?php return ' . var_export($data, true) . ';';
-		}
+		try {
+			if ($write_as === self::PHP) {
+				$content = '<?php return ' . var_export($data, true) . ';';
+			}
 
-		if ($write_as === self::WRITE_JSON) {
-			$content = json_encode($data, JSON_PRETTY_PRINT);
-		}
+			if ($write_as === self::JSON) {
+				$content = json_encode($data, JSON_PRETTY_PRINT);
+			}
 
-		file_put_contents($path, $content);
+			file_put_contents($path, $content);
+		} catch (Exception $e) {
+			throw new DatafileException($e->getMessage());
+		}
 	}
 }

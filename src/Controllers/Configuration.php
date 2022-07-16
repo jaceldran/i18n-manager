@@ -16,6 +16,7 @@ class Configuration extends Controller
 	public static function paths()
 	{
 		$data = self::commonData();
+		$data['paths'] = Path::all();
 
 		Flight::render('config.paths', $data);
 	}

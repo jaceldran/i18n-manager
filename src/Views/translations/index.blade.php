@@ -5,6 +5,8 @@
 @endsection
 
 @section('main')
+    @include('translations.actions')
+
     @foreach ($translations as $group => $entries)
         @include('translations.grid', [
             'group' => $group,

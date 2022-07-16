@@ -2,32 +2,54 @@
 
 namespace App\Models;
 
-use App\Services\DataFile;
+use App\Services\Datafile;
 
 final class Path
 {
 	const PATH = APP_PATH . "/database/paths.php";
 	const EXPORT_JSON = 'export_json';
 	const EXPORT_PHP = 'export_php';
+	const EXPORT_CSV = 'export_csv';
 
-	public static function all(): object
+	const NONE = 0;
+	const COMPUTE = 1;
+
+	public static function all(int $mode = self::NONE): object
 	{
-		$data  = DataFile::read(self::PATH);
+		$data  = Datafile::read(self::PATH);
 
-		foreach($data as &$path) {
-			$path = APP_PATH . $path;
-			$parts = explode('/', $path);
-			$stack = [];
-
-			foreach($parts as $part) {
-				$stack[] = $part;
-				$current = implode('/', $stack);
-				if (!is_dir($current)) {
-					mkdir($current);
-				}
-			}
+		if ($mode === self::COMPUTE) {
+			$data = self::compute($data);
 		}
 
 		return (object) $data;
+	}
+
+	public static function compute(array $data): array
+	{
+		foreach ($data as &$path) {
+			$path = str_replace([
+				'{APP_PATH}'
+			], [
+				APP_PATH
+			], $path);
+
+			echo "$path<hr>";
+		}
+
+		return $data;
+	}
+
+	public static function createFolders(string $path): void
+	{
+		$parts = explode('/', $path);
+		$stack = [];
+		foreach ($parts as $part) {
+			$stack[] = $part;
+			$current = implode('/', $stack);
+			if (!is_dir($current)) {
+				mkdir($current);
+			}
+		}
 	}
 }
