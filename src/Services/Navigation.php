@@ -31,11 +31,11 @@ class Navigation
 			self::ACTIVE => false,
 		],
 
-		self::SANDBOX => [
-			self::URL => self::SANDBOX,
-			self::LABEL => 'Sandbox',
-			self::ACTIVE => false,
-		],
+		// self::SANDBOX => [
+		// 	self::URL => self::SANDBOX,
+		// 	self::LABEL => 'Sandbox',
+		// 	self::ACTIVE => false,
+		// ],
 
 		// self::UPLOAD => [
 		// 	self::URL => self::UPLOAD,

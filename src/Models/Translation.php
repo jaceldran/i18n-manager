@@ -16,10 +16,9 @@ final class Translation
 
 	public static function all(): array
 	{
-		$data  = Datafile::read(self::PATH);
-		$langs = Lang::all();
+		$data = Datafile::read(self::PATH);
 		ksort($data);
-		return self::compute($data, $langs);
+		return self::compute($data);
 	}
 
 	public static function countByLang(): array
@@ -35,23 +34,37 @@ final class Translation
 		return $count;
 	}
 
-	public static function compute(array $data, array $langs): array
+	public static function compute(array $data): array
 	{
-		$key_langs = [];
-		$visible_langs = array_filter($langs, function(array $values): bool {
-			return $values['visible'];
-		});
+		$langs = Lang::all();
 
-		foreach($visible_langs as $key=>$value) {
-			$key_langs[$key] = null;
+		$rows = [];
+		foreach ($langs as $key=>$lang) {
+			$key_langs[$key] = '';
 		}
 
+		foreach($data as $key => $values) {
+			$row = ['key' => $key];
+			$translations = array_merge($key_langs, $values);
+			ksort($translations);
+			$row += $translations;
+			$rows[$key] = $row;
+		}
+
+		return $rows;
+	}
+
+	public static function byGroup(array $data): array
+	{
 		$groups = [];
+
 		foreach($data as $code => $values) {
 			$parts = explode('.', $code);
 			$code = array_pop($parts);
 			$group = implode('.',$parts);
-			$translations = array_merge($key_langs, $values);
+
+			$translations = $values;
+			unset($translations['key']);
 
 			$entry = [
 				'code' => $code,
@@ -63,30 +76,47 @@ final class Translation
 		}
 
 		return $groups;
+
 	}
 
-	public static function export()
+	public static function byLang(array $translations): array
 	{
-		$paths = Path::all(Path::COMPUTE);
-		$translations  = Datafile::read(self::PATH);
-
-		$export = [];
+		$groups = [];
 
 		foreach ($translations as $key => $values) {
 			foreach($values as $lang => $translation) {
-				$export[$lang][$key] = $translation;
+				$groups[$lang][$key] = $translation;
 			}
 		}
+		return $groups;
+	}
 
-		foreach ($export as $lang => $data) {
-			$export_php = $paths->{PATH::EXPORT_PHP}."/$lang.php";
-			Datafile::write($export_php, $data, Datafile::PHP);
+	public static function export(): array
+	{
+		$exported = [];
+		$paths = Path::all(Path::COMPUTE);
+		$translations = self::all();
+		$translations_by_lang = self::byLang($translations);
 
-			$export_json = $paths->{PATH::EXPORT_JSON}."/$lang.json";
-			Datafile::write($export_json, $data, Datafile::JSON);
+		$json_path =  $paths->{PATH::EXPORT_JSON};
+		$php_path = $paths->{PATH::EXPORT_PHP};
+		$csv_path = $paths->{PATH::EXPORT_CSV};
+
+		Datafile::writePhp("$php_path/all.php", $translations);
+		Datafile::writeJson("$json_path/all.json", $translations);
+		Datafile::writeCsv("$csv_path/all.csv", $translations);
+
+		$exported['php'][] = "$php_path/all.php";
+		$exported['json'][] = "$php_path/all.json";
+		$exported['csv'][] = "$php_path/all.csv";
+
+		foreach ($translations_by_lang as $lang => $data) {
+			Datafile::writePhp("$php_path/$lang.php", $data);
+			Datafile::writeJson("$json_path/$lang.json", $data);
+			$exported['php'][] = "$php_path/$lang.php";
+			$exported['json'][] = "$php_path/$lang.php";
 		}
 
-
-		return $export;
+		return $exported;
 	}
 }

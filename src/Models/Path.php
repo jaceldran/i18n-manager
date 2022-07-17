@@ -33,8 +33,6 @@ final class Path
 			], [
 				APP_PATH
 			], $path);
-
-			echo "$path<hr>";
 		}
 
 		return $data;

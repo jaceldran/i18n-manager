@@ -1,8 +1,7 @@
 @set($uuid = 'section-' . uniqid())
 
-<section
-    id="{{ $uuid }}"
-    class="flex justify-between items-center font-medium --outline uppercase cursor-pointer border-b-2 border-gray-300 mb-2">
+<section id="{{ $uuid }}"
+    class="flex justify-between items-center font-medium --outline uppercase cursor-pointer border-b-2 --border-gray-300 mb-2">
 
     <div class="cursor-pointer flex-grow" onclick="Toggle('{{ $uuid }}')">
         <i class="fas fa-angle-down"></i>
@@ -15,7 +14,7 @@
 
 </section>
 
-<section class="toggle-section toggle-{{ $uuid }} hidden --outline my-2 mb-4">
+<section class="toggle-section toggle-{{ $uuid }} hidden my-2 mb-4">
 
     @foreach ($entries as $code => $entry)
         <div class="flex border-b mb-1 pb-1">
@@ -27,7 +26,6 @@
             </label>
 
             <div class="grid w-full sm:grid-cols-2 md:grid-cols-4">
-
                 @foreach ($entry['translations'] as $lang => $translation)
                     @if ($langs[$lang]['visible'])
                         <p class="mr-1">
@@ -39,7 +37,6 @@
                         </p>
                     @endif
                 @endforeach
-
             </div>
         </div>
     @endforeach

@@ -7,14 +7,46 @@ const Toggle = (uuid) => {
 	}
 }
 
+
+class Element
+{
+	static destroy(selector)
+	{
+		const target = document.querySelector(selector);
+		target.parentNode.removeChild(modal);
+	}
+
+	static create(html)
+	{
+		const container = document.createElement('div');
+		container.innerHTML = html;
+		document.body.appendChild(container);
+	}
+}
+
 window.addEventListener("DOMContentLoaded", () => {
-	document.querySelectorAll(".add-group").forEach((button) => {
+	document.querySelectorAll(".add-group-action").forEach((button) => {
 		button.addEventListener('click', () => {
 			alert('add translations group');
 		})
 	});
 
-	document.querySelectorAll(".toggle-all-open").forEach((button) => {
+	document.querySelectorAll(".export-action").forEach((button) => {
+		button.addEventListener('click', () => {
+			fetch("/api/translations/export")
+				.then((response) => {
+					return response.text();
+				})
+				.then((html) => {
+					Element.create(html);
+				})
+				.catch((err) => {
+					alert(err);
+				});
+		})
+	});
+
+	document.querySelectorAll(".open-all-action").forEach((button) => {
 		button.addEventListener('click', () => {
 			document.querySelectorAll('.toggle-section').forEach((elm)=>{
 				elm.classList.remove('hidden');
@@ -22,7 +54,7 @@ window.addEventListener("DOMContentLoaded", () => {
 		})
 	});
 
-	document.querySelectorAll(".toggle-all-close").forEach((button) => {
+	document.querySelectorAll(".close-all-action").forEach((button) => {
 		button.addEventListener('click', () => {
 			document.querySelectorAll('.toggle-section').forEach((elm)=>{
 				elm.classList.add('hidden');

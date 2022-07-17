@@ -16,7 +16,7 @@
 
         <p class="flex gap-2">
             @include('components.button', [
-                'label' => 'Create folders',
+                'label' => 'Create',
             ])
 
             @include('components.button', [

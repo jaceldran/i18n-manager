@@ -11,7 +11,7 @@ class Sandbox extends Controller
 	{
 		$data = self::commonData();
 
-		$data['all']['export'] = 'Translation::export()';
+		$data['all']['$_ENV'] = $_ENV;
 
 
 		// $data['all']['php-version'] = phpversion();

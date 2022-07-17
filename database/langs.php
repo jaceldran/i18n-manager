@@ -16,8 +16,8 @@
   ),
   'it' => 
   array (
-    'editable' => false,
-    'visible' => false,
+    'editable' => true,
+    'visible' => true,
   ),
   'fr' => 
   array (

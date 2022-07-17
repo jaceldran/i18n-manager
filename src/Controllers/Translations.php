@@ -9,9 +9,12 @@ class Translations extends Controller
 {
 	public static function index()
 	{
+		$translations = Translation::all();
+		$langs = Lang::all();
+
 		$data = self::commonData();
-		$data['langs'] = Lang::all();
-		$data['translations'] = Translation::all();
+		$data['langs'] = $langs;
+		$data['translations'] = Translation::byGroup($translations);
 
 		Flight::render('translations.index', $data);
 	}

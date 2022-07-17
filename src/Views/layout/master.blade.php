@@ -9,8 +9,17 @@
     <link rel="stylesheet" href= "@asset('css/style.css')" />
     <link rel="stylesheet" href="@asset('css/fontawesome/css/all.min.css')" />
     <link rel="stylesheet" href="@asset('css/flags/css/flag-icons.min.css')" />
-    {{-- <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script> --}}
-    {{-- <script src="@asset('js/device-uuid.min.js')"></script> --}}
+    @yield('style')
+    <style>
+        dialog::backdrop {
+            position: fixed;
+            top: 0px;
+            right: 0px;
+            bottom: 0px;
+            left: 0px;
+            background: rgba(0, 255, 0, 0.1);
+        }
+    </style>
 </head>
 
 <body class="antialiased">
@@ -25,8 +34,11 @@
         </div>
     </header>
 
-    <main class="container mx-auto mt-16">
-        @yield('main')
+    <main class="mt-14">
+        @yield('actions-bar')
+        <div class="container mx-auto">
+            @yield('main')
+        </div>
     </main>
 
 
@@ -35,6 +47,20 @@
     </script> --}}
 
 	@yield('script')
+
+    {{-- @include('components.modal')
+    <script>
+        var dialog = document.querySelector('dialog');
+
+        function openDialog() {
+            dialog.showModal();
+        }
+
+        function closeDialog() {
+            dialog.close();
+        }
+    </script> --}}
+
 </body>
 
 </html>

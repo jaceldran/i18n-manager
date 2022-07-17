@@ -1,4 +1,16 @@
 window.addEventListener("DOMContentLoaded", () => {
+	document.querySelectorAll(".add-lang-action").forEach((button) => {
+		button.addEventListener('click', () => {
+			alert('add lang to manager');
+		})
+	});
+
+	document.querySelectorAll(".delete-lang-action").forEach((button) => {
+		button.addEventListener('click', (evt) => {
+			alert('remove lang ' + evt.target.dataset.lang + ' from manager');
+		})
+	});
+
 	document.querySelectorAll("input[type=checkbox]").forEach((input) => {
 		input.addEventListener("change", () => {
 			const values = { id: input.id };

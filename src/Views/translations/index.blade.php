@@ -4,9 +4,11 @@
     @include('navigation.main')
 @endsection
 
-@section('main')
+@section('actions-bar')
     @include('translations.actions')
+@endsection
 
+@section('main')
     @foreach ($translations as $group => $entries)
         @include('translations.grid', [
             'group' => $group,
