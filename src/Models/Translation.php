@@ -7,12 +7,7 @@ use App\Services\Datafile;
 final class Translation
 {
 	const PATH = APP_PATH . "/database/translations.php";
-	const CODE = 'code';
-	const GROUP = 'group';
-	const KEYS = [
-		self::CODE,
-		self::GROUP
-	];
+	const KEY = 'key';
 
 	public static function all(): array
 	{
@@ -28,7 +23,11 @@ final class Translation
 		$langs = Lang::all();
 
 		foreach ($langs as $lang => $config) {
-			$count[$lang] = count(array_column($data, $lang));
+			$dictionary = array_column($data, $lang);
+			$filled = array_filter($dictionary, function($value) {
+				return !empty($value);
+			} );
+			$count[$lang] = count($filled);
 		}
 
 		return $count;
@@ -36,17 +35,12 @@ final class Translation
 
 	public static function compute(array $data): array
 	{
-		$langs = Lang::all();
-
 		$rows = [];
-		foreach ($langs as $key=>$lang) {
-			$key_langs[$key] = '';
-		}
+		$key_langs = array_fill_keys(Lang::keys(), '');
 
-		foreach($data as $key => $values) {
+		foreach ($data as $key => $values) {
 			$row = ['key' => $key];
 			$translations = array_merge($key_langs, $values);
-			ksort($translations);
 			$row += $translations;
 			$rows[$key] = $row;
 		}
@@ -58,10 +52,10 @@ final class Translation
 	{
 		$groups = [];
 
-		foreach($data as $code => $values) {
+		foreach ($data as $code => $values) {
 			$parts = explode('.', $code);
 			$code = array_pop($parts);
-			$group = implode('.',$parts);
+			$group = implode('.', $parts);
 
 			$translations = $values;
 			unset($translations['key']);
@@ -76,7 +70,6 @@ final class Translation
 		}
 
 		return $groups;
-
 	}
 
 	public static function byLang(array $translations): array
@@ -84,7 +77,7 @@ final class Translation
 		$groups = [];
 
 		foreach ($translations as $key => $values) {
-			foreach($values as $lang => $translation) {
+			foreach ($values as $lang => $translation) {
 				$groups[$lang][$key] = $translation;
 			}
 		}
@@ -118,5 +111,48 @@ final class Translation
 		}
 
 		return $exported;
+	}
+
+	public static function importCsv(string $path): array
+	{
+		// read csv and transform to key => translations[] format
+		$rows = Datafile::readCsv($path);
+		$keys = array_shift($rows);
+		array_shift($keys);
+		foreach ($rows as $values) {
+			$key = array_shift($values);
+			$csv[$key] = array_combine($keys, $values);
+		}
+
+		// update current data
+		$data = self::all();
+		array_walk($csv, function ($values, $key) use (&$data) {
+			if (!isset($data[$key])) {
+				$data[$key] = $values;
+				return;
+			}
+
+			foreach ($values as $k => $v) {
+				if (empty($v)) {
+					continue;
+				}
+
+				$concat= [$v => $v];
+
+				$stored = $data[$key][$k] ?? '';
+				if ($stored && ! empty($stored)) {
+					$concat[$stored] = $stored;
+				}
+
+				$data[$key][$k] = implode(' / ', $concat);
+			}
+
+			unset ($data[$key][self::KEY]);
+		});
+
+		// store updated data
+		Datafile::writeCsv(self::PATH, $data);
+
+		return $data;
 	}
 }

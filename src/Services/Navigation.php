@@ -13,11 +13,8 @@ class Navigation
 	const SANDBOX = '/sandbox';
 	const CONFIGURATION = '/configuration';
 
-	// const UPLOAD = '/upload';
-	// const DOWNLOAD = '/download';
-
-	const CONFIG_LANGS = '/configuration/langs';
 	const CONFIG_PATHS = '/configuration/paths';
+	const CONFIG_ENV = '/configuration/env';
 
 	const MAIN_OPTIONS = [
 		self::TRANSLATIONS => [
@@ -30,25 +27,6 @@ class Navigation
 			self::LABEL => 'Langs',
 			self::ACTIVE => false,
 		],
-
-		// self::SANDBOX => [
-		// 	self::URL => self::SANDBOX,
-		// 	self::LABEL => 'Sandbox',
-		// 	self::ACTIVE => false,
-		// ],
-
-		// self::UPLOAD => [
-		// 	self::URL => self::UPLOAD,
-		// 	self::LABEL => 'Upload',
-		// 	self::ACTIVE => false,
-		// ],
-
-		// self::DOWNLOAD => [
-		// 	self::URL => self::DOWNLOAD,
-		// 	self::LABEL => 'Download',
-		// 	self::ACTIVE => false,
-		// ],
-
 		self::CONFIGURATION => [
 			self::URL => self::CONFIGURATION,
 			self::LABEL => 'Configuration',
@@ -60,6 +38,11 @@ class Navigation
 		self::CONFIG_PATHS => [
 			self::URL => self::CONFIG_PATHS,
 			self::LABEL => 'Paths',
+			self::ACTIVE => false,
+		],
+		self::CONFIG_ENV => [
+			self::URL => self::CONFIG_ENV,
+			self::LABEL => 'Env',
 			self::ACTIVE => false,
 		],
 	];

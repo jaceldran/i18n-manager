@@ -26,12 +26,12 @@
 
 <p class="my-4">
     @isset($label)
-        <label for="{{ $id ?? '' }}" class="text-gray-500 block font-medium">
+        <label for="{{ $id ?? '' }}" class="text-accent block">
             {{ $label }}
         </label>
     @endisset
 
-    <input id="{{ $id ?? '' }}" type="{{$type ?? 'text'}}" name="{{ $name ?? '' }}" placeholder="{{ $placeholder ?? '' }}"
+    <input id="{{ $id ?? '' }}" type="{{$type ?? 'text'}}" name="{{ $name ?? '' }}" placeholder="{{ $placeholder ?? '' }}" {{ $disabled ? 'disabled' : ''  }}
         value="{{ $value ?? '' }}" class="p-2 border-b w-full outline-none focus:bg-gray-100 transition
-        ease-in-out {{ $input_class ?? ''}}">
+        ease-in-out text-700 disabled:text-gray-600 disabled:cursor-not-allowed {{ $input_class ?? ''}}">
 </p>

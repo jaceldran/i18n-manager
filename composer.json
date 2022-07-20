@@ -21,8 +21,6 @@
     },
     "require": {
         "mikecao/flight": "^2.0",
-        "eftec/bladeone": "^4.5",
-        "symfony/dotenv": "^6.1",
-        "robmorgan/phinx": "^0.12.11"
+        "eftec/bladeone": "^4.5"
     }
 }

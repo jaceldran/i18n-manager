@@ -14,6 +14,7 @@ class Translations extends Controller
 
 		$data = self::commonData();
 		$data['langs'] = $langs;
+		$data['visible_langs'] = count(array_filter($langs, function($lang) {return $lang['visible'];}));
 		$data['translations'] = Translation::byGroup($translations);
 
 		Flight::render('translations.index', $data);

@@ -10,14 +10,31 @@ final class Datafile
 	const JSON = 'json';
 	const CSV = 'csv';
 
+	const READ = 'r';
+	const WRITE = 'w';
+
 	public static function read(string $path, $read_as = self::PHP): array
 	{
 		return require $path;
 	}
 
-	public function readPhp(string $path): array
+	public static function readPhp(string $path): array
 	{
 		return require $path;
+	}
+
+	public static function readCsv(string $path): array
+	{
+		$rows = [];
+
+		if (($handle = fopen($path, self::READ)) !== FALSE) {
+			while (($row = fgetcsv($handle, 0, ',')) !== false) {
+				$rows[] = $row;
+			}
+			fclose($handle);
+		}
+
+		return $rows;
 	}
 
 	public static function write(string $path, array $data, string $write_as = self::PHP): void
@@ -63,7 +80,7 @@ final class Datafile
 
 		fputcsv($file, $header);
 
-		foreach($data as $key => $row) {
+		foreach ($data as $key => $row) {
 			$row = array_merge(['key' => $key], $row);
 			fputcsv($file, $row);
 		}

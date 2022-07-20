@@ -2,7 +2,7 @@
   'es' => 
   array (
     'editable' => false,
-    'visible' => true,
+    'visible' => false,
   ),
   'en' => 
   array (
@@ -16,8 +16,8 @@
   ),
   'it' => 
   array (
-    'editable' => true,
-    'visible' => true,
+    'editable' => false,
+    'visible' => false,
   ),
   'fr' => 
   array (

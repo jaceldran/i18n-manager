@@ -5,10 +5,25 @@
 @tailwind utilities;
 
 @layer components {
+	.text-accent {
+		@apply text-amber-700 font-semibold
+	}
 	.fi.fi-en {
 		background-image: url(./flags/flags/4x3/gb.svg);
-	  }
+	}
+
 	.fi-en.fis {
 		background-image: url(./flags/flags/1x1/gb.svg);
+	}
+
+	.my-blur {
+		filter: blur(4px);
+	}
+
+	input[type=file]::-webkit-file-upload-button,
+	input[type=file]::file-selector-button {
+		@apply text-white bg-gray-700 hover:bg-gray-600 font-normal  cursor-pointer border-0 py-2.5 pl-8 pr-4 text-base;
+		margin-inline-start: -1rem;
+		margin-inline-end: 1rem;
 	}
 }

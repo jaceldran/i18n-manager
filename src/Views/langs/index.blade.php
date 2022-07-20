@@ -1,4 +1,4 @@
-@extends('layout.master')
+@extends('layout.app')
 
 @section('navigation-main')
     @include('navigation.main')
@@ -30,7 +30,7 @@
         <tbody id="langs-list">
             @foreach ($langs as $code => $lang)
                 <tr id="{{ $code }}" class="border-b cursor-move">
-                    <td class="px-8 py-4 whitespace-nowrap --bg-gray-50">
+                    <td class="px-8 py-4 whitespace-nowrap font-medium">
                         <i class="fi fi-{{ $code }}"></i>
                         <kbd class="ml-2 uppercase text-amber-700">{{ $code }}</kbd>
                     </td>
@@ -48,11 +48,8 @@
                             'checked' => $lang['editable'] ? 'checked' : '',
                         ])
                     </td>
-                    <td class="px-8 py-4">
-                        <span
-                            class="mx-auto flex justify-center items-center rounded-full bg-slate-800 text-white h-6 w-6 text-xs font-semibold">
-                            {{ $count[$code] ?? 0 }}
-                        </span>
+                    <td class="px-8 py-4 text-center font-serif">
+                        {{ $count[$code] ?? 0 }}
                     </td>
                     <td class="--bg-gray-50 cursor-pointer px-4 py-4 text-gray-400 delete-lang-action" data-lang="{{ $code }}">
                         <button class="pointer-events-none">

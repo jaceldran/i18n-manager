@@ -11,6 +11,10 @@
             ],
         ],
         'group-2' => [
+            'import' => (object)  [
+                'label' => 'Import',
+                'icon' => 'fas fa-arrow-right-to-bracket',
+            ],
             'export' => (object)  [
                 'label' => 'Export',
                 'icon' => 'fas fa-arrow-right-from-bracket',

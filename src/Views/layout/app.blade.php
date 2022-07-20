@@ -22,11 +22,11 @@
     </style>
 </head>
 
-<body class="antialiased">
-    <header class="fixed bg-slate-800 mt-0 w-full z-10 top-0 shadow-lg">
+<body class="antialiased text-gray-600 bg-gray-50">
+    <header class="fixed bg-gray-700  mt-0 w-full z-10 top-0 shadow-lg">
         <div class="container mx-auto flex justify-between">
             <a href="/" class="flex items-center">
-                <i class="fab fa-fly fa-2x text-amber-400 -rotate-12 -bg-amber-600 p-2 rounded-md mr-1"></i>
+                <i class="fab fa-avianex fa-2x text-amber-400 ---rotate-12 -bg-amber-600 p-2 rounded-md mr-1"></i>
                 <span class="text-white text-3xl">i18n</span>
             </a>
 

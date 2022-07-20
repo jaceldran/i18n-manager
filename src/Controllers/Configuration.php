@@ -20,4 +20,12 @@ class Configuration extends Controller
 
 		Flight::render('config.paths', $data);
 	}
+
+	public static function env()
+	{
+		$data = self::commonData();
+		$data['env'] = parse_ini_file(APP_PATH.'/.env', true);
+
+		Flight::render('config.env', $data);
+	}
 }

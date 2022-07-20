@@ -18,6 +18,11 @@ final class Lang // extends DatafileModel
 		return self::compute($data);
 	}
 
+	public static function keys(): array
+	{
+		return array_keys(self::all());
+	}
+
 	public static function compute($data): array
 	{
 		foreach ($data as $code => &$values) {

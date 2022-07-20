@@ -29,4 +29,37 @@ class Translations
 			'exports' => Translation::export()
 		]);
 	}
+
+	public static function import()
+	{
+		Flight::render('translations.import', [
+			'title' => 'Import CSV file'
+		]);
+	}
+
+	public static function uploadCsv()
+	{
+		$errors = [];
+		$response = [];
+		$file = Flight::request()->files['file-input'];
+
+		if ($file['error']) {
+			$errors[] = 'Error loading file';
+		} else {
+			$path = pathinfo($file['name']);
+
+			if ($path['extension'] !== 'csv') {
+				$errors[] = "Only CSV files are allowed to upload";
+			}
+
+			if (empty($errors)) {
+				$response['result'] = Translation::importCsv($file['tmp_name']);
+			}
+		}
+
+		$response['success'] = empty($errors);
+		$response['errors'] = $errors;
+
+		Flight::json($response);
+	}
 }
