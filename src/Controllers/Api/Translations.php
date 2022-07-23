@@ -4,22 +4,80 @@ use Flight;
 
 use App\Services\Datafile;
 use App\Models\Translation;
+use App\Models\Lang;
 
 class Translations
 {
 	const ID = 'id';
 	const LANG = 'lang';
 	const VALUE = 'value';
+	const FORM_VIEW = 'translations.form';
 
-	// TODO: llevar a método Translation::save
+	public static function sanitizeKey(string $key): string
+	{
+		$key = strtolower($key);
+		$key = str_replace(' ', '-', $key);
+		$parts = explode('.', $key);
+
+		$parts = array_filter($parts, function ($value){
+			return !empty($value);
+		});
+
+		return implode('.', $parts);
+	}
+
+	public static function normalizeKey(string $key): string
+	{
+		$key = self::sanitizeKey($key);
+
+		if (substr_count($key, '.')===0) {
+			$key = "app.$key";
+		}
+
+		return $key;
+	}
+
+	public static function updateOrCreate()
+	{
+		$translations = [];
+		$values = Flight::request()->data;
+
+		$key = self::normalizeKey($values['key']);
+
+		// $new_key = null;
+		// if (!empty($values['new_key']) && $values['new_key'] !== $key) {
+		// 	$new_key = self::normalizeKey($values['new_key']);
+		// 	unset($values['new_key']);
+		// }
+
+		foreach($values as $k => $v) {
+			$translations[$k] = $v;
+		}
+
+		Translation::updateOrCreate($key, $translations);
+
+		Flight::json($values);
+	}
+
 	public static function put()
 	{
-		$req = Flight::request()->data;
-		$response['request'] = $req;
-		$data = Datafile::read(Translation::PATH);
-		$data[$req[self::ID]][$req[self::LANG]] = $req[self::VALUE];
-		Datafile::write(Translation::PATH, $data);
-		Flight::json($response);
+		self::updateOrCreate();
+	}
+
+	public static function post()
+	{
+		self::updateOrCreate();
+	}
+
+	public static function delete()
+	{
+		$values = Flight::request()->data;
+
+		$key = self::sanitizeKey($values['key']);
+
+		Translation::delete($key);
+
+		Flight::json($values);
 	}
 
 	public static function export()
@@ -27,13 +85,6 @@ class Translations
 		Flight::render('translations.export', [
 			'title' => 'Exported files',
 			'exports' => Translation::export()
-		]);
-	}
-
-	public static function import()
-	{
-		Flight::render('translations.import', [
-			'title' => 'Import CSV file'
 		]);
 	}
 
@@ -61,5 +112,59 @@ class Translations
 		$response['errors'] = $errors;
 
 		Flight::json($response);
+	}
+
+	public static function renderImport(): void
+	{
+		Flight::render('translations.import', [
+			'title' => 'Import CSV file'
+		]);
+	}
+
+	public static function renderCreate(): void
+	{
+		$group = Flight::request()->query['group'];
+
+		Flight::render(self::FORM_VIEW, [
+			'title' => "New translation in group [$group]",
+			'action' => 'create',
+			'button' => 'Create translation',
+			'button_icon' => '<i class="fas fa-plus"></i>',
+			'group' => $group,
+			'langs' => Lang::keys()
+		]);
+	}
+
+	public static function renderUpdate(): void
+	{
+		$key = Flight::request()->query['key'];
+		$key = self::sanitizeKey($key);
+		$translation = Translation::find($key);
+
+		Flight::render(self::FORM_VIEW, [
+			'title' => "Edit [$key]",
+			'action' => 'update',
+			'button' => "Update",
+			'button_icon' => '<i class="fas fa-check"></i>',
+			'translation' => $translation,
+			'langs' => Lang::keys(),
+		]);
+	}
+
+	public static function renderDelete()
+	{
+		$key = Flight::request()->query['key'];
+		$key = self::sanitizeKey($key);
+		$translation = Translation::find($key);
+
+		Flight::render(self::FORM_VIEW, [
+			'title' => "Delete [$key]",
+			'action' => 'delete',
+			'button' => 'Delete translation',
+			'button_apply' => 'bg-red-700 text-white',
+			'button_icon' => '<i class="fas fa-trash"></i>',
+			'translation' => $translation,
+			'langs' => Lang::keys(),
+		]);
 	}
 }

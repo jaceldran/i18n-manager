@@ -3,13 +3,14 @@ module.exports = {
   content: [
     "./*.html",
     "./js/*.js",
-    "./src/Views/**/*.php",
+    // "./src/Views/**/*.php",
+    "./src/**/*.*",
     "./config/theme.php",
   ],
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Albert Sans', '"Open Sans"', 'Raleway', 'sans-serif'],
+        sans: ['Roboto', 'sans-serif'],
       }
     },
   },

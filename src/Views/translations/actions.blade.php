@@ -19,14 +19,14 @@
                 'label' => 'Export',
                 'icon' => 'fas fa-arrow-right-from-bracket',
             ],
-            'add-group' => (object)  [
-                'label' => 'Group',
-                'icon' => 'fas fa-plus',
-            ],
-            'search' => (object)  [
-                'label' => 'Search',
-                'icon' => 'fas fa-magnifying-glass',
-            ],
+            // 'add-group' => (object)  [
+            //     'label' => 'Group',
+            //     'icon' => 'fas fa-plus',
+            // ],
+            // 'search' => (object)  [
+            //     'label' => 'Search',
+            //     'icon' => 'fas fa-magnifying-glass',
+            // ],
         ],
     ]
 ])

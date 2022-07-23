@@ -1,9 +1,14 @@
 <?php return (object) [
+	'body' => ' text-gray-500 bg-gray-100',
+	'header' => (object) [
+		'bg' => 'bg-gray-900',
+		'logo' => 'text-gray-300',
+	],
 	'navigation' => (object) [
 		'main' => (object) [
 			'nav' => 'flex font-medium',
-			'link' => 'p-4 text-white bg-transparent',
-			'link_active' => 'p-4 text-stale-700 bg-amber-400',
+			'link' => 'p-4 text-white bg-transparent hover:bg-gray-800',
+			'link_active' => 'p-4 text-white bg-gray-700',
 		],
 		'config' => (object) [
 			'nav' => 'flex uppercase text-sm font-medium pb-4',

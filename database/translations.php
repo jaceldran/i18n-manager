@@ -1,61 +1,57 @@
 <?php return array (
-  'app.nav.translations' => 
+  'legal.disclaimer' => 
   array (
-    'en' => 'Translations',
-    'es' => 'Traducciones',
-    'fr' => '',
+    'key' => 'legal.disclaimer',
+    'es' => 'Descargo',
+    'en' => 'Disclaimer',
     'pt' => '',
-  ),
-  'app.nav.upload' => 
-  array (
-    'en' => 'Upload',
-    'es' => 'Cargar',
-    'pt' => '',
+    'it' => '',
     'fr' => '',
-  ),
-  'app.nav.download' => 
-  array (
-    'en' => 'Download',
-    'es' => 'Descargar',
-    'pt' => '',
-    'fr' => '',
-  ),
-  'app.nav.config' => 
-  array (
-    'en' => 'Configuration',
-    'es' => 'Configuración',
-    'fr' => '',
-    'pt' => '',
     'de' => '',
   ),
-  'form.button.accept' => 
+  'button.accept' => 
   array (
-    'en' => 'Accept',
-    'es' => 'Aceptar',
-    'fr' => '',
+    'key' => 'button.accept',
+    'pt' => 'ñáñéñí',
   ),
-  'form.button.cancel' => 
+  'button.cancel' => 
   array (
-    'en' => 'Cancel',
+    'key' => 'form.button.cancel',
     'es' => 'Cancelar',
+    'en' => 'Cancel',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
+    'de' => '',
   ),
-  'form.button.confirm' => 
+  'button.confirm' => 
   array (
-    'en' => 'Confirm',
+    'key' => 'form.button.confirm',
     'es' => 'Confirmar',
+    'en' => 'Confirm',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
+    'de' => '',
   ),
-  'form.button.submit' => 
+  'button.submit' => 
   array (
-    'en' => 'Submit',
+    'key' => 'form.button.submit',
     'es' => 'Enviar',
+    'en' => 'Submit',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
+    'de' => '',
   ),
-  'form.legal.disclaimer' => 
+  'button.send' => 
   array (
-    'en' => 'Disclaimer',
-    'es' => 'Descargo',
+    'key' => 'button.send',
+    'es' => 'Enviar',
+    'en' => 'Submit',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
+    'de' => '',
   ),
 );

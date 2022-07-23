@@ -20,8 +20,8 @@
         after:bg-white
         after:rounded-full
 
-        checked:border-gray-500
-        checked:bg-gray-500
+        checked:border-blue-500
+        checked:bg-blue-500
         checked:justify-end
         ">
 </p>

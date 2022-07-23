@@ -16,21 +16,43 @@ final class Translation
 		return self::compute($data);
 	}
 
-	public static function countByLang(): array
+	public static function find(string $key): array
 	{
-		$count = [];
-		$data  = Datafile::read(self::PATH);
-		$langs = Lang::all();
+		$data = Datafile::read(self::PATH);
 
-		foreach ($langs as $lang => $config) {
-			$dictionary = array_column($data, $lang);
-			$filled = array_filter($dictionary, function($value) {
-				return !empty($value);
-			} );
-			$count[$lang] = count($filled);
+		if (isset($data[$key])) {
+			$values = ['key' => $key] + $data[$key];
+		} else {
+			$data = self::compute([
+				'key' => $key
+			]);
+
+			$values = array_pop($data);
 		}
 
-		return $count;
+		return $values;
+	}
+
+	public static function updateOrCreate(string $key, array $translations): void
+	{
+		$data = Datafile::read(self::PATH);
+
+		$data[$key] = $translations;
+
+		Datafile::writePhp(self::PATH, $data);
+	}
+
+	public static function delete(string $key): void
+	{
+		$data = Datafile::read(self::PATH);
+
+		if (!isset($data[$key])) {
+			return;
+		}
+
+		unset ($data[$key]);
+
+		Datafile::writePhp(self::PATH, $data);
 	}
 
 	public static function compute(array $data): array
@@ -46,6 +68,23 @@ final class Translation
 		}
 
 		return $rows;
+	}
+
+	public static function countByLang(): array
+	{
+		$count = [];
+		$data  = Datafile::read(self::PATH);
+		$langs = Lang::all();
+
+		foreach ($langs as $lang => $config) {
+			$dictionary = array_column($data, $lang);
+			$filled = array_filter($dictionary, function($value) {
+				return !empty($value);
+			} );
+			$count[$lang] = count($filled);
+		}
+
+		return $count;
 	}
 
 	public static function byGroup(array $data): array
