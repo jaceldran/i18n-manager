@@ -19,6 +19,10 @@
                 'label' => 'Export',
                 'icon' => 'fas fa-arrow-right-from-bracket',
             ],
+            'download' => (object)  [
+                'label' => 'Download',
+                'icon' => 'fas fa-download',
+            ],
             // 'add-group' => (object)  [
             //     'label' => 'Group',
             //     'icon' => 'fas fa-plus',

@@ -1,27 +1,47 @@
 <?php return array (
   'app.nav.config' => 
   array (
+    'key' => 'app.nav.config',
     'es' => 'Configuración',
-    'en' => '111',
-    'pt' => '222',
+    'en' => '',
+    'pt' => '111',
     'it' => '222',
     'fr' => '',
     'de' => '333',
     'ru' => '444',
-    'key' => 'app.nav.config',
-    'group' => 'app.nav',
   ),
-  'app.nav.translations' => 
+  'app.nav.download' => 
   array (
-    'es' => 'Traducciones',
-    'en' => 'Translations',
-    'pt' => '444',
-    'it' => '555',
+    'key' => 'app.nav.download',
+    'es' => 'Bajar archivos',
+    'en' => '',
+    'pt' => '111',
+    'it' => '222',
     'fr' => '',
     'de' => '333',
     'ru' => '444',
+  ),
+  'app.nav.translations' => 
+  array (
     'key' => 'app.nav.translations',
-    'group' => 'app.nav',
+    'es' => 'Traducciones',
+    'en' => '',
+    'pt' => '111',
+    'it' => '222',
+    'fr' => '',
+    'de' => '333',
+    'ru' => '444',
+  ),
+  'app.nav.upload' => 
+  array (
+    'key' => 'app.nav.upload',
+    'es' => 'Subir archivo',
+    'en' => '',
+    'pt' => '111',
+    'it' => '222',
+    'fr' => '',
+    'de' => '333',
+    'ru' => '444',
   ),
   'button.accept' => 
   array (
@@ -75,7 +95,8 @@
   ),
   'form.legal.disclaimer' => 
   array (
-    'es' => 'Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / descargo',
+    'key' => 'form.legal.disclaimer',
+    'es' => 'Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / descargo',
     'en' => '',
     'pt' => '111',
     'it' => '222',
@@ -92,45 +113,5 @@
     'it' => '',
     'fr' => '',
     'de' => '',
-  ),
-  'form.button.accept' => 
-  array (
-    'es' => 'Aceptar',
-    'en' => '',
-    'pt' => '111',
-    'it' => '222',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '',
-  ),
-  'form.button.cancel' => 
-  array (
-    'es' => 'Cancelar',
-    'en' => 'Discard',
-    'pt' => '111',
-    'it' => '222',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '4444',
-  ),
-  'form.button.confirm' => 
-  array (
-    'es' => 'Confirmar',
-    'en' => 'Please confirm',
-    'pt' => '111',
-    'it' => '222',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '444',
-  ),
-  'form.button.submit' => 
-  array (
-    'es' => 'Enviar',
-    'en' => '',
-    'pt' => '111',
-    'it' => '222',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '44',
   ),
 );

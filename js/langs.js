@@ -13,7 +13,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
 	document.querySelectorAll("input[type=checkbox]").forEach((input) => {
 		input.addEventListener("change", () => {
-			const values = { id: input.id };
+			const values = { key: input.id };
 			values[input.name] = input.checked;
 
 			fetch("/api/langs", {

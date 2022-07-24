@@ -1,7 +1,6 @@
-<div id="modal" class="absolute top-12 left-0 bottom-0 right-0 flex flex-col justify-center items-center bg-black/25">
+<div id="modal" class="fixed top-14 sm:top-10 w-full h-full flex flex-col justify-center items-center bg-black/25">
 
-	<div class="w-full mx-4 sm:m-0 sm:max-w-md border border-black shadow-lg bg-white">
-
+	<div class="w-full h-full sm:h-auto sm:max-w-md border border-black shadow-lg bg-white">
 		<div class="flex justify-between w-full bg-gray-200 border-b shadow-sm mb-2">
 			<span class="py-2 px-4 font-medium">@yield('modal-title')</span>
 			<button class="py-2 px-4 outline-none" onclick="Element.destroy('#modal')">
@@ -13,5 +12,4 @@
 			@yield('modal-content')
 		</div>
 	</div>
-
 </div>

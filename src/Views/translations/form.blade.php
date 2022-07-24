@@ -5,6 +5,7 @@
 @endsection
 
 @section('modal-content')
+    {{-- <pre>{{ print_r($translation, 1) }}</pre> --}}
     <form class="px-2" id="{{ $action }}-translation-form">
         <div class="grid grid-cols-[100px_1fr]">
             <label class="border-b py-4 flex justify-center items-center">
@@ -17,12 +18,12 @@
                 @break
 
                 @case('update')
-                    <input class="border-b p-4 w-full cursor-pointer outline-none font-mono font-semibold text-lg"
-                        name="key" value="{{ $translation['key'] }}" />
+                    <input class="border-b p-4 w-full cursor-pointer outline-none font-mono font-semibold text-lg" name="key"
+                        value="{{ $translation['key'] }}" />
                 @break
 
                 @default
-                <input disabled class="border-b p-4 w-full cursor-not-allowed outline-none font-mono font-semibold text-lg"
+                    <input disabled class="border-b p-4 w-full cursor-not-allowed outline-none font-mono font-semibold text-lg"
                         name="key" value="{{ $translation['key'] }}" />
             @endswitch
 
@@ -34,13 +35,22 @@
                 </label>
                 @switch($action)
                     @case('create')
+                        <input class="border-b p-4 w-full cursor-pointer outline-none focus:font-semibold"
+                            name="{{ $lang }}" placeholder="{{ strtoupper($lang) }}"
+                            value="{{ $translation[$lang] ?? null }}" />
+                    @break
+
                     @case('update')
+                        <input type="hidden" name="group" value="{{ $translation['group'] }}" />
+
                         <input class="border-b p-4 w-full cursor-pointer outline-none focus:font-semibold"
                             name="{{ $lang }}" placeholder="{{ strtoupper($lang) }}"
                             value="{{ $translation[$lang] ?? null }}" />
                     @break
 
                     @default
+                        <input type="hidden" name="group" value="{{ $translation['group'] }}" />
+
                         <input disabled class="border-b p-4 w-full cursor-not-allowed outline-none  name="{{ $lang }}"
                             value="{{ $translation[$lang] ?? null }}" />
                 @endswitch

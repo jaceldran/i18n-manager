@@ -6,7 +6,8 @@ use App\Services\Datafile;
 
 final class Translation
 {
-	const PATH = APP_PATH . "/database/translations.php";
+	const DATABASE_PATH = APP_PATH . "/database";
+	const PATH = self::DATABASE_PATH . "/translations.php";
 	const KEY = 'key';
 
 	public static function all(): array
@@ -30,12 +31,24 @@ final class Translation
 			$values = array_pop($data);
 		}
 
+		$group = $key;
+		$parts = explode('.', $key);
+		if (count($parts) > 1) {
+			array_pop($parts);
+			$group = implode('.', $parts);
+		}
+		$values['group'] = $group;
+
 		return $values;
 	}
 
 	public static function updateOrCreate(string $key, array $translations): void
 	{
 		$data = Datafile::read(self::PATH);
+
+		if (isset($data[$key])) {
+			$translations = array_merge($data[$key], $translations);
+		}
 
 		$data[$key] = $translations;
 
@@ -87,6 +100,13 @@ final class Translation
 		return $count;
 	}
 
+	public static function getGroup(string $group_id): array
+	{
+		$data = self::byGroup(self::all());
+
+		return $data[$group_id] ?? [];
+	}
+
 	public static function byGroup(array $data): array
 	{
 		$groups = [];
@@ -130,9 +150,9 @@ final class Translation
 		$translations = self::all();
 		$translations_by_lang = self::byLang($translations);
 
-		$json_path =  $paths->{PATH::EXPORT_JSON};
-		$php_path = $paths->{PATH::EXPORT_PHP};
-		$csv_path = $paths->{PATH::EXPORT_CSV};
+		$json_path =  $paths->{Path::EXPORT_JSON};
+		$php_path = $paths->{Path::EXPORT_PHP};
+		$csv_path = $paths->{Path::EXPORT_CSV};
 
 		Datafile::writePhp("$php_path/all.php", $translations);
 		Datafile::writeJson("$json_path/all.json", $translations);
@@ -165,6 +185,11 @@ final class Translation
 
 		// update current data
 		$data = self::all();
+
+		// preserve previous version
+		$copy_path = self::DATABASE_PATH . "/translations-" . date('Y-m-d-h-i-s') . ".php";
+		Datafile::writePhp($copy_path, $data);
+
 		array_walk($csv, function ($values, $key) use (&$data) {
 			if (!isset($data[$key])) {
 				$data[$key] = $values;
@@ -190,7 +215,7 @@ final class Translation
 		});
 
 		// store updated data
-		Datafile::writeCsv(self::PATH, $data);
+		Datafile::writePhp(self::PATH, $data);
 
 		return $data;
 	}

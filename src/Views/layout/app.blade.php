@@ -9,17 +9,8 @@
     <link rel="stylesheet" href= "@asset('css/style.css')" />
     <link rel="stylesheet" href="@asset('css/fontawesome/css/all.min.css')" />
     <link rel="stylesheet" href="@asset('css/flags/css/flag-icons.min.css')" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
     @yield('style')
-    <style>
-        dialog::backdrop {
-            position: fixed;
-            top: 0px;
-            right: 0px;
-            bottom: 0px;
-            left: 0px;
-            background: rgba(0, 255, 0, 0.1);
-        }
-    </style>
 </head>
 
 <body class="antialiased {{$theme->body}} selection:bg-fuchsia-300 selection:text-fuchsia-900">
@@ -47,19 +38,6 @@
     </script> --}}
 
 	@yield('script')
-
-    {{-- @include('components.modal')
-    <script>
-        var dialog = document.querySelector('dialog');
-
-        function openDialog() {
-            dialog.showModal();
-        }
-
-        function closeDialog() {
-            dialog.close();
-        }
-    </script> --}}
 
 </body>
 

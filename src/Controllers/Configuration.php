@@ -1,4 +1,6 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 use Flight;
 
@@ -24,7 +26,23 @@ class Configuration extends Controller
 	public static function env()
 	{
 		$data = self::commonData();
-		$data['env'] = parse_ini_file(APP_PATH.'/.env', true);
+		$data['env'] = parse_ini_file(APP_PATH . '/.env', true);
+
+		ob_start();
+		phpinfo();
+		$content = ob_get_contents();
+		ob_end_clean();
+
+		$phpinfo = str_replace([
+			'<style',
+			'</style>',
+		], [
+			'<!--<style',
+			'</style> -->',
+		], $content);
+
+		$data['phpinfo'] = $phpinfo;
+
 
 		Flight::render('config.env', $data);
 	}

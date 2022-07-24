@@ -9,14 +9,21 @@
 @endsection
 
 @section('main')
-    @foreach ($translations as $group => $entries)
-        @include('translations.grid', [
+    @foreach ($translations as $group => $translations)
+        @include('translations.group-header', [
             'group' => $group,
-            'entries' => $entries,
+            'translations' => $translations,
+            'open' => true,
+        ])
+
+        @include('translations.group-content', [
+            'group' => $group,
+            'translations' => $translations,
+            'open' => true,
         ])
     @endforeach
 @endsection
 
 @section('script')
-    <script src="@asset('js/translations.grid.js')"></script>
+    <script src="@asset('js/translations.js')"></script>
 @endsection

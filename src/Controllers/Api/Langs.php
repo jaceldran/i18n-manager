@@ -6,7 +6,7 @@ use App\Models\Lang;
 
 class Langs
 {
-	const ID = 'id';
+	const KEY = 'key';
 	const VISIBLE = 'visible';
 	const EDITABLE = 'editable';
 

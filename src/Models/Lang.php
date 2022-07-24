@@ -7,7 +7,7 @@ use App\Services\Datafile;
 final class Lang // extends DatafileModel
 {
 	const PATH = APP_PATH . "/database/langs.php";
-	const ID = 'id';
+	const KEY = 'key';
 	const VISIBLE = 'visible';
 	const EDITABLE = 'editable';
 
@@ -32,12 +32,24 @@ final class Lang // extends DatafileModel
 		return $data;
 	}
 
+	public static function count(string $filter_by_status=self::VISIBLE): int
+	{
+		$langs = self::all();
+
+		$filtered = array_filter($langs, function($lang) use ($filter_by_status) {
+			return $lang[$filter_by_status];
+		});
+
+		return count($filtered);
+
+	}
+
 	public static function update(array $values): void
 	{
 		$langs  = Datafile::read(self::PATH);
-		$id = $values[self::ID];
+		$id = $values[self::KEY];
 		$lang = $langs[$id];
-		unset ($values[self::ID]);
+		unset ($values[self::KEY]);
 		$langs[$id] = array_merge($lang, $values);
 
 		Datafile::write(self::PATH, $langs);

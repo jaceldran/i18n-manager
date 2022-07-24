@@ -6,8 +6,9 @@ require './boot/app.php';
 
 // $data = Translation::all();
 // print_r($data);
+// $data['export'] = Translation::export();
 
-$data['export'] = Translation::export();
+
 
 
 

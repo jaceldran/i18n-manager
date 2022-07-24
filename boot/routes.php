@@ -10,11 +10,15 @@ use App\Controllers\Api\Translations as TranslationsApi;
 
 // pages
 Flight::route('/',[Home::class, 'index']);
+
 Flight::route('/translations',[Translations::class, 'index']);
+Flight::route('/translations/download',[Translations::class, 'download']);
+
 Flight::route('/langs',[Langs::class, 'index']);
-Flight::route('/configuration',[Configuration::class, 'index']);
+
 Flight::route('/configuration/paths',[Configuration::class, 'paths']);
 Flight::route('/configuration/env',[Configuration::class, 'env']);
+Flight::route('/configuration',[Configuration::class, 'index']);
 
 // translations api
 
@@ -29,7 +33,8 @@ Flight::route('PUT /api/translations',[TranslationsApi::class, 'put']);
 Flight::route('POST /api/translations',[TranslationsApi::class, 'post']);
 Flight::route('DELETE /api/translations',[TranslationsApi::class, 'delete']);
 Flight::route('GET /api/translations/export',[TranslationsApi::class, 'export']);
-Flight::route('POST /api/translations/csv',[TranslationsApi::class, 'uploadCsv']);
+Flight::route('POST /api/translations/import',[TranslationsApi::class, 'import']);
+Flight::route('GET /api/translations/download',[TranslationsApi::class, 'download']);
 
 // langs api
 Flight::route('PUT /api/langs',[LangsApi::class, 'put']);

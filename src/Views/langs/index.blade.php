@@ -64,5 +64,5 @@
 
 @section('script')
     <script src="@asset('js/Sortable.min.js')"></script>
-    <script src="@asset('js/config.langs.js')"></script>
+    <script src="@asset('js/langs.js')"></script>
 @endsection
