@@ -37,6 +37,9 @@ Flight::route('POST /api/translations/import',[TranslationsApi::class, 'import']
 Flight::route('GET /api/translations/download',[TranslationsApi::class, 'download']);
 
 // langs api
+Flight::route('GET /api/langs/render/create',[LangsApi::class, 'renderCreate']);
+Flight::route('POST /api/langs',[LangsApi::class, 'post']);
+Flight::route('DELETE /api/langs',[LangsApi::class, 'delete']);
 Flight::route('PUT /api/langs',[LangsApi::class, 'put']);
 Flight::route('PUT /api/langs/order',[LangsApi::class, 'order']);
 

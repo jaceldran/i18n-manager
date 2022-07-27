@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Services\Datafile;
+use App\Models\Lang;
 
 final class Translation
 {
@@ -147,26 +148,33 @@ final class Translation
 	{
 		$exported = [];
 		$paths = Path::all(Path::COMPUTE);
+		$langs = Lang::keys();
 		$translations = self::all();
 		$translations_by_lang = self::byLang($translations);
 
-		$json_path =  $paths->{Path::EXPORT_JSON};
+		$json_path = $paths->{Path::EXPORT_JSON};
 		$php_path = $paths->{Path::EXPORT_PHP};
 		$csv_path = $paths->{Path::EXPORT_CSV};
+
+		// Datafile::writeJson("$json_path/computed.php", $translations);
 
 		Datafile::writePhp("$php_path/all.php", $translations);
 		Datafile::writeJson("$json_path/all.json", $translations);
 		Datafile::writeCsv("$csv_path/all.csv", $translations);
 
-		$exported['php'][] = "$php_path/all.php";
-		$exported['json'][] = "$php_path/all.json";
-		$exported['csv'][] = "$php_path/all.csv";
+		$exported[$php_path][] = "$php_path/all.php";
+		$exported[$json_path][] = "$php_path/all.json";
+		$exported[$csv_path][] = "$php_path/all.csv";
 
 		foreach ($translations_by_lang as $lang => $data) {
+			if (!in_array($lang, $langs)) {
+				continue;
+			}
+
 			Datafile::writePhp("$php_path/$lang.php", $data);
 			Datafile::writeJson("$json_path/$lang.json", $data);
-			$exported['php'][] = "$php_path/$lang.php";
-			$exported['json'][] = "$php_path/$lang.php";
+			$exported[$php_path][] = "$php_path/$lang.php";
+			$exported[$json_path][] = "$php_path/$lang.php";
 		}
 
 		return $exported;

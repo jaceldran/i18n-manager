@@ -28,30 +28,30 @@
             </tr>
         </thead>
         <tbody id="langs-list" class="bg-gray-50">
-            @foreach ($langs as $code => $lang)
-                <tr id="{{ $code }}" class="border-b cursor-move group">
+            @foreach ($langs as $key => $lang)
+                <tr id="{{ $key }}" class="border-b cursor-move group">
                     <td class="px-8 py-4 whitespace-nowrap font-medium">
-                        <i class="fi fi-{{ $code }}"></i>
-                        <kbd class="ml-2 uppercase text-amber-700">{{ $code }}</kbd>
+                        <i class="fi fi-{{ $key }}"></i>
+                        <kbd class="ml-2 uppercase text-amber-700">{{ $key }}</kbd>
                     </td>
                     <td class="px-8 py-4">
                         @include('components.switch', [
-                            'id' => $lang['code'],
+                            'id' => $lang['key'],
                             'name' => 'visible',
                             'checked' => $lang['visible'] ? 'checked' : '',
                         ])
                     </td>
                     <td class="px-8 py-4">
                         @include('components.switch', [
-                            'id' => $lang['code'],
+                            'id' => $lang['key'],
                             'name' => 'editable',
                             'checked' => $lang['editable'] ? 'checked' : '',
                         ])
                     </td>
                     <td class="px-8 py-4 text-center font-serif">
-                        {{ $count[$code] ?? 0 }}
+                        {{ $count[$key] ?? 0 }}
                     </td>
-                    <td class="cursor-pointer px-4 py-4 delete-lang-action" data-lang="{{ $code }}">
+                    <td class="cursor-pointer px-4 py-4 delete-lang-action" data-key="{{ $key }}">
                         <button class="pointer-events-none rounded-full h-8 w-8 --bg-gray-200">
                             <i class="text-transparent fas fa-trash pointer-events-none group-hover:text-gray-500"></i>
                         </button>

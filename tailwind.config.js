@@ -4,7 +4,7 @@ module.exports = {
     "./*.html",
     "./js/*.js",
     // "./src/Views/**/*.php",
-    "./src/**/*.*",
+    "./app/**/*.*",
     "./config/theme.php",
   ],
   theme: {

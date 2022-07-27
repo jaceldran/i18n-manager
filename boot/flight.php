@@ -2,7 +2,7 @@
 
 use eftec\bladeone\BladeOne;
 
-define ('BLADE_VIEWS', APP_PATH."/src/Views");
+define ('BLADE_VIEWS', APP_PATH."/app/Views");
 define ('BLADE_COMPILED', APP_PATH."/.tmp/blade");
 
 Flight::set('env', (object) $_ENV);

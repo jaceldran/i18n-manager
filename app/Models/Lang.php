@@ -25,8 +25,14 @@ final class Lang // extends DatafileModel
 
 	public static function compute($data): array
 	{
-		foreach ($data as $code => &$values) {
-			$values['code'] = $code;
+		$default = [
+			self::VISIBLE => true,
+			self::EDITABLE => true,
+		];
+
+		foreach ($data as $key => &$values) {
+			$values['key'] = $key;
+			$values = array_merge($default, $values);
 		}
 
 		return $data;
@@ -65,5 +71,44 @@ final class Lang // extends DatafileModel
 		}
 
 		Datafile::write(self::PATH, $sorted);
+	}
+
+	public static function find(string $key): array
+	{
+		$data = Datafile::read(self::PATH);
+
+		$values = [];
+
+		if (isset($data[$key])) {
+			$values = ['key' => $key] + $data[$key];
+		}
+
+		return $values;
+	}
+
+	public static function updateOrCreate(string $key, array $values): void
+	{
+		$data = Datafile::read(self::PATH);
+
+		if (isset($data[$key])) {
+			$values = array_merge($data[$key], $values);
+		}
+
+		$data[$key] = $values;
+
+		Datafile::writePhp(self::PATH, $data);
+	}
+
+	public static function delete(string $key): void
+	{
+		$data = Datafile::read(self::PATH);
+
+		if (!isset($data[$key])) {
+			return;
+		}
+
+		unset ($data[$key]);
+
+		Datafile::writePhp(self::PATH, $data);
 	}
 }
