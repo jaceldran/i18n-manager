@@ -19,7 +19,7 @@
             <a href="/" class="flex items-center">
                 <img alt="logo" src="@asset('img/ultralight-32px.png')" class="rotate-45 mr-4"/>
                 {{-- <i class="fab fa-avianex fa-2x {{$theme->header->logo}} p-2 rounded-md mr-1"></i> --}}
-                <span class="text-white text-3xl">i18n</span>
+                <span class="text-white text-3xl" >i18n</span>
             </a>
 
             @yield('navigation-main')

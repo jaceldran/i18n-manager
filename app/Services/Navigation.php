@@ -15,6 +15,7 @@ class Navigation
 
 	const CONFIG_PATHS = '/configuration/paths';
 	const CONFIG_ENV = '/configuration/env';
+	const CONFIG_COLORQUOTES = '/configuration/colorquotes';
 
 	const MAIN_OPTIONS = [
 		self::TRANSLATIONS => [
@@ -45,6 +46,11 @@ class Navigation
 			self::LABEL => 'Env',
 			self::ACTIVE => false,
 		],
+		// self::CONFIG_COLORQUOTES => [
+		// 	self::URL => self::CONFIG_COLORQUOTES,
+		// 	self::LABEL => 'Colorquotes',
+		// 	self::ACTIVE => false,
+		// ],
 	];
 
 	public static function main(): array

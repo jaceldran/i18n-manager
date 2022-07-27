@@ -1,35 +1,37 @@
 <?php return array (
-  'app.nav.config' =>
+  'app.nav.config' => 
   array (
-    'es' => '111',
-    'en' => 'bbb',
-    'pt' => 'ccc',
-    'it' => '222',
+    'es' => 'Configuración',
+    'en' => 'Configuration',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
     'de' => '333',
     'ru' => '444',
+    'key' => 'app.nav.config',
   ),
-  'app.nav.translations' =>
+  'app.nav.translations' => 
   array (
     'es' => 'Traducciones',
     'en' => 'Translations',
-    'pt' => 'aaa',
-    'it' => 'bbb',
+    'pt' => '',
+    'it' => '',
     'fr' => 'ccc',
     'de' => 'ddd',
     'ru' => '444',
+    'key' => 'app.nav.translations',
   ),
-  'button.accept' =>
+  'button.accept' => 
   array (
     'key' => 'button.accept',
     'es' => 'aceptar',
     'en' => 'accept',
-    'pt' => '11',
-    'it' => '22',
+    'pt' => '',
+    'it' => '',
     'fr' => '33',
     'de' => '44',
   ),
-  'button.cancel' =>
+  'button.cancel' => 
   array (
     'key' => 'button.cancel',
     'es' => 'Cancelar',
@@ -39,7 +41,7 @@
     'fr' => '',
     'de' => '',
   ),
-  'button.confirm' =>
+  'button.confirm' => 
   array (
     'key' => 'button.confirm',
     'es' => 'Confirmar',
@@ -49,7 +51,7 @@
     'fr' => '',
     'de' => '',
   ),
-  'button.send' =>
+  'button.send' => 
   array (
     'key' => 'button.send',
     'es' => 'Enviar',
@@ -59,7 +61,7 @@
     'fr' => '',
     'de' => '',
   ),
-  'button.submit' =>
+  'button.submit' => 
   array (
     'key' => 'button.submit',
     'es' => 'Enviar',
@@ -69,17 +71,18 @@
     'fr' => '',
     'de' => '',
   ),
-  'form.legal.disclaimer' =>
+  'form.legal.disclaimer' => 
   array (
     'es' => 'Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / descargo',
     'en' => '',
-    'pt' => '111',
-    'it' => '222',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
     'de' => '333',
     'ru' => '44',
+    'key' => 'form.legal.disclaimer',
   ),
-  'legal.disclaimer' =>
+  'legal.disclaimer' => 
   array (
     'key' => 'legal.disclaimer',
     'es' => 'Descargo',
@@ -89,44 +92,48 @@
     'fr' => '',
     'de' => '',
   ),
-  'form.button.accept' =>
+  'form.button.accept' => 
   array (
     'es' => 'Aceptar',
     'en' => '',
-    'pt' => '111',
-    'it' => '222',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
     'de' => '333',
     'ru' => '',
+    'key' => 'form.button.accept',
   ),
-  'form.button.cancel' =>
+  'form.button.cancel' => 
   array (
     'es' => 'Cancelar',
     'en' => 'Discard',
-    'pt' => '111',
-    'it' => '222',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
     'de' => '333',
     'ru' => '4444',
+    'key' => 'form.button.cancel',
   ),
-  'form.button.confirm' =>
+  'form.button.confirm' => 
   array (
     'es' => 'Confirmar',
     'en' => 'Please confirm',
-    'pt' => '111',
-    'it' => '222',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
     'de' => '333',
     'ru' => '444',
+    'key' => 'form.button.confirm',
   ),
-  'form.button.submit' =>
+  'form.button.submit' => 
   array (
     'es' => 'Enviar',
     'en' => '',
-    'pt' => '111',
-    'it' => '222',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
     'de' => '333',
     'ru' => '44',
+    'key' => 'form.button.submit',
   ),
 );

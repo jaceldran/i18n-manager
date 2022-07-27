@@ -46,4 +46,11 @@ class Configuration extends Controller
 
 		Flight::render('config.env', $data);
 	}
+
+	public static function colorquotes()
+	{
+		$data = self::commonData();
+
+		Flight::render('config.colorquotes', $data);
+	}
 }

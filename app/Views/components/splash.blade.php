@@ -1,8 +1,3 @@
-@extends('layout.app')
-
-@section('navigation-main')
-    @include('navigation.main')
-@endsection
 
 @section('main')
     <div class="h-screen flex justify-center items-center">

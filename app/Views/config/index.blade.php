@@ -9,6 +9,5 @@
 @endsection
 
 @section('main')
-
     @yield('config_content')
 @endsection

@@ -77,7 +77,9 @@ class CreateAction {
 	}
 
 	static listenShowForm() {
-		const listener = () => {
+		const listener = (evt) => {
+			const button = evt.target;
+
 			fetch(`/api/translations/render/create?group=${button.dataset.group}`)
 			.then((response) => {
 				return response.text();

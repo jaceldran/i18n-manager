@@ -18,6 +18,7 @@ Flight::route('/langs',[Langs::class, 'index']);
 
 Flight::route('/configuration/paths',[Configuration::class, 'paths']);
 Flight::route('/configuration/env',[Configuration::class, 'env']);
+Flight::route('/configuration/colorquotes',[Configuration::class, 'colorquotes']);
 Flight::route('/configuration',[Configuration::class, 'index']);
 
 // translations api
