@@ -21,6 +21,7 @@
     },
     "require": {
         "mikecao/flight": "^2.0",
-        "eftec/bladeone": "^4.5"
+        "eftec/bladeone": "^4.5",
+        "erusev/parsedown": "^1.7"
     }
 }

@@ -1,6 +1,8 @@
 <?php
 
 use App\Controllers\Home;
+use App\Controllers\Pages;
+
 use App\Controllers\Translations;
 use App\Controllers\Langs;
 use App\Controllers\Configuration;
@@ -9,7 +11,9 @@ use App\Controllers\Api\Langs as LangsApi;
 use App\Controllers\Api\Translations as TranslationsApi;
 
 // pages
-Flight::route('/',[Home::class, 'index']);
+// Flight::route('/',[Home::class, 'index']);
+Flight::route('/',[Pages::class, 'home']);
+Flight::route('/about',[Pages::class, 'about']);
 
 Flight::route('/translations',[Translations::class, 'index']);
 Flight::route('/translations/download',[Translations::class, 'download']);

@@ -12,6 +12,7 @@ class Navigation
 	const LANGS = '/langs';
 	const SANDBOX = '/sandbox';
 	const CONFIGURATION = '/configuration';
+	const ABOUT = '/about';
 
 	const CONFIG_PATHS = '/configuration/paths';
 	const CONFIG_ENV = '/configuration/env';
@@ -31,6 +32,11 @@ class Navigation
 		self::CONFIGURATION => [
 			self::URL => self::CONFIGURATION,
 			self::LABEL => 'Configuration',
+			self::ACTIVE => false,
+		],
+		self::ABOUT => [
+			self::URL => self::ABOUT,
+			self::LABEL => 'About',
 			self::ACTIVE => false,
 		],
 	];

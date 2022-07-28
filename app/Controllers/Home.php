@@ -11,6 +11,6 @@ class Home extends Controller
 	{
 		$data = self::commonData();
 
-		Flight::render('home', $data);
+		Flight::render('pages.home', $data);
 	}
 }

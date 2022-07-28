@@ -6,7 +6,7 @@
 	],
 	'navigation' => (object) [
 		'main' => (object) [
-			'nav' => 'flex font-medium',
+			'nav' => 'flex',
 			'link' => 'p-4 text-white bg-transparent hover:bg-gray-800',
 			'link_active' => 'p-4 text-white bg-gray-700',
 		],

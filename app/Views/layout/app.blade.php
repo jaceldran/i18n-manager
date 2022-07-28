@@ -13,13 +13,14 @@
     @yield('style')
 </head>
 
-<body class="antialiased {{$theme->body}} selection:bg-fuchsia-300 selection:text-fuchsia-900">
+<body class="antialiased {{$theme->body}} selection:bg-violet-800 selection:text-violet-300">
     <header class="fixed   mt-0 w-full z-10 top-0 shadow-lg {{$theme->header->bg}}">
         <div class="container mx-auto flex justify-between transition-all">
             <a href="/" class="flex items-center">
-                <img alt="logo" src="@asset('img/ultralight-32px.png')" class="rotate-45 mr-4"/>
-                {{-- <i class="fab fa-avianex fa-2x {{$theme->header->logo}} p-2 rounded-md mr-1"></i> --}}
-                <span class="text-white text-3xl" >i18n</span>
+                <img alt="logo" src="@asset('img/ultralight-32px.png')" class="rotate-45 mr-3"/>
+                <span class="text-white text-3xl font-fjalla-one">
+                    <span class="">i18n</span><span class="text-amber-500">manager</span>
+                </span>
             </a>
 
             @yield('navigation-main')
@@ -32,7 +33,6 @@
             @yield('main')
         </div>
     </main>
-
 
     {{-- <script>
         var uuid = new DeviceUUID().get();

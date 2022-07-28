@@ -73,7 +73,7 @@
   ),
   'form.legal.disclaimer' => 
   array (
-    'es' => 'Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / Pliego de descargo / descargo',
+    'es' => 'Pliego de descargo',
     'en' => '',
     'pt' => '',
     'it' => '',
@@ -81,6 +81,7 @@
     'de' => '333',
     'ru' => '44',
     'key' => 'form.legal.disclaimer',
+    'group' => 'form.legal',
   ),
   'legal.disclaimer' => 
   array (
