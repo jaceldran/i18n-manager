@@ -6,17 +6,17 @@
 
 @section('main')
     <div class="h-screen flex justify-center items-center">
-        <div id="intro" class="fixed left-[25%] right-[25%]">
+        <div id="intro" class="cursor-default fixed left-[25%] right-[25%]">
             <div class="container mx-auto w-auto">
                 <span style="font-family:'Fjalla One',sans-serif" class="tracking-tighter font-ser font-bold text-4xl text-amber-600">i18n</span>
 
                 <div class="text-black font-extrabold text-9xl -translate-y-8">
-                    <span class="stroke">manager</span>
+                    <span class="stroke">man<span id="button-play">a</span>ger</span>
                 </div>
             </div>
         </div>
 
-        <div id="color-quote">
+        <div id="color-quote" class="cursor-default">
             <span id="quote"></span>
             <span id="source"></span>
         </div>
@@ -30,7 +30,6 @@
         main {
             overflow: hidden;
             background: linear-gradient(to bottom, #111827, #222, #333);
-             /* background: linear-gradient(to bottom, #fff, #eee, #ddd);< */
         }
 
         #intro {
@@ -44,7 +43,6 @@
             -webkit-text-fill-color: transparent;
             -webkit-text-stroke-width: 2px;
             -webkit-text-stroke-color: white;
-            /* -webkit-text-stroke-color: #999; */
         }
 
         #color-quote {
@@ -66,7 +64,6 @@
             transition-duration: 1s;
             color: transparent;
             border-radius: .5rem;
-            /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
         }
 
         #source {
@@ -78,7 +75,6 @@
             transition-timing-function: ease;
             transition-duration: 1s;
             color: transparent;
-            /* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
             border-radius: .5rem;
         }
     </style>
@@ -92,23 +88,29 @@
             quote: document.querySelector('#quote'),
             source: document.querySelector('#source'),
             intro: document.querySelector('#intro'),
+            button_play: document.querySelector('#button-play'),
         };
 
-        setTimeout(() => {
-            const intro = document.querySelector('#intro');
-            intro.style.opacity = '0';
+        const playListener = () => {
+            console.log('** click play')
+            settings.intro.style.opacity = '0';
+            settings.intro.classList.add('pointer-events-none');
+            settings.container.style.opacity = '1';
+            settings.container.classList.remove('pointer-events-none');
+            Colorquote.play(settings);
+        };
 
-            Colorquote.fetchAndWrite(settings, (params) => {
-                setTimeout(() => {
-                    quote.style.color = 'transparent';
-                    source.style.color = 'transparent';
-                    quote.style.backgroundColor = 'transparent';
-                    source.style.backgroundColor = 'transparent';
+        const stopListener = () => {
+            console.log('** click stop')
+            Colorquote.stop();
+            settings.container.style.opacity = '0';
+            settings.container.classList.add('pointer-events-none');
+            settings.intro.style.opacity = '1';
+            settings.intro.classList.remove('pointer-events-none');
+        };
 
-                    intro.style.opacity = '1';
-                }, 15000);
-            });
+        settings.button_play.addEventListener('click', playListener);
+        settings.container.addEventListener('click', stopListener);
 
-        }, 25000);
     </script>
 @endsection

@@ -13,13 +13,13 @@
         @include('translations.group-header', [
             'group' => $group,
             'translations' => $translations,
-            'open' => true,
+            'open' => false,
         ])
 
         @include('translations.group-content', [
             'group' => $group,
             'translations' => $translations,
-            'open' => true,
+            'open' => false,
         ])
     @endforeach
 @endsection

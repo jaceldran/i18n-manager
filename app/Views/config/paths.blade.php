@@ -30,16 +30,28 @@
 
         <p class="flex gap-2">
             @include('components.button', [
+                'id' => 'create-folders',
                 'label' => 'Create',
             ])
 
             @include('components.button', [
+                'id' => 'update-paths',
                 'label' => 'Update',
             ])
 
         </p>
 
     </form>
+@endsection
+
+@section('script')
+<script>
+    document.querySelectorAll('button').forEach(element => {
+        element.addEventListener('click', evt => {
+            alert( '** en desarrollo ' + evt.target.id + ' - ' + element.id + ' **');
+        });
+    });
+</script>
 @endsection
 
 {{-- <p class="p-2 font-thin">font-thin</p>

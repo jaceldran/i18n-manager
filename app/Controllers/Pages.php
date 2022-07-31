@@ -18,9 +18,16 @@ class Pages extends Controller
 
 		$parsedown = new \Parsedown();
 
-		$data['readme'] = $parsedown->text(
+		$readme = $parsedown->text(
 			file_get_contents(APP_PATH.'/README.md')
 		);
+
+		$composer = file_get_contents(APP_PATH.'/composer.json');
+
+		$readme = str_replace('{composer.json}', $composer, $readme);
+
+		$data['readme'] = $readme;
+
 
 		Flight::render('pages.about', $data);
 	}

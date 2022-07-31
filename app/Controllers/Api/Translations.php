@@ -37,39 +37,46 @@ class Translations
 	public static function updateOrCreate()
 	{
 		$translations = [];
-		$values = Flight::request()->data;
+		$request_values = Flight::request()->data;
 
-		$key = self::normalizeKey($values->key);
+		$key = self::normalizeKey($request_values->key);
 		$translation = Translation::find($key);
+
 		$group = $translation['group'];
 
-		// $new_key = null;
-		// if (!empty($values['new_key']) && $values['new_key'] !== $key) {
-		// 	$new_key = self::normalizeKey($values['new_key']);
-		// 	unset($values['new_key']);
-		// }
-
-		foreach($values as $k => $v) {
-			$translations[$k] = $v;
+		foreach($request_values as $k => $v) {
+			$translation[$k] = $v;
 		}
 
-		Translation::updateOrCreate($key, $translations);
+		Translation::updateOrCreate($key, $translation);
+
+		$response = self::groupResponse($group);
+
+		Flight::json($response);
+	}
+
+	private static function groupResponse(string $group): array
+	{
+		$group_translations = Translation::getGroup($group);
 
 		$group_content = [
 			'visible_langs' => Lang::count(Lang::VISIBLE),
 			'group' => $group,
-			'translations' => Translation::getGroup($group),
+			'translations' => $group_translations,
 			'langs' => Lang::all(),
 			'open' => true,
 		];
-		$response['group_content_id'] = 'content-' . str_replace('.', '-', $group);
-		$response['render_group_content'] = Flight::render(
-			'translations.group-content',
-			$group_content,
-			true
-		);
 
-		Flight::json($response);
+		return [
+			'group_header_id' => 'header-' . str_replace('.', '-', $group),
+			'group_content_id' => 'content-' . str_replace('.', '-', $group),
+			'group_is_empty' => empty($group_translations),
+			'render_group_content' => Flight::render(
+				'translations.group-content',
+				$group_content,
+				true
+			)
+		];
 	}
 
 	public static function put()
@@ -91,19 +98,7 @@ class Translations
 
 		Translation::delete($key);
 
-		$group_content = [
-			'visible_langs' => Lang::count(Lang::VISIBLE),
-			'group' => $group,
-			'translations' => Translation::getGroup($group),
-			'langs' => Lang::all(),
-			'open' => true,
-		];
-		$response['group_content_id'] = 'content-' . str_replace('.', '-', $group);
-		$response['render_group_content'] = Flight::render(
-			'translations.group-content',
-			$group_content,
-			true
-		);
+		$response = self::groupResponse($group);
 
 		Flight::json($response);
 	}
@@ -171,29 +166,6 @@ class Translations
 		$response['scandir'] = $scandir;
 
 		Flight::json($response);
-
-		// $errors = [];
-		// $response = [];
-		// $file = Flight::request()->files['file-input'];
-
-		// if ($file['error']) {
-		// 	$errors[] = 'Error loading file';
-		// } else {
-		// 	$path = pathinfo($file['name']);
-
-		// 	if ($path['extension'] !== 'csv') {
-		// 		$errors[] = "Only CSV files are allowed to upload";
-		// 	}
-
-		// 	if (empty($errors)) {
-		// 		$response['result'] = Translation::importCsv($file['tmp_name']);
-		// 	}
-		// }
-
-		// $response['success'] = empty($errors);
-		// $response['errors'] = $errors;
-
-		// Flight::json($response);
 	}
 
 	public static function scandir($dir): array

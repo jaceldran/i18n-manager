@@ -29,6 +29,10 @@ Flight::register('view', BladeOne::class, [
 ], function(BladeOne $blade) {
 	$blade->setPath(BLADE_VIEWS, BLADE_COMPILED);
 	$blade->setBaseUrl(Flight::get('env')->URL_BASE);
+
+	if ($_ENV['ENV']==='develop') {
+		$blade->setMode(BladeOne::MODE_SLOW);
+	}
 });
 
 Flight::map('render', function($template, $data, $return=false){

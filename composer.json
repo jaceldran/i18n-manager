@@ -12,13 +12,6 @@
             "email": "jaceldran@gmail.com"
         }
     ],
-    "scripts": {
-        "phinx-create": "./vendor/bin/phinx --configuration=\"./boot/phinx.php\" create",
-        "phinx-migrate": "./vendor/bin/phinx --configuration=\"./boot/phinx.php\" migrate",
-        "phinx-rollback": "./vendor/bin/phinx --configuration=\"./boot/phinx.php\" rollback",
-        "phinx-seed-create": "./vendor/bin/phinx --configuration=\"./boot/phinx.php\" seed:create",
-        "phinx-seed-run": "./vendor/bin/phinx --configuration=\"./boot/phinx.php\" seed:run"
-    },
     "require": {
         "mikecao/flight": "^2.0",
         "eftec/bladeone": "^4.5",

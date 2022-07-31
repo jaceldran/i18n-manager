@@ -3,23 +3,41 @@
   array (
     'es' => 'Configuración',
     'en' => 'Configuration',
-    'pt' => '',
-    'it' => '',
+    'pt' => '111',
+    'it' => '222',
     'fr' => '',
     'de' => '333',
     'ru' => '444',
-    'key' => 'app.nav.config',
+  ),
+  'app.nav.download' => 
+  array (
+    'es' => 'Bajar archivos',
+    'en' => '',
+    'pt' => '111',
+    'it' => '222',
+    'fr' => '',
+    'de' => '333',
+    'ru' => '444',
   ),
   'app.nav.translations' => 
   array (
     'es' => 'Traducciones',
     'en' => 'Translations',
-    'pt' => '',
-    'it' => '',
+    'pt' => '111',
+    'it' => '222',
     'fr' => 'ccc',
-    'de' => 'ddd',
+    'de' => '333 / 333 / ddd',
     'ru' => '444',
-    'key' => 'app.nav.translations',
+  ),
+  'app.nav.upload' => 
+  array (
+    'es' => 'Subir archivo',
+    'en' => '',
+    'pt' => '111',
+    'it' => '222',
+    'fr' => '',
+    'de' => '333',
+    'ru' => '444',
   ),
   'button.accept' => 
   array (
@@ -71,17 +89,45 @@
     'fr' => '',
     'de' => '',
   ),
-  'form.legal.disclaimer' => 
+  'form.button.accept' => 
   array (
-    'es' => 'Pliego de descargo',
+    'es' => 'Aceptar',
     'en' => '',
-    'pt' => '',
-    'it' => '',
+    'pt' => '111',
+    'it' => '222',
+    'fr' => '',
+    'de' => '333',
+    'ru' => '',
+  ),
+  'form.button.cancel' => 
+  array (
+    'es' => 'Cancelar',
+    'en' => 'Discard',
+    'pt' => '111',
+    'it' => '222',
+    'fr' => '',
+    'de' => '333',
+    'ru' => '4444',
+  ),
+  'form.button.confirm' => 
+  array (
+    'es' => 'Confirmar',
+    'en' => 'Please confirm',
+    'pt' => '111',
+    'it' => '222',
+    'fr' => '',
+    'de' => '333',
+    'ru' => '444',
+  ),
+  'form.button.submit' => 
+  array (
+    'es' => 'Enviar',
+    'en' => '',
+    'pt' => '111',
+    'it' => '222',
     'fr' => '',
     'de' => '333',
     'ru' => '44',
-    'key' => 'form.legal.disclaimer',
-    'group' => 'form.legal',
   ),
   'legal.disclaimer' => 
   array (
@@ -92,49 +138,5 @@
     'it' => '',
     'fr' => '',
     'de' => '',
-  ),
-  'form.button.accept' => 
-  array (
-    'es' => 'Aceptar',
-    'en' => '',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '',
-    'key' => 'form.button.accept',
-  ),
-  'form.button.cancel' => 
-  array (
-    'es' => 'Cancelar',
-    'en' => 'Discard',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '4444',
-    'key' => 'form.button.cancel',
-  ),
-  'form.button.confirm' => 
-  array (
-    'es' => 'Confirmar',
-    'en' => 'Please confirm',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '444',
-    'key' => 'form.button.confirm',
-  ),
-  'form.button.submit' => 
-  array (
-    'es' => 'Enviar',
-    'en' => '',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '44',
-    'key' => 'form.button.submit',
   ),
 );

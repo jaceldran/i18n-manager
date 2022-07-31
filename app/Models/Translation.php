@@ -25,10 +25,7 @@ final class Translation
 		if (isset($data[$key])) {
 			$values = ['key' => $key] + $data[$key];
 		} else {
-			$data = self::compute([
-				'key' => $key
-			]);
-
+			$data = self::compute( [ $key => [] ] );
 			$values = array_pop($data);
 		}
 

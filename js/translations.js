@@ -80,6 +80,8 @@ class CreateAction {
 		const listener = (evt) => {
 			const button = evt.target;
 
+			console.log(button);
+
 			fetch(`/api/translations/render/create?group=${button.dataset.group}`)
 			.then((response) => {
 				return response.text();
