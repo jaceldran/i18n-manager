@@ -146,7 +146,7 @@ class Translations
 		$dir = APP_PATH . '/export';
 		$path = APP_PATH . '/.tmp/translations.zip';
 
-		unlink($path);
+		@unlink($path);
 		$scandir = self::scandir($dir);
 
 		$zip = new ZipArchive;

@@ -264,15 +264,13 @@ class DeleteAction {
 class DownloadAction {
 	static listen() {
 		document.querySelector(".download-action").addEventListener('click', () => {
-
 			fetch("/api/translations/download")
 				.then(() => {
-					location.assign('/translations/download');
+					location.href = '/translations/download';
 				})
 				.catch((err) => {
 					alert(err);
 				});
-
 		});
 	}
 }
