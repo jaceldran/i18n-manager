@@ -13,7 +13,7 @@ final class Lang // extends DatafileModel
 
 	public static function all(): array
 	{
-		$data  = Datafile::read(self::PATH);
+		$data  = Datafile::readPhp(self::PATH, true);
 
 		return self::compute($data);
 	}
@@ -52,7 +52,7 @@ final class Lang // extends DatafileModel
 
 	public static function update(array $values): void
 	{
-		$langs  = Datafile::read(self::PATH);
+		$langs  = Datafile::readPhp(self::PATH);
 		$id = $values[self::KEY];
 		$lang = $langs[$id];
 		unset ($values[self::KEY]);
@@ -64,7 +64,7 @@ final class Lang // extends DatafileModel
 	public static function setOrder(array $order): void
 	{
 		$sorted = [];
-		$langs  = Datafile::read(self::PATH);
+		$langs  = Datafile::readPhp(self::PATH);
 
 		foreach($order as  $lang) {
 			$sorted[$lang] = $langs[$lang];
@@ -75,7 +75,7 @@ final class Lang // extends DatafileModel
 
 	public static function find(string $key): array
 	{
-		$data = Datafile::read(self::PATH);
+		$data = Datafile::readPhp(self::PATH);
 
 		$values = [];
 
@@ -88,7 +88,7 @@ final class Lang // extends DatafileModel
 
 	public static function updateOrCreate(string $key, array $values): void
 	{
-		$data = Datafile::read(self::PATH);
+		$data = Datafile::readPhp(self::PATH);
 
 		if (isset($data[$key])) {
 			$values = array_merge($data[$key], $values);
@@ -101,7 +101,7 @@ final class Lang // extends DatafileModel
 
 	public static function delete(string $key): void
 	{
-		$data = Datafile::read(self::PATH);
+		$data = Datafile::readPhp(self::PATH);
 
 		if (!isset($data[$key])) {
 			return;

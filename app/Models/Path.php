@@ -16,7 +16,7 @@ final class Path
 
 	public static function all(int $mode = self::NONE): object
 	{
-		$data  = Datafile::read(self::PATH);
+		$data  = Datafile::readPhp(self::PATH, true);
 
 		if ($mode === self::COMPUTE) {
 			$data = self::compute($data);

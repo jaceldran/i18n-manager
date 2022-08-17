@@ -13,14 +13,14 @@ final class Translation
 
 	public static function all(): array
 	{
-		$data = Datafile::read(self::PATH);
+		$data = Datafile::readPhp(self::PATH, true);
 		ksort($data);
 		return self::compute($data);
 	}
 
 	public static function find(string $key): array
 	{
-		$data = Datafile::read(self::PATH);
+		$data = Datafile::readPhp(self::PATH);
 
 		if (isset($data[$key])) {
 			$values = ['key' => $key] + $data[$key];
@@ -42,7 +42,7 @@ final class Translation
 
 	public static function updateOrCreate(string $key, array $translations): void
 	{
-		$data = Datafile::read(self::PATH);
+		$data = Datafile::readPhp(self::PATH);
 
 		if (isset($data[$key])) {
 			$translations = array_merge($data[$key], $translations);
@@ -55,7 +55,7 @@ final class Translation
 
 	public static function delete(string $key): void
 	{
-		$data = Datafile::read(self::PATH);
+		$data = Datafile::readPhp(self::PATH);
 
 		if (!isset($data[$key])) {
 			return;
@@ -84,7 +84,7 @@ final class Translation
 	public static function countByLang(): array
 	{
 		$count = [];
-		$data  = Datafile::read(self::PATH);
+		$data  = Datafile::readPhp(self::PATH);
 		$langs = Lang::all();
 
 		foreach ($langs as $lang => $config) {

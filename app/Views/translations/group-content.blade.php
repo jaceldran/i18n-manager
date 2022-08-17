@@ -56,7 +56,7 @@
             <div>
                 <button tabindex="-1" data-key="{{ "$group.$key" }}"
                     class="render-delete-action cursor-pointer text-transparent h-8 w-8 group-hover:text-gray-500">
-                    <i class="fas fa-trash"></i>
+                    <i class="fas fa-trash pointer-events-none"></i>
                 </button>
             </div>
         </div>

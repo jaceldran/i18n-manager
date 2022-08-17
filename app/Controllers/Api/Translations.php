@@ -75,7 +75,8 @@ class Translations
 				'translations.group-content',
 				$group_content,
 				true
-			)
+			),
+			'__group_content' => $group_content,
 		];
 	}
 

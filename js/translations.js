@@ -13,7 +13,7 @@ class Element {
 	static jsonBody(element) {
 		let values = {};
 		for (let e of element.elements) {
-			if (e.type === 'text' || e.type === 'hidden') {
+			if (e.name && (e.type === 'text' || e.type === 'hidden')) {
 				values[e.name] = e.value;
 			}
 		}
@@ -22,12 +22,8 @@ class Element {
 	}
 
 	static setContent(selector, content) {
-		Element.destroy('#modal');
 		const target = document.querySelector(selector);
 		target.innerHTML = content;
-		UpdateAction.listen();
-		CreateAction.listen();
-		DeleteAction.listen();
 	}
 }
 
@@ -73,63 +69,55 @@ class ToggleAction {
 
 class CreateAction {
 	static listen() {
-		this.listenShowForm();
+		document.addEventListener('click', (evt) => {
+			if (evt.target.classList.contains('render-create-action')) {
+				CreateAction.showForm(evt);
+			}
+		});
+
+		document.addEventListener('submit', (evt) => {
+			if (evt.target.id === 'create-translation-form') {
+				CreateAction.submitForm(evt);
+			}
+		});
 	}
 
-	static listenShowForm() {
-		const listener = (evt) => {
-			const button = evt.target;
-
-			console.log(button);
-
-			fetch(`/api/translations/render/create?group=${button.dataset.group}`)
+	static showForm(evt) {
+		fetch(`/api/translations/render/create?group=${evt.target.dataset.group}`)
 			.then((response) => {
 				return response.text();
 			})
 			.then((html) => {
 				Element.create(html);
-				CreateAction.listenSubmit();
 			})
 			.catch((err) => {
 				alert(err);
 			});
-		};
-
-		document.querySelectorAll(".render-create-action").forEach((button) => {
-			button.removeEventListener('click', listener);
-			button.addEventListener('click', listener);
-		});
 	}
 
-	static listenSubmit() {
-		document.querySelector('input[name=key]').focus();
+	static submitForm(evt) {
+		evt.preventDefault();
 
-		const listener = (evt) => {
-			evt.preventDefault();
-
-			fetch("/api/translations", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: Element.jsonBody(evt.target),
+		fetch("/api/translations", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: Element.jsonBody(evt.target),
+		})
+			.then((response) => {
+				return response.json();
 			})
-				.then((response) => {
-					return response.json();
-				})
-				.then((response) => {
-					Element.setContent(
-						`#${response.group_content_id}`,
-						response.render_group_content
-					);
-				})
-				.catch((err) => {
-					alert(err);
-				});
-		};
-
-		document.querySelector("#create-translation-form").removeEventListener('submit', listener);
-		document.querySelector("#create-translation-form").addEventListener('submit', listener);
+			.then((response) => {
+				Element.destroy('#modal');
+				Element.setContent(
+					`#${response.group_content_id}`,
+					response.render_group_content
+				);
+			})
+			.catch((err) => {
+				alert(err);
+			});
 	}
 }
 
@@ -227,56 +215,55 @@ class UpdateAction {
 
 class DeleteAction {
 	static listen() {
-		this.showFormListen();
-	}
+		document.addEventListener('click', (evt) => {
+			if (evt.target.classList.contains('render-delete-action')) {
+				DeleteAction.showForm(evt);
+			}
+		});
 
-	static showFormListen() {
-		document.querySelectorAll(".render-delete-action").forEach((button) => {
-			const listener = () => {
-				fetch(`/api/translations/render/delete?key=${button.dataset.key}`)
-					.then((response) => {
-						return response.text();
-					})
-					.then((html) => {
-						Element.create(html);
-						DeleteAction.submitListen();
-					})
-					.catch((err) => {
-						alert(err);
-					});
-			};
-
-			button.removeEventListener('click', listener);
-			button.addEventListener('click', listener);
+		document.addEventListener('submit', (evt) => {
+			if (evt.target.id === 'delete-translation-form') {
+				DeleteAction.submitForm(evt);
+			}
 		});
 	}
 
-	static submitListen() {
-		document.querySelector('input[name=key]').focus();
-
-		document.querySelector("#delete-translation-form").addEventListener('submit', (evt) => {
-			evt.preventDefault();
-
-			fetch("/api/translations", {
-				method: "DELETE",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: Element.jsonBody(evt.target),
+	static showForm(evt) {
+		fetch(`/api/translations/render/delete?key=${evt.target.dataset.key}`)
+			.then((response) => {
+				return response.text();
 			})
-				.then((response) => {
-					return response.json();
-				})
-				.then((response) => {
-					Element.setContent(
-						`#${response.group_content_id}`,
-						response.render_group_content
-					);
-				})
-				.catch((err) => {
-					alert(err);
-				});
-		});
+			.then((html) => {
+				Element.create(html);
+			})
+			.catch((err) => {
+				alert(err);
+			});
+	}
+
+	static submitForm(evt) {
+		evt.preventDefault();
+
+		fetch("/api/translations", {
+			method: "DELETE",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: Element.jsonBody(evt.target),
+		})
+			.then((response) => {
+				return response.json();
+			})
+			.then((response) => {
+				Element.destroy('#modal');
+				Element.setContent(
+					`#${response.group_content_id}`,
+					response.render_group_content
+				);
+			})
+			.catch((err) => {
+				alert(err);
+			});
 	}
 }
 

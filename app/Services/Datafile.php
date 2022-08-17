@@ -13,14 +13,15 @@ final class Datafile
 	const READ = 'r';
 	const WRITE = 'w';
 
-	public static function read(string $path, $read_as = self::PHP): array
+	public static function readPhp(string $path, bool $force = false): array
 	{
-		return require $path;
-	}
+		if (!$force) {
+			return require $path;
+		}
 
-	public static function readPhp(string $path): array
-	{
-		return require $path;
+		$content = file_get_contents($path);
+		$content = str_replace('<?php return array (', 'return array (', $content);
+		return eval($content);
 	}
 
 	public static function readCsv(string $path): array
