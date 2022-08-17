@@ -605,7 +605,7 @@ video {
 }
 
 .fi.fi-en {
-  background-image: url(./flags/flags/4x3/gb.svg);
+  background-image: url(../img/flags/4x3-gb.svg);
 }
 
 input[type=file]::-webkit-file-upload-button{

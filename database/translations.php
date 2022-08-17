@@ -142,10 +142,32 @@
   'legal.aa' => 
   array (
     'key' => 'legal.aa',
+    'es' => 'aa111',
+    'en' => 'aa',
+    'pt' => 'ccc',
+    'it' => 'aaa',
+    'fr' => 'aa',
+    'de' => 'aa',
+    'group' => 'legal',
+  ),
+  'legal.bb' => 
+  array (
+    'key' => 'legal.bb',
     'es' => '',
     'en' => '',
     'pt' => '',
     'it' => '',
+    'fr' => '',
+    'de' => '',
+    'group' => 'legal',
+  ),
+  'legal.zz' => 
+  array (
+    'key' => 'legal.zz',
+    'es' => 'aa',
+    'en' => 'bb',
+    'pt' => 'cc',
+    'it' => 'dd',
     'fr' => '',
     'de' => '',
     'group' => 'legal',

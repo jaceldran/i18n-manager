@@ -210,6 +210,7 @@ class Translations
 			'action' => 'create',
 			'button' => 'Create translation',
 			'button_icon' => '<i class="fas fa-plus"></i>',
+			'translation' => [],
 			'group' => $group,
 			'langs' => Lang::keys()
 		]);

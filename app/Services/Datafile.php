@@ -20,7 +20,7 @@ final class Datafile
 		}
 
 		$content = file_get_contents($path);
-		$content = str_replace('<?php return array (', 'return array (', $content);
+		$content = str_replace('<?php', '', $content);
 		return eval($content);
 	}
 

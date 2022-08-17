@@ -15,11 +15,11 @@
 		@apply text-amber-700 font-semibold
 	}
 	.fi.fi-en {
-		background-image: url(./flags/flags/4x3/gb.svg);
+		background-image: url(../img/flags/4x3-gb.svg);
 	}
 
 	.fi-en.fis {
-		background-image: url(./flags/flags/1x1/gb.svg);
+		background-image: url(../img/flags/1x1-gb.svg);
 	}
 
 	.my-blur {

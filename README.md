@@ -2,6 +2,32 @@
 
 i18n Manager es un gestor de traducciones que proporciona las siguientes opciones:
 
+## Installation
+
+**i18n Manager**  no utiliza base de datos por lo que para ejecutar en local se puede usar simplemente un plugin como [PHP Server](https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver)
+
+Para instalar las dependencias PHP.
+
+```
+composer install
+```
+Para instalar tailwindcss.
+
+```
+npm install
+```
+
+Para modificar css del proyecto en modo *develop*.
+
+```
+npm run dev
+```
+
+Para generar versión compilada y minificada del css.
+
+```
+npm run prod
+```
 ## Translations
 
 La página principal donde se gestionan las traducciones en los distintos idiomas. Las traducciones se presentan agrupadas en secciones desplegables y cada traducción se identifica por una ```key``` única compuesta por partes separadas mediante puntos. Así, por ejemplo, se pueden agrupar todos los textos de botones en el grupo ```button``` y la colección podría ser algo como:
@@ -118,9 +144,14 @@ Una página informativa con datos del entorno de ejecución.
 
 ### Dependencias
 
-Este es el contenido del archivo ```composer.json```, que contiene las dependencias de software, las cuales se han mantenido a los mínimos necesarios para que la aplicación sea independiente, lo que significa que podría integrarse en cualquier sistema, simplemente ubicando el paquete en una carpeta de acceso público html.
+Este es el contenido del archivo ```composer.json```, con las dependencias de software, que se han mantenido a los mínimos necesarios para que la aplicación sea independiente. Lo que, en teoría, significa que podría integrarse en cualquier sistema, simplemente ubicando el paquete en una carpeta de acceso público html.
 
 
 ```json
 {composer.json}
 ```
+
+## Resources
+
+- [Free Country Flags in SVG - Flag icons](https://flagicons.lipis.dev/)
+- [Ultralight icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/ultralight)

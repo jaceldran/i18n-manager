@@ -123,93 +123,87 @@ class CreateAction {
 
 class UpdateAction {
 	static listen() {
-		this.inputChangeListen();
-		this.showFormListen();
-	}
+		document.addEventListener('click', (evt) => {
+			if (evt.target.classList.contains('render-update-action')) {
+				UpdateAction.showForm(evt);
+			}
+		});
 
-	static inputChangeListen() {
-		document.querySelectorAll("input").forEach((input) => {
-			const listener = () => {
-				const values = {
-					key: input.dataset.key,
-					group: input.dataset.group,
-				};
-				values[input.dataset.lang] = input.value;
+		document.addEventListener('change', (evt) => {
+			if (evt.target.classList.contains('live-input')) {
+				UpdateAction.liveUpdate(evt);
+			}
+		});
 
-				fetch("/api/translations", {
-					method: "PUT",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(values),
-				})
-					.then((response) => {
-						return response.json();
-					})
-					.then((response) => {
-						console.log(response);
-					})
-					.catch((err) => {
-						alert(err);
-					});
-			};
-
-			input.removeEventListener('change', listener);
-
-			input.addEventListener("change", listener);
+		document.addEventListener('submit', (evt) => {
+			if (evt.target.id === 'update-translation-form') {
+				UpdateAction.submitForm(evt);
+			}
 		});
 	}
 
-	static showFormListen() {
-		document.querySelectorAll(".render-update-action").forEach((button) => {
-			const listener = () => {
-				fetch(`/api/translations/render/update?key=${button.dataset.key}`)
-					.then((response) => {
-						return response.text();
-					})
-					.then((html) => {
-						Element.create(html);
-						UpdateAction.submitListen();
-					})
-					.catch((err) => {
-						alert(err);
-					});
-			};
-
-			button.removeEventListener('click', listener);
-
-			button.addEventListener('click', listener);
-		});
-	}
-
-	static submitListen() {
-		const listener = (evt) => {
-			evt.preventDefault();
-
-			fetch("/api/translations", {
-				method: "PUT",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: Element.jsonBody(evt.target),
+	static showForm(evt) {
+		fetch(`/api/translations/render/update?key=${evt.target.dataset.key}`)
+			.then((response) => {
+				return response.text();
 			})
-				.then((response) => {
-					return response.json();
-				})
-				.then((response) => {
-					Element.setContent(
-						`#${response.group_content_id}`,
-						response.render_group_content
-					);
-				})
-				.catch((err) => {
-					alert(err);
-				});
+			.then((html) => {
+				Element.create(html);
+			})
+			.catch((err) => {
+				alert(err);
+			});
+	}
+
+	static submitForm(evt) {
+		evt.preventDefault();
+
+		fetch("/api/translations", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: Element.jsonBody(evt.target),
+		})
+			.then((response) => {
+				return response.json();
+			})
+			.then((response) => {
+				Element.destroy('#modal');
+				Element.setContent(
+					`#${response.group_content_id}`,
+					response.render_group_content
+				);
+			})
+			.catch((err) => {
+				alert(err);
+			});
+	}
+
+	static liveUpdate(evt) {
+		const input = evt.target;
+		const values = {
+			key: input.dataset.key,
+			group: input.dataset.group,
 		};
+		values[input.dataset.lang] = input.value;
 
-		document.querySelector('input[name=key]').focus();
-
-		document.querySelector("#update-translation-form").addEventListener('submit', listener);
+		fetch("/api/translations", {
+			method: "PUT",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(values),
+		})
+			.then((response) => {
+				return response.json();
+			})
+			.then((response) => {
+				console.log(response);
+			})
+			.catch((err) => {
+				alert(err);
+			});
 	}
 }
 

@@ -29,16 +29,15 @@
         @endforeach
 
         <p class="flex gap-2">
-            @include('components.button', [
+            {{-- @include('components.button', [
                 'id' => 'create-folders',
                 'label' => 'Create',
-            ])
+            ]) --}}
 
-            @include('components.button', [
+            {{-- @include('components.button', [
                 'id' => 'update-paths',
                 'label' => 'Update',
-            ])
-
+            ]) --}}
         </p>
 
     </form>

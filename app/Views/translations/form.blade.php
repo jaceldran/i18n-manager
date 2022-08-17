@@ -37,7 +37,7 @@
                     @case('create')
                         <input class="border-b p-4 w-full cursor-pointer outline-none focus:font-semibold"
                             name="{{ $lang }}" placeholder="{{ strtoupper($lang) }}"
-                            value="{{ $translation[$lang] ?? null }}" />
+                            value="" />
                     @break
 
                     @case('update')

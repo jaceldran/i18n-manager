@@ -45,7 +45,7 @@
                     @if (isset($langs[$lang]) && $langs[$lang]['visible'])
                         <p class="mr-1">
                             <input
-                                class="rounded-md bg-transparent outline-none hover:bg-gray-50 focus:bg-white cursor-pointer w-full px-2 py-1 disabled:cursor-not-allowed disabled:hover:bg-transparent"
+                                class="live-input rounded-md bg-transparent outline-none hover:bg-gray-50 focus:bg-white cursor-pointer w-full px-2 py-1 disabled:cursor-not-allowed disabled:hover:bg-transparent"
                                 {{ $langs[$lang]['editable'] ? '' : 'disabled' }} value="{{ $translation ?? '' }}"
                                 placeholder="{{ strtoupper($lang) }}" data-key="{{ $group }}.{{ $key }}" data-lang="{{ $lang }}">
                         </p>
