@@ -1,5 +1,5 @@
 {
-    "name": "zentric/118n-manager",
+    "name": "zentric/i18n-manager",
     "description": "i18n Manager",
     "autoload": {
         "psr-4": {
