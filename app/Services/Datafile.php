@@ -13,7 +13,7 @@ final class Datafile
 	const READ = 'r';
 	const WRITE = 'w';
 
-	public static function readPhp(string $path, bool $force = false): array
+	public static function readPhp(string $path, bool $force = true): array
 	{
 		if (!$force) {
 			return require $path;

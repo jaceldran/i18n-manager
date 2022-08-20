@@ -27,13 +27,13 @@ Flight::route('/configuration',[Configuration::class, 'index']);
 
 // translations api
 
-// renders
+// renders api
 Flight::route('GET /api/translations/render/import',[TranslationsApi::class, 'renderImport']);
 Flight::route('GET /api/translations/render/create',[TranslationsApi::class, 'renderCreate']);
 Flight::route('GET /api/translations/render/update',[TranslationsApi::class, 'renderUpdate']);
 Flight::route('GET /api/translations/render/delete',[TranslationsApi::class, 'renderDelete']);
 
-// actions
+// actions api
 Flight::route('PUT /api/translations',[TranslationsApi::class, 'put']);
 Flight::route('POST /api/translations',[TranslationsApi::class, 'post']);
 Flight::route('DELETE /api/translations',[TranslationsApi::class, 'delete']);

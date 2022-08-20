@@ -13,7 +13,7 @@ final class Translation
 
 	public static function all(): array
 	{
-		$data = Datafile::readPhp(self::PATH, true);
+		$data = Datafile::readPhp(self::PATH);
 		ksort($data);
 		return self::compute($data);
 	}

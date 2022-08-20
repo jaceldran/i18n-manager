@@ -8,19 +8,34 @@ final class Lang // extends DatafileModel
 {
 	const PATH = APP_PATH . "/database/langs.php";
 	const KEY = 'key';
+	const ALL = 'all';
 	const VISIBLE = 'visible';
 	const EDITABLE = 'editable';
 
-	public static function all(): array
+	public static function all(string $filter = self::ALL): array
 	{
-		$data  = Datafile::readPhp(self::PATH, true);
+		$data  = Datafile::readPhp(self::PATH);
+
+		if ($filter === self::EDITABLE) {
+			$data = array_filter($data, function($lang) {
+				return $lang['editable'];
+			});
+		}
+
+		if ($filter === self::VISIBLE) {
+			$data = array_filter($data, function($lang) {
+				return $lang['visible'];
+			});
+		}
 
 		return self::compute($data);
 	}
 
-	public static function keys(): array
+	public static function keys(string $filter = self::ALL): array
 	{
-		return array_keys(self::all());
+		$langs = self::all($filter);
+
+		return array_keys($langs);
 	}
 
 	public static function compute($data): array

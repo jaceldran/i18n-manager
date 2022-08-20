@@ -1,12 +1,12 @@
 <?php return array (
   'es' => 
   array (
-    'editable' => true,
+    'editable' => false,
     'visible' => true,
   ),
   'en' => 
   array (
-    'editable' => true,
+    'editable' => false,
     'visible' => true,
   ),
   'pt' => 
@@ -16,8 +16,8 @@
   ),
   'it' => 
   array (
-    'editable' => true,
-    'visible' => true,
+    'editable' => false,
+    'visible' => false,
   ),
   'fr' => 
   array (

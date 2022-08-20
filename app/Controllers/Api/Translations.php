@@ -212,7 +212,7 @@ class Translations
 			'button_icon' => '<i class="fas fa-plus"></i>',
 			'translation' => [],
 			'group' => $group,
-			'langs' => Lang::keys()
+			'langs' => Lang::all()
 		]);
 	}
 
@@ -223,12 +223,12 @@ class Translations
 		$translation = Translation::find($key);
 
 		Flight::render(self::FORM_VIEW, [
-			'title' => "Edit [$key]",
+			'title' => "Edit \"$key\"",
 			'action' => 'update',
 			'button' => "Update",
 			'button_icon' => '<i class="fas fa-check"></i>',
 			'translation' => $translation,
-			'langs' => Lang::keys(),
+			'langs' => Lang::all(),
 		]);
 	}
 
@@ -239,13 +239,13 @@ class Translations
 		$translation = Translation::find($key);
 
 		Flight::render(self::FORM_VIEW, [
-			'title' => "Delete [$key]",
+			'title' => "Delete \"$key\"",
 			'action' => 'delete',
 			'button' => 'Delete translation',
 			'button_apply' => 'bg-red-700 text-white',
 			'button_icon' => '<i class="fas fa-trash"></i>',
 			'translation' => $translation,
-			'langs' => Lang::keys(),
+			'langs' => Lang::all(),
 		]);
 	}
 }

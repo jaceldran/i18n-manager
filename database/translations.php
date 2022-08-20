@@ -1,133 +1,69 @@
 <?php return array (
-  'app.nav.config' => 
+  'commercial.opportunities.open' => 
   array (
-    'es' => 'Configuración',
-    'en' => 'Configuration',
-    'pt' => '111',
-    'it' => '222',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '444',
-  ),
-  'app.nav.download' => 
-  array (
-    'es' => 'Bajar archivos',
-    'en' => '',
-    'pt' => '111',
-    'it' => '222',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '444',
-  ),
-  'app.nav.translations' => 
-  array (
-    'es' => 'Traducciones',
-    'en' => 'Translations',
-    'pt' => '111',
-    'it' => '222',
-    'fr' => 'ccc',
-    'de' => '333 / 333 / ddd',
-    'ru' => '444',
-  ),
-  'app.nav.upload' => 
-  array (
-    'es' => 'Subir archivo',
-    'en' => '',
-    'pt' => '111',
-    'it' => '222',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '444',
-  ),
-  'button.accept' => 
-  array (
-    'key' => 'button.accept',
-    'es' => 'aceptar',
-    'en' => 'accept',
-    'pt' => '',
-    'it' => '',
-    'fr' => '33',
-    'de' => '44',
-  ),
-  'button.cancel' => 
-  array (
-    'key' => 'button.cancel',
-    'es' => 'Cancelar',
-    'en' => 'Cancel',
+    'key' => 'commercial.opportunities.open',
+    'es' => 'Abiertas',
+    'en' => 'Open',
     'pt' => '',
     'it' => '',
     'fr' => '',
     'de' => '',
+    'group' => 'commercial.opportunities',
   ),
-  'button.confirm' => 
+  'commercial.opportunities.won' => 
   array (
-    'key' => 'button.confirm',
-    'es' => 'Confirmar',
-    'en' => 'Confirm',
+    'key' => 'commercial.opportunities.won',
+    'es' => 'Ganadas',
+    'en' => 'Won',
     'pt' => '',
     'it' => '',
     'fr' => '',
     'de' => '',
+    'group' => 'commercial.opportunities',
   ),
-  'button.send' => 
+  'commercial.opportunities.lost' => 
   array (
-    'key' => 'button.send',
-    'es' => 'Enviar',
-    'en' => 'Submit',
+    'key' => 'commercial.opportunities.lost',
+    'es' => 'Perdidas',
+    'en' => 'Lost',
     'pt' => '',
     'it' => '',
     'fr' => '',
     'de' => '',
+    'group' => 'commercial.opportunities',
   ),
-  'button.submit' => 
+  'commercial.activities.visit' => 
   array (
-    'key' => 'button.submit',
-    'es' => 'Enviar',
-    'en' => 'Submit',
-    'pt' => '',
+    'key' => 'commercial.activities.visit',
+    'es' => 'Visita',
+    'en' => 'Visit',
+    'pt' => 'cc',
     'it' => '',
     'fr' => '',
     'de' => '',
+    'group' => 'commercial.activities',
   ),
-  'form.button.accept' => 
+  'commercial.activities.phone' => 
   array (
-    'es' => 'Aceptar',
-    'en' => '',
-    'pt' => '111',
-    'it' => '222',
+    'key' => 'commercial.activities.phone',
+    'es' => 'Llamada telefónica',
+    'en' => 'Phone call',
+    'pt' => 'bb',
+    'it' => '',
     'fr' => '',
-    'de' => '333',
-    'ru' => '',
+    'de' => '',
+    'group' => 'commercial.activities',
   ),
-  'form.button.cancel' => 
+  'commercial.activities.mail' => 
   array (
-    'es' => 'Cancelar',
-    'en' => 'Discard',
-    'pt' => '111',
-    'it' => '222',
+    'key' => 'commercial.activities.mail',
+    'es' => 'Correo',
+    'en' => 'Email',
+    'pt' => 'aa',
+    'it' => '',
     'fr' => '',
-    'de' => '333',
-    'ru' => '4444',
-  ),
-  'form.button.confirm' => 
-  array (
-    'es' => 'Confirmar',
-    'en' => 'Please confirm',
-    'pt' => '111',
-    'it' => '222',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '444',
-  ),
-  'form.button.submit' => 
-  array (
-    'es' => 'Enviar',
-    'en' => '',
-    'pt' => '111',
-    'it' => '222',
-    'fr' => '',
-    'de' => '333',
-    'ru' => '44',
+    'de' => '',
+    'group' => 'commercial.activities',
   ),
   'legal.disclaimer' => 
   array (
@@ -138,16 +74,17 @@
     'it' => '',
     'fr' => '',
     'de' => '',
+    'group' => 'legal',
   ),
   'legal.aa' => 
   array (
     'key' => 'legal.aa',
-    'es' => 'aa111',
-    'en' => 'aa',
-    'pt' => 'ccc',
-    'it' => 'aaa',
-    'fr' => 'aa',
-    'de' => 'aa',
+    'es' => '',
+    'en' => '',
+    'pt' => '',
+    'it' => '',
+    'fr' => '',
+    'de' => '',
     'group' => 'legal',
   ),
   'legal.bb' => 
@@ -161,13 +98,13 @@
     'de' => '',
     'group' => 'legal',
   ),
-  'legal.zz' => 
+  'legal.cc' => 
   array (
-    'key' => 'legal.zz',
-    'es' => 'aa',
-    'en' => 'bb',
-    'pt' => 'cc',
-    'it' => 'dd',
+    'key' => 'legal.cc',
+    'es' => '',
+    'en' => '',
+    'pt' => '',
+    'it' => '',
     'fr' => '',
     'de' => '',
     'group' => 'legal',

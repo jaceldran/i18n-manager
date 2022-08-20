@@ -66,15 +66,12 @@ La sintáxis de puntos ayuda a mantener las entradas organizadas ya que éstas s
 ### Acciones en la barra de herramientas superior
 
 #### Open - Close
-
 Estos botones sirven para abrir o cerrar a la vez todos los grupos de traducciones.
 
 #### Import
-
 Permite la carga de un archivo CSV con traducciones en el formato descrito. Debe contener una columna llamada *key* y otras columnas con el código ISO del idioma y la traducción correspondiente.
 
 #### Export
-
 Genera la exportación de archivos, en las carpetas especificadas en la configuración, en formatos adecuados para su consumo por aplicaciones *frontend* o *backend*.
 
 * Un archivo ```all.php```
@@ -87,25 +84,29 @@ Genera la exportación de archivos, en las carpetas especificadas en la configur
 Así, si la aplicación está instalada en el mismo servidor que el *frontend* o el *backend*, se pueden configurar las rutas de exportación a las carpetas que estén usando las aplicaciones para su sistema multi-idioma.
 
 #### Download
-
 Proporciona una descarga en formato de archivo comprimido de todos los archivos exportados.
+
+#### New
+Abre un formulario para crear un nuevo término agrupando, por defecto, en el grupo *common*,
 
 ### Acciones integradas
 
 #### Create
-Cada grupo también se puede plegar/desplegar por separado haciendo clic en el nombre. En la parte derecha hay un botón con el signo + que abre un formulario para crear una nueva entrada que pone el valor inicial de la *key* indicando el grupo actual, lista para introducir el nuevo término. Pero también se puede introducir nuevas *keys* para crear nuevos grupos.
+Cada grupo también se puede plegar/desplegar por separado haciendo clic en el nombre. En la parte derecha hay un botón con el signo + que abre un formulario para crear una nueva entrada que pone el valor inicial de la *key* indicando el grupo actual, preparada para introducir el nuevo término. Pero también se puede introducir nuevas *keys* para crear nuevos grupos.
 
 #### Edit
 Las traducciones se pueden editar de 2 formas:
 
 ##### Inmediata
-La forma más inmediata de editar las traducciones es introducir directamente el valor de cada traducción en los inputs de idiomas editables. Los valores se guardan cada vez que se sale del input.
+La forma inmediata de editar las traducciones es introducir directamente el valor de cada traducción en los inputs de idiomas editables. Los valores se guardan cada vez que se sale del input.
 
 Este modo depende de los idiomas que estén activados como visibles y editables en el apartado de *Langs*.
 
 ##### Completa
 Para editar una traducción al completo se puede pulsar la *key* correspondiente. Se abrirá un formulario que permitirá editar tanto la *key*, por si se quiere cambiar el término o asignar a otro grupo, como todos los idiomas disponibles.
 
+#### Delete
+Al final de cada fila se muestra un icono de papelera que muestra un formulario con todas las traducciones, independientemente de si el idioma está marcado como *visible* y/o *editable*.
 
 ## Langs
 

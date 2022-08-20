@@ -10,7 +10,7 @@
 
 @section('main')
     <table class="w-full sm:w-auto shadow-sm" aria-label="langs list">
-        <thead class="bg-gray-100">
+        <thead class="bg-gray-200">
             <tr class="border-b text-xs  uppercase text-center">
                 <th class="px-8 py-4 font-semibold">
                     Lang
@@ -32,7 +32,7 @@
                 <tr id="{{ $key }}" class="border-b cursor-move group">
                     <td class="px-8 py-4 whitespace-nowrap font-medium">
                         <i class="fi fi-{{ $key }}"></i>
-                        <kbd class="ml-2 uppercase text-amber-700">{{ $key }}</kbd>
+                        <kbd class="ml-2 text-sm font-semibold uppercase text-gray-500">{{ $key }}</kbd>
                     </td>
                     <td class="px-8 py-4">
                         @include('components.switch', [

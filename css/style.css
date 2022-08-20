@@ -1095,6 +1095,16 @@ input[type=file]::-webkit-file-upload-button,
   background-color: rgb(249 250 251 / var(--tw-bg-opacity));
 }
 
+.bg-green-200{
+  --tw-bg-opacity: 1;
+  background-color: rgb(187 247 208 / var(--tw-bg-opacity));
+}
+
+.bg-pink-300{
+  --tw-bg-opacity: 1;
+  background-color: rgb(249 168 212 / var(--tw-bg-opacity));
+}
+
 .p-4{
   padding: 1rem;
 }
@@ -1255,6 +1265,10 @@ input[type=file]::-webkit-file-upload-button,
   line-height: 1.25;
 }
 
+.leading-8{
+  line-height: 2rem;
+}
+
 .tracking-tighter{
   letter-spacing: -0.05em;
 }
@@ -1363,6 +1377,18 @@ input[type=file]::-webkit-file-upload-button,
 .outline-none{
   outline: 2px solid transparent;
   outline-offset: 2px;
+}
+
+.outline{
+  outline-style: solid;
+}
+
+.outline-1{
+  outline-width: 1px;
+}
+
+.outline-black{
+  outline-color: #000;
 }
 
 .invert{
@@ -1558,6 +1584,12 @@ input[type=file]::-webkit-file-upload-button,
   box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
+.disabled\:text-accent:disabled{
+  font-weight: 600;
+  --tw-text-opacity: 1;
+  color: rgb(180 83 9 / var(--tw-text-opacity));
+}
+
 .disabled\:cursor-not-allowed:disabled{
   cursor: not-allowed;
 }
@@ -1565,6 +1597,51 @@ input[type=file]::-webkit-file-upload-button,
 .disabled\:text-gray-400:disabled{
   --tw-text-opacity: 1;
   color: rgb(156 163 175 / var(--tw-text-opacity));
+}
+
+.disabled\:text-gray-100:disabled{
+  --tw-text-opacity: 1;
+  color: rgb(243 244 246 / var(--tw-text-opacity));
+}
+
+.disabled\:text-gray-300:disabled{
+  --tw-text-opacity: 1;
+  color: rgb(209 213 219 / var(--tw-text-opacity));
+}
+
+.disabled\:text-gray-500:disabled{
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
+.disabled\:text-green-500:disabled{
+  --tw-text-opacity: 1;
+  color: rgb(34 197 94 / var(--tw-text-opacity));
+}
+
+.disabled\:text-amber-500:disabled{
+  --tw-text-opacity: 1;
+  color: rgb(245 158 11 / var(--tw-text-opacity));
+}
+
+.disabled\:text-pink-500:disabled{
+  --tw-text-opacity: 1;
+  color: rgb(236 72 153 / var(--tw-text-opacity));
+}
+
+.disabled\:text-red-500:disabled{
+  --tw-text-opacity: 1;
+  color: rgb(239 68 68 / var(--tw-text-opacity));
+}
+
+.disabled\:text-blue-500:disabled{
+  --tw-text-opacity: 1;
+  color: rgb(59 130 246 / var(--tw-text-opacity));
+}
+
+.disabled\:text-yellow-500:disabled{
+  --tw-text-opacity: 1;
+  color: rgb(234 179 8 / var(--tw-text-opacity));
 }
 
 .disabled\:hover\:bg-transparent:hover:disabled{

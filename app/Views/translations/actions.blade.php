@@ -3,11 +3,11 @@
         'group-1' => [
             'open-all' => (object)  [
                 'label' => 'Open',
-                'icon' => 'fas fa-plus',
+                'icon' => 'fas fa-angle-down',
             ],
             'close-all' => (object)  [
                 'label' => 'Close',
-                'icon' => 'fas fa-minus',
+                'icon' => 'fas fa-angle-up',
             ],
         ],
         'group-2' => [
@@ -23,14 +23,11 @@
                 'label' => 'Download',
                 'icon' => 'fas fa-download',
             ],
-            // 'add-group' => (object)  [
-            //     'label' => 'Group',
-            //     'icon' => 'fas fa-plus',
-            // ],
-            // 'search' => (object)  [
-            //     'label' => 'Search',
-            //     'icon' => 'fas fa-magnifying-glass',
-            // ],
+            'render-create' => (object)  [
+                'label' => '',
+                'icon' => 'fas fa-plus w-8 h-8 bg-gray-200 rounded-full',
+                'icon_style' => 'line-height: 2rem',
+            ],
         ],
     ]
 ])

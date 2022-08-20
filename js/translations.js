@@ -23,6 +23,9 @@ class Element {
 
 	static setContent(selector, content) {
 		const target = document.querySelector(selector);
+		if (!target) {
+			location.reload();
+		}
 		target.innerHTML = content;
 	}
 }
@@ -83,7 +86,7 @@ class CreateAction {
 	}
 
 	static showForm(evt) {
-		fetch(`/api/translations/render/create?group=${evt.target.dataset.group}`)
+		fetch(`/api/translations/render/create?group=${evt.target.dataset.group || 'common'}`)
 			.then((response) => {
 				return response.text();
 			})
