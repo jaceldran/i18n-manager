@@ -12,7 +12,7 @@ class Pages extends Controller
 		Flight::render('pages.home', $data);
 	}
 
-	public static function about()
+	public static function readme()
 	{
 		$data = self::commonData();
 
@@ -29,6 +29,6 @@ class Pages extends Controller
 		$data['readme'] = $readme;
 
 
-		Flight::render('pages.about', $data);
+		Flight::render('pages.readme', $data);
 	}
 }

@@ -14,19 +14,4 @@
     'editable' => true,
     'visible' => true,
   ),
-  'it' => 
-  array (
-    'editable' => false,
-    'visible' => false,
-  ),
-  'fr' => 
-  array (
-    'editable' => false,
-    'visible' => false,
-  ),
-  'de' => 
-  array (
-    'visible' => false,
-    'editable' => false,
-  ),
 );

@@ -13,7 +13,7 @@ use App\Controllers\Api\Translations as TranslationsApi;
 // pages
 // Flight::route('/',[Home::class, 'index']);
 Flight::route('/',[Pages::class, 'home']);
-Flight::route('/about',[Pages::class, 'about']);
+Flight::route('/readme',[Pages::class, 'readme']);
 
 Flight::route('/translations',[Translations::class, 'index']);
 Flight::route('/translations/download',[Translations::class, 'download']);

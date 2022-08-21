@@ -12,7 +12,7 @@ class Navigation
 	const LANGS = '/langs';
 	const SANDBOX = '/sandbox';
 	const CONFIGURATION = '/configuration';
-	const ABOUT = '/about';
+	const README = '/readme';
 
 	const CONFIG_PATHS = '/configuration/paths';
 	const CONFIG_ENV = '/configuration/env';
@@ -34,9 +34,9 @@ class Navigation
 			self::LABEL => 'Configuration',
 			self::ACTIVE => false,
 		],
-		self::ABOUT => [
-			self::URL => self::ABOUT,
-			self::LABEL => 'About',
+		self::README => [
+			self::URL => self::README,
+			self::LABEL => 'Readme',
 			self::ACTIVE => false,
 		],
 	];
@@ -52,11 +52,6 @@ class Navigation
 			self::LABEL => 'Env',
 			self::ACTIVE => false,
 		],
-		// self::CONFIG_COLORQUOTES => [
-		// 	self::URL => self::CONFIG_COLORQUOTES,
-		// 	self::LABEL => 'Colorquotes',
-		// 	self::ACTIVE => false,
-		// ],
 	];
 
 	public static function main(): array

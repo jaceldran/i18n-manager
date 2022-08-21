@@ -24,9 +24,9 @@
                 'icon' => 'fas fa-download',
             ],
             'render-create' => (object)  [
-                'label' => '',
-                'icon' => 'fas fa-plus w-8 h-8 bg-gray-200 rounded-full',
-                'icon_style' => 'line-height: 2rem',
+                'label' => 'New',
+                'icon' => 'fas fa-plus --w-8 --h-8 --bg-gray-200 --rounded-full',
+                '--icon_style' => 'line-height: 2rem',
             ],
         ],
     ]
