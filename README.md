@@ -1,10 +1,8 @@
 # i18n Manager
 
-i18n Manager es un gestor de traducciones que proporciona las siguientes opciones:
-
 ## Installation
 
-**i18n Manager**  no utiliza base de datos por lo que para ejecutar en local se puede usar simplemente un plugin como [PHP Server](https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver)
+**i18n Manager**  utiliza almacenamiento basado en archivos de texto plano (php, json, csv...) por lo que, para ejecutar en local, no es necesario un servidor de base de datos, se puede usar simplemente un plugin como [PHP Server](https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver) para correr la aplicación PHP.
 
 Para instalar las dependencias PHP.
 
@@ -28,9 +26,10 @@ Para generar versión compilada y minificada del css.
 ```
 npm run prod
 ```
+
 ## Translations
 
-La página principal donde se gestionan las traducciones en los distintos idiomas. Las traducciones se presentan agrupadas en secciones desplegables y cada traducción se identifica por una ```key``` única compuesta por partes separadas mediante puntos. Así, por ejemplo, se pueden agrupar todos los textos de botones en el grupo ```button``` y la colección podría ser algo como:
+**Translations** es la página principal donde se gestionan las traducciones en los distintos idiomas. Las traducciones se presentan agrupadas en secciones desplegables y cada traducción se identifica por una ```key``` única compuesta por partes separadas mediante puntos. Así, por ejemplo, se pueden agrupar todos los textos de botones en el grupo ```button``` y la colección sería algo como:
 
 * **button.accept**
 * **button.cancel**
@@ -87,7 +86,8 @@ Así, si la aplicación está instalada en el mismo servidor que el *frontend* o
 Proporciona una descarga en formato de archivo comprimido de todos los archivos exportados.
 
 #### New
-Abre un formulario para crear un nuevo término agrupando, por defecto, en el grupo *common*,
+Abre un formulario para crear un nuevo término agrupando, por defecto, en el grupo *app*.
+
 
 ### Acciones integradas
 
@@ -110,9 +110,7 @@ Al final de cada fila se muestra un icono de papelera que muestra un formulario 
 
 ## Langs
 
-El apartado **Langs** gestiona la lista de idiomas de la aplicacion. Desde aquí se pueden añadir, activar o desactivar para edición y mostrar u ocultar en la vista de traducciones principal.
-
-Los idiomas se pueden arrastrar y reordenar por filas para indicar el orden en el que deben aparecer en la página de traducciones.
+El apartado **Langs** gestiona la lista de idiomas de la aplicacion. Desde aquí se pueden añadir, activar o desactivar para edición y mostrar u ocultar en la vista del apartado **Translations**. También se pueden arrastrar y reordenar por filas para forzar el orden.
 
 ### Acciones en la barra de herramientas superior
 
@@ -141,7 +139,7 @@ Normalmente, estas rutas deberían apuntar a las carpetas que utilicen las soluc
 
 ### Env
 
-Una página informativa con datos del entorno de ejecución.
+Es una página informativa con datos del entorno de ejecución.
 
 ### Dependencias
 

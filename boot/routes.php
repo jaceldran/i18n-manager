@@ -11,7 +11,6 @@ use App\Controllers\Api\Langs as LangsApi;
 use App\Controllers\Api\Translations as TranslationsApi;
 
 // pages
-// Flight::route('/',[Home::class, 'index']);
 Flight::route('/',[Pages::class, 'home']);
 Flight::route('/readme',[Pages::class, 'readme']);
 

@@ -86,7 +86,7 @@ class CreateAction {
 	}
 
 	static showForm(evt) {
-		fetch(`/api/translations/render/create?group=${evt.target.dataset.group || 'common'}`)
+		fetch(`/api/translations/render/create?group=${evt.target.dataset.group || 'app'}`)
 			.then((response) => {
 				return response.text();
 			})

@@ -1,15 +1,15 @@
 <?php return array (
-  'es' => 
+  'es' =>
   array (
     'editable' => false,
     'visible' => true,
   ),
-  'en' => 
+  'en' =>
   array (
     'editable' => false,
     'visible' => true,
   ),
-  'pt' => 
+  'pt' =>
   array (
     'editable' => true,
     'visible' => true,

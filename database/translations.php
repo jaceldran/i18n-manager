@@ -1,71 +1,71 @@
 <?php return array (
-  'commercial.opportunities.open' => 
+  'commercial.opportunities.open' =>
   array (
     'key' => 'commercial.opportunities.open',
     'es' => 'Abiertas',
     'en' => 'Open',
-    'pt' => '22',
+    'pt' => '',
     'it' => '',
     'fr' => '',
     'de' => '',
     'group' => 'commercial.opportunities',
   ),
-  'commercial.opportunities.won' => 
+  'commercial.opportunities.won' =>
   array (
     'key' => 'commercial.opportunities.won',
     'es' => 'Ganadas',
     'en' => 'Won',
-    'pt' => '33',
+    'pt' => '',
     'it' => '',
     'fr' => '',
     'de' => '',
     'group' => 'commercial.opportunities',
   ),
-  'commercial.opportunities.lost' => 
+  'commercial.opportunities.lost' =>
   array (
     'key' => 'commercial.opportunities.lost',
     'es' => 'Perdidas',
     'en' => 'Lost',
-    'pt' => '11',
+    'pt' => '',
     'it' => '',
     'fr' => '',
     'de' => '',
     'group' => 'commercial.opportunities',
   ),
-  'commercial.activities.visit' => 
+  'commercial.activities.visit' =>
   array (
     'key' => 'commercial.activities.visit',
     'es' => 'Visita',
     'en' => 'Visit',
-    'pt' => 'cc',
+    'pt' => '',
     'it' => '',
     'fr' => '',
     'de' => '',
     'group' => 'commercial.activities',
   ),
-  'commercial.activities.phone' => 
+  'commercial.activities.phone' =>
   array (
     'key' => 'commercial.activities.phone',
     'es' => 'Llamada telefónica',
     'en' => 'Phone call',
-    'pt' => 'bb',
+    'pt' => '',
     'it' => '',
     'fr' => '',
     'de' => '',
     'group' => 'commercial.activities',
   ),
-  'commercial.activities.mail' => 
+  'commercial.activities.mail' =>
   array (
     'key' => 'commercial.activities.mail',
     'es' => 'Correo',
     'en' => 'Email',
-    'pt' => 'aa',
+    'pt' => '',
     'it' => '',
     'fr' => '',
     'de' => '',
     'group' => 'commercial.activities',
   ),
-  'legal.disclaimer' => 
+  'legal.disclaimer' =>
   array (
     'key' => 'legal.disclaimer',
     'es' => 'Descargo',
@@ -76,18 +76,18 @@
     'de' => '',
     'group' => 'legal',
   ),
-  'legal.aa' => 
+  'legal.aa' =>
   array (
     'key' => 'legal.aa',
     'es' => 'aa',
     'en' => 'aa',
-    'pt' => 'aa',
+    'pt' => '',
     'it' => '',
     'fr' => '',
     'de' => '',
     'group' => 'legal',
   ),
-  'legal.bb' => 
+  'legal.bb' =>
   array (
     'key' => 'legal.bb',
     'es' => '',
@@ -98,7 +98,7 @@
     'de' => '',
     'group' => 'legal',
   ),
-  'legal.cc' => 
+  'legal.cc' =>
   array (
     'key' => 'legal.cc',
     'es' => '',

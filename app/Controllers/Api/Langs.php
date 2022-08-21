@@ -11,6 +11,11 @@ class Langs
 	const EDITABLE = 'editable';
 	const FORM_VIEW = 'langs.form';
 
+	public static function normalizeKey(string $key): string
+	{
+		return trim(strtolower($key));
+	}
+
 	public static function order()
 	{
 		$req = Flight::request()->data;
@@ -43,7 +48,7 @@ class Langs
 	{
 		$values = Flight::request()->data;
 
-		Lang::updateOrCreate($values->key, [
+		Lang::updateOrCreate(self::normalizeKey($values->key), [
 			Lang::VISIBLE => true,
 			Lang::EDITABLE => true,
 		]);
