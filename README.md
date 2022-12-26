@@ -2,18 +2,32 @@
 
 ## Installation
 
-**i18n Manager**  utiliza almacenamiento basado en archivos de texto plano (php, json, csv...) por lo que, para ejecutar en local, no es necesario un servidor de base de datos, se puede usar simplemente un plugin como [PHP Server](https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver) para correr la aplicación PHP.
+**i18n Manager** es una aplicación web para gestionar conjuntos de paquetes
+de idiomas a través del navegador. Utiliza almacenamiento basado en archivos de
+texto plano (json, csv...) por lo que no requiere un servidor de base de datos.
 
-Para instalar las dependencias PHP.
+Para instalar las dependencias PHP, desde una consola en la raíz del proyecto:
 
 ```
 composer install
 ```
-Para instalar tailwindcss.
+Para instalar tailwindcss:
 
 ```
 npm install
 ```
+
+Para acceder por navegador se puede arrancar el servidor interno de php
+directamente desde la consola usando:
+
+```
+php -S i18n.local:80
+```
+Y luego acceder a la dirección http://i18n.local. La dirección local se
+configura en el archivo `.env`, en la variable `URL_BASE`. O bien usar un
+plugin como [PHP Server](https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver)
+o ubicando en un servidor local ya configurado como Xampp, Laragon....
+
 
 Para modificar css del proyecto en modo *develop*.
 
@@ -27,6 +41,8 @@ Para generar versión compilada y minificada del css.
 npm run prod
 ```
 
+El archivo `.env` incluya la variable de entorno `APP_URL` que por defecto es `i18n.local`.
+
 ## Translations
 
 **Translations** es la página principal donde se gestionan las traducciones en los distintos idiomas. Las traducciones se presentan agrupadas en secciones desplegables y cada traducción se identifica por una ```key``` única compuesta por partes separadas mediante puntos. Así, por ejemplo, se pueden agrupar todos los textos de botones en el grupo ```button``` y la colección sería algo como:
@@ -36,7 +52,7 @@ npm run prod
 * **button.confirm**
 * **button.submit**
 
-Otras formas de agrupación pueden referirse a apartados o secciones, con el detalle que interese.
+Otras agrupaciones de agrupación pueden referirse a apartados o secciones, con el detalle que interese.
 
 * **commercial.opportunities.open**
 * **commercial.opportunities.won**
@@ -59,8 +75,6 @@ En cualquier caso, la regla de agrupación toma la última parte de la ```key```
 	* lost
 	* open
 	* won
-
-La sintáxis de puntos ayuda a mantener las entradas organizadas ya que éstas se muestran siempre por orden alfabético y evitan los duplicados.
 
 ### Acciones en la barra de herramientas superior
 
@@ -147,11 +161,32 @@ Este es el contenido del archivo ```composer.json```, con las dependencias de so
 
 
 ```json
-{composer.json}
+{
+    "name": "zentric/i18n-manager",
+    "description": "i18n Manager",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Juan Ángel Celdrán",
+            "email": "jaceldran@gmail.com"
+        }
+    ],
+    "require": {
+        "mikecao/flight": "^2.0",
+        "eftec/bladeone": "^4.5",
+        "erusev/parsedown": "^1.7"
+    }
+}
 ```
 
 ## Resources
 
 - [Flight - An extensible microframework in PHP](https://flightphp.com/)
+- [Standalone version of Blade Template Engine](https://github.com/EFTEC/BladeOne)
+- [Better Markdown Parser in PHP](https://github.com/erusev/parsedown)
 - [Free Country Flags in SVG - Flag icons](https://flagicons.lipis.dev/)
 - [Ultralight icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/ultralight)

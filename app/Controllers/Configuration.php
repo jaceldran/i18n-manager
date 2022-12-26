@@ -4,8 +4,6 @@ namespace App\Controllers;
 
 use Flight;
 
-use App\Models\Lang;
-use App\Models\Translation;
 use App\Models\Path;
 
 class Configuration extends Controller

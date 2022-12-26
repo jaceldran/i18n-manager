@@ -16,7 +16,7 @@ final class Datafile
 	public static function readPhp(string $path, bool $force = true): array
 	{
 		if (!$force) {
-			return require $path;
+			return require_once $path;
 		}
 
 		$content = file_get_contents($path);
@@ -38,18 +38,18 @@ final class Datafile
 		return $rows;
 	}
 
-	public static function write(string $path, array $data, string $write_as = self::PHP): void
+	public static function write(string $path, array $data, string $writeAs = self::PHP): void
 	{
 		try {
-			if ($write_as === self::PHP) {
+			if ($writeAs === self::PHP) {
 				self::writePhp($path, $data);
 			}
 
-			if ($write_as === self::JSON) {
+			if ($writeAs === self::JSON) {
 				self::writeJson($path, $data);
 			}
 
-			if ($write_as === self::CSV) {
+			if ($writeAs === self::CSV) {
 				self::writeCsv($path, $data);
 			}
 		} catch (Exception $e) {

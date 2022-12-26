@@ -69,11 +69,11 @@ final class Translation
 	public static function compute(array $data): array
 	{
 		$rows = [];
-		$key_langs = array_fill_keys(Lang::keys(), '');
+		$keyLangs = array_fill_keys(Lang::keys(), '');
 
 		foreach ($data as $key => $values) {
 			$row = ['key' => $key];
-			$translations = array_merge($key_langs, $values);
+			$translations = array_merge($keyLangs, $values);
 			$row += $translations;
 			$rows[$key] = $row;
 		}
@@ -89,7 +89,7 @@ final class Translation
 
 		foreach ($langs as $lang => $config) {
 			$dictionary = array_column($data, $lang);
-			$filled = array_filter($dictionary, function($value) {
+			$filled = array_filter($dictionary, function ($value) {
 				return !empty($value);
 			} );
 			$count[$lang] = count($filled);
@@ -98,11 +98,11 @@ final class Translation
 		return $count;
 	}
 
-	public static function getGroup(string $group_id): array
+	public static function getGroup(string $groupId): array
 	{
 		$data = self::byGroup(self::all());
 
-		return $data[$group_id] ?? [];
+		return $data[$groupId] ?? [];
 	}
 
 	public static function byGroup(array $data): array
@@ -144,34 +144,32 @@ final class Translation
 	public static function export(): array
 	{
 		$exported = [];
-		$paths = Path::all(Path::COMPUTE);
+		$paths = Path::all();
 		$langs = Lang::keys();
 		$translations = self::all();
-		$translations_by_lang = self::byLang($translations);
+		$translationsByLang = self::byLang($translations);
 
-		$json_path = $paths->{Path::EXPORT_JSON};
-		$php_path = $paths->{Path::EXPORT_PHP};
-		$csv_path = $paths->{Path::EXPORT_CSV};
+		$jsonPath = $paths->{Path::EXPORT_JSON};
+		$phpPath = $paths->{Path::EXPORT_PHP};
+		$csvPath = $paths->{Path::EXPORT_CSV};
 
-		// Datafile::writeJson("$json_path/computed.php", $translations);
+		Datafile::writePhp("$phpPath/all.php", $translations);
+		Datafile::writeJson("$jsonPath/all.json", $translations);
+		Datafile::writeCsv("$csvPath/all.csv", $translations);
 
-		Datafile::writePhp("$php_path/all.php", $translations);
-		Datafile::writeJson("$json_path/all.json", $translations);
-		Datafile::writeCsv("$csv_path/all.csv", $translations);
+		$exported[$phpPath][] = "$phpPath/all.php";
+		$exported[$jsonPath][] = "$phpPath/all.json";
+		$exported[$csvPath][] = "$phpPath/all.csv";
 
-		$exported[$php_path][] = "$php_path/all.php";
-		$exported[$json_path][] = "$php_path/all.json";
-		$exported[$csv_path][] = "$php_path/all.csv";
-
-		foreach ($translations_by_lang as $lang => $data) {
+		foreach ($translationsByLang as $lang => $data) {
 			if (!in_array($lang, $langs)) {
 				continue;
 			}
 
-			Datafile::writePhp("$php_path/$lang.php", $data);
-			Datafile::writeJson("$json_path/$lang.json", $data);
-			$exported[$php_path][] = "$php_path/$lang.php";
-			$exported[$json_path][] = "$php_path/$lang.php";
+			Datafile::writePhp("$phpPath/$lang.php", $data);
+			Datafile::writeJson("$jsonPath/$lang.json", $data);
+			$exported[$phpPath][] = "$phpPath/$lang.php";
+			$exported[$jsonPath][] = "$phpPath/$lang.php";
 		}
 
 		return $exported;
@@ -183,8 +181,15 @@ final class Translation
 		$rows = Datafile::readCsv($path);
 		$keys = array_shift($rows);
 		array_shift($keys);
+
+		$countKeys = count($keys);
 		foreach ($rows as $values) {
 			$key = array_shift($values);
+
+			if (count($values) !== $countKeys) {
+				continue;
+			}
+
 			$csv[$key] = array_combine($keys, $values);
 		}
 
@@ -192,8 +197,8 @@ final class Translation
 		$data = self::all();
 
 		// preserve previous version
-		$copy_path = self::DATABASE_PATH . "/translations-" . date('Y-m-d-h-i-s') . ".php";
-		Datafile::writePhp($copy_path, $data);
+		$copyPath = self::DATABASE_PATH . "/translations-" . date('Y-m-d-h-i-s') . ".php";
+		Datafile::writePhp($copyPath, $data);
 
 		array_walk($csv, function ($values, $key) use (&$data) {
 			if (!isset($data[$key])) {

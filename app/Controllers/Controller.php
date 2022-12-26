@@ -3,7 +3,6 @@
 use Flight;
 
 use App\Services\Navigation;
-use App\Models\Path;
 
 class Controller
 {

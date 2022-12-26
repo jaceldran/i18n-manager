@@ -17,13 +17,13 @@ final class Lang // extends DatafileModel
 		$data  = Datafile::readPhp(self::PATH);
 
 		if ($filter === self::EDITABLE) {
-			$data = array_filter($data, function($lang) {
+			$data = array_filter($data, function ($lang) {
 				return $lang['editable'];
 			});
 		}
 
 		if ($filter === self::VISIBLE) {
-			$data = array_filter($data, function($lang) {
+			$data = array_filter($data, function ($lang) {
 				return $lang['visible'];
 			});
 		}
@@ -53,12 +53,12 @@ final class Lang // extends DatafileModel
 		return $data;
 	}
 
-	public static function count(string $filter_by_status=self::VISIBLE): int
+	public static function count(string $filterByStatus=self::VISIBLE): int
 	{
 		$langs = self::all();
 
-		$filtered = array_filter($langs, function($lang) use ($filter_by_status) {
-			return $lang[$filter_by_status];
+		$filtered = array_filter($langs, function($lang) use ($filterByStatus) {
+			return $lang[$filterByStatus];
 		});
 
 		return count($filtered);

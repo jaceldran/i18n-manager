@@ -1,112 +1,82 @@
 <?php return array (
-  'commercial.opportunities.open' =>
+  'button.accept' => 
   array (
-    'key' => 'commercial.opportunities.open',
-    'es' => 'Abiertas',
-    'en' => 'Open',
-    'pt' => '',
-    'it' => '',
+    'es' => 'Aceptar',
+    'en' => 'Accept',
+    'group' => 'button',
+    'key' => 'button.accept',
     'fr' => '',
-    'de' => '',
-    'group' => 'commercial.opportunities',
   ),
-  'commercial.opportunities.won' =>
+  'button.apply' => 
   array (
-    'key' => 'commercial.opportunities.won',
-    'es' => 'Ganadas',
-    'en' => 'Won',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '',
-    'group' => 'commercial.opportunities',
+    'es' => 'Aplicar',
+    'en' => 'Apply',
+    'group' => 'button',
   ),
-  'commercial.opportunities.lost' =>
+  'button.cancel' => 
   array (
-    'key' => 'commercial.opportunities.lost',
-    'es' => 'Perdidas',
-    'en' => 'Lost',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '',
-    'group' => 'commercial.opportunities',
+    'es' => 'Cancelar',
+    'en' => 'Cancel',
+    'group' => 'button',
   ),
-  'commercial.activities.visit' =>
+  'button.confirm' => 
   array (
-    'key' => 'commercial.activities.visit',
-    'es' => 'Visita',
-    'en' => 'Visit',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '',
-    'group' => 'commercial.activities',
+    'es' => 'Confirmar',
+    'en' => 'Confirm',
+    'group' => 'button',
   ),
-  'commercial.activities.phone' =>
+  'button.submit' => 
   array (
-    'key' => 'commercial.activities.phone',
-    'es' => 'Llamada telefónica',
-    'en' => 'Phone call',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '',
-    'group' => 'commercial.activities',
+    'es' => 'Enviar',
+    'en' => 'Send',
+    'group' => 'button',
   ),
-  'commercial.activities.mail' =>
+  'commercial.activities.mail' => 
   array (
-    'key' => 'commercial.activities.mail',
     'es' => 'Correo',
     'en' => 'Email',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '',
     'group' => 'commercial.activities',
   ),
-  'legal.disclaimer' =>
+  'commercial.activities.phone' => 
   array (
-    'key' => 'legal.disclaimer',
+    'es' => 'Llamada telefónica',
+    'en' => 'Phone call',
+    'group' => 'commercial.activities',
+  ),
+  'commercial.activities.visit' => 
+  array (
+    'es' => 'Visita',
+    'en' => 'Visit',
+    'group' => 'commercial.activities',
+  ),
+  'commercial.opportunities.lost' => 
+  array (
+    'es' => 'Perdidas',
+    'en' => 'Lost',
+    'group' => 'commercial.opportunities',
+  ),
+  'commercial.opportunities.open' => 
+  array (
+    'es' => 'Abiertas',
+    'en' => 'Open',
+    'group' => 'commercial.opportunities',
+  ),
+  'commercial.opportunities.won' => 
+  array (
+    'es' => 'Ganadas',
+    'en' => 'Won',
+    'group' => 'commercial.opportunities',
+  ),
+  'legal.disclaimer' => 
+  array (
     'es' => 'Descargo',
     'en' => 'Disclaimer',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '',
     'group' => 'legal',
   ),
-  'legal.aa' =>
+  'legal.lopd' => 
   array (
-    'key' => 'legal.aa',
-    'es' => 'aa',
-    'en' => 'aa',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '',
-    'group' => 'legal',
-  ),
-  'legal.bb' =>
-  array (
-    'key' => 'legal.bb',
-    'es' => '',
-    'en' => '',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '',
-    'group' => 'legal',
-  ),
-  'legal.cc' =>
-  array (
-    'key' => 'legal.cc',
-    'es' => '',
-    'en' => '',
-    'pt' => '',
-    'it' => '',
-    'fr' => '',
-    'de' => '',
+    'es' => 'LOPD',
+    'en' => 'LOPD',
     'group' => 'legal',
   ),
 );

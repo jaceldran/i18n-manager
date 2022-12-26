@@ -2,37 +2,27 @@
 
 namespace App\Models;
 
-use App\Services\Datafile;
+use Flight;
 
 final class Path
 {
-	const PATH = APP_PATH . "/database/paths.php";
-	const EXPORT_JSON = 'export_json';
-	const EXPORT_PHP = 'export_php';
-	const EXPORT_CSV = 'export_csv';
+	public const EXPORT_JSON = 'export_json';
+	public const EXPORT_PHP = 'export_php';
+	public const EXPORT_CSV = 'export_csv';
 
-	const NONE = 0;
-	const COMPUTE = 1;
-
-	public static function all(int $mode = self::NONE): object
+	public static function all(): object
 	{
-		$data  = Datafile::readPhp(self::PATH);
-
-		if ($mode === self::COMPUTE) {
-			$data = self::compute($data);
-		}
-
-		return (object) $data;
+		return (object) self::compute([
+			self::EXPORT_JSON => Flight::get('env')->EXPORT_JSON,
+			self::EXPORT_PHP => Flight::get('env')->EXPORT_PHP,
+			self::EXPORT_CSV => Flight::get('env')->EXPORT_CSV,
+		]);
 	}
 
-	public static function compute(array $data): array
+	private static function compute(array $data): array
 	{
-		foreach ($data as &$path) {
-			$path = str_replace([
-				'{APP_PATH}'
-			], [
-				APP_PATH
-			], $path);
+		foreach ($data as $index=>$value) {
+			$data[$index] = str_replace(['{APP_PATH}'], [APP_PATH], $value);
 		}
 
 		return $data;

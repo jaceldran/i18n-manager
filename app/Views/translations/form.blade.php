@@ -34,9 +34,6 @@
 
 
             @foreach ($langs as $key=>$lang)
-                {{-- @if (!$lang['visible'] && $action !== 'delete')
-                    @continue
-                @endif --}}
                 <label class="border-b p-4 flex items-center justify-center gap-2">
                     <i class="fi fi-{{ $key }}"></i>
                     <span class="text-sm font-semibold text-gray-500 uppercase">{{ $key }}</span>
@@ -53,14 +50,14 @@
 
                         <input class="border-b p-4 w-full cursor-pointer outline-none focus:font-semibold"
                             name="{{ $key }}" placeholder="{{ strtoupper($key) }}"
-                            value="{{ $translation[$key] ?? null }}" />
+                            value="{{ $translation[$key] ?? '' }}" />
                     @break
 
                     @default
                         <input type="hidden" name="group" value="{{ $translation['group'] }}" />
 
                         <input disabled class="border-b p-4 w-full cursor-not-allowed outline-none  name="{{ $key }}"
-                            value="{{ $translation[$key] ?? null }}" />
+                            value="{{ $translation[$key] ?? '' }}" />
                 @endswitch
             @endforeach
         </div>

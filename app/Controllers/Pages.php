@@ -22,9 +22,6 @@ class Pages extends Controller
 			file_get_contents(APP_PATH.'/README.md')
 		);
 
-		$composer = file_get_contents(APP_PATH.'/composer.json');
-
-		$readme = str_replace('{composer.json}', $composer, $readme);
 
 		$data['readme'] = $readme;
 
