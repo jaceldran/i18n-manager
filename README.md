@@ -152,5 +152,6 @@ Este es el contenido del archivo ```composer.json```, con las dependencias de so
 
 ## Resources
 
+- [Flight - An extensible microframework in PHP](https://flightphp.com/)
 - [Free Country Flags in SVG - Flag icons](https://flagicons.lipis.dev/)
 - [Ultralight icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/ultralight)
