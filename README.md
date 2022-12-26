@@ -183,7 +183,7 @@ Este es el contenido del archivo ```composer.json```, con las dependencias de so
 }
 ```
 
-## Resources
+## References
 
 - [Flight - An extensible microframework in PHP](https://flightphp.com/)
 - [Standalone version of Blade Template Engine](https://github.com/EFTEC/BladeOne)
