@@ -1,58 +1,76 @@
 # i18n Manager
 
+## What is i18n Manager?
+
+**i18n Manager** is a web application intended to manage language packs based on structured text files (json, csv...) so it doesn't needs a database server like MySQL or PostrgreSql.
+
 ## Installation
 
-**i18n Manager** es una aplicación web para gestionar conjuntos de paquetes
-de idiomas a través del navegador. Utiliza almacenamiento basado en archivos de
-texto plano (json, csv...) por lo que no requiere un servidor de base de datos.
-
-Para instalar las dependencias PHP, desde una consola en la raíz del proyecto:
+First, clone repository and install PHP dependencies. Open a terminal and enter:
 
 ```
+git clone https://github.com/jaceldran/i18n-manager.git
+cd i18n-manager
 composer install
 ```
-Para instalar tailwindcss:
+Then rename or copy `.env-sample` to `.env` and configure the url base and export pahts.
 
-```
-npm install
+```ini
+[environment]
+ENV=develop
+
+[app]
+URL_BASE=http://i18n.local
+
+[paths]
+EXPORT_JSON={APP_PATH}/export/json
+EXPORT_PHP={APP_PATH}/export/php
+EXPORT_CSV={APP_PATH}/export/csv
 ```
 
-Para acceder por navegador se puede arrancar el servidor interno de php
-directamente desde la consola usando:
+Finally, start the PHP Development Server from a terminal pointing to the URL_BASE set in `.env`:
 
 ```
 php -S i18n.local:80
 ```
-Y luego acceder a la dirección http://i18n.local. La dirección local se
-configura en el archivo `.env`, en la variable `URL_BASE`. O bien usar un
-plugin como [PHP Server](https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver)
-o ubicando en un servidor local ya configurado como Xampp, Laragon....
+And then open a browser and access to that address.
 
+Alternatives to PHP development Server:
 
-Para modificar css del proyecto en modo *develop*.
+- Use a plugin like [PHP Server](https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver) (Visual Studio Code) or
+[PHP Built-in server](https://www.jetbrains.com/help/phpstorm/php-built-in-web-server.html) (PHP Storm)
+- Or, if you already have a local server (Xampp, Laragon...), allocate the application in a public folder.
+
+## Development
+
+Init development mode by these instructions on a terminal:
 
 ```
+npm install
 npm run dev
 ```
 
-Para generar versión compilada y minificada del css.
+Compile css for production with:
 
 ```
 npm run prod
 ```
 
-El archivo `.env` incluya la variable de entorno `APP_URL` que por defecto es `i18n.local`.
 
-## Translations
+## Translations section
 
-**Translations** es la página principal donde se gestionan las traducciones en los distintos idiomas. Las traducciones se presentan agrupadas en secciones desplegables y cada traducción se identifica por una ```key``` única compuesta por partes separadas mediante puntos. Así, por ejemplo, se pueden agrupar todos los textos de botones en el grupo ```button``` y la colección sería algo como:
+**Translations** is the main page where translations are managed.
+The translations list is grouped into drop-down sections and each translation is
+identified by a unique `key` made up of parts separated by periods.
+So, for example, you could group all the button texts in the `button`
+group and the collection would look something like:
 
 * **button.accept**
 * **button.cancel**
 * **button.confirm**
 * **button.submit**
 
-Otras agrupaciones de agrupación pueden referirse a apartados o secciones, con el detalle que interese.
+Or grouping with more levels:
 
 * **commercial.opportunities.open**
 * **commercial.opportunities.won**
@@ -61,7 +79,9 @@ Otras agrupaciones de agrupación pueden referirse a apartados o secciones, con 
 * **commercial.activities.phone**
 * **commercial.activities.visit**
 
-En cualquier caso, la regla de agrupación toma la última parte de la ```key``` como el término principal de traducción mientras que el resto conforma la categoría para agrupar. Así, las entradas anteriores se mostrarían de esta forma:
+In either case, the grouping rule takes the last part of the `key` as the main
+translation term while the rest is the category to group on. So, the previous
+entries would be displayed in this way:
 
 * [-] **<u>button</u>**
 	* cancel
@@ -76,117 +96,107 @@ En cualquier caso, la regla de agrupación toma la última parte de la ```key```
 	* open
 	* won
 
-### Acciones en la barra de herramientas superior
+### Top bar actions
 
 #### Open - Close
-Estos botones sirven para abrir o cerrar a la vez todos los grupos de traducciones.
+Fold/unfold all translations groups.
 
 #### Import
-Permite la carga de un archivo CSV con traducciones en el formato descrito. Debe contener una columna llamada *key* y otras columnas con el código ISO del idioma y la traducción correspondiente.
+Uploads a CSV file of translations. Must contains a column named `key` and one
+column named per language ISO code.
 
 #### Export
-Genera la exportación de archivos, en las carpetas especificadas en la configuración, en formatos adecuados para su consumo por aplicaciones *frontend* o *backend*.
+Builds these files:
 
-* Un archivo ```all.php```
-* Un archivo ```all.json```
-* Un archivo ```all.csv```
-* Tantos archivos JSON como idiomas disponibles, uno por cada idioma.
-* Tantos archivos PHP como idiomas disponibles, uno por cada idioma.
+* One file named ```all.php```
+* One file named ```all.json```
+* One file named ```all.csv```
+* As many JSON files as available languages, one for each language.
+* As many PHP files as available languages, one for each language.
 
-
-Así, si la aplicación está instalada en el mismo servidor que el *frontend* o el *backend*, se pueden configurar las rutas de exportación a las carpetas que estén usando las aplicaciones para su sistema multi-idioma.
+So, if the application is installed on the same server as the *frontend* or
+the *backend*, you can configure the export paths to the folders that the
+applications are using for their multilanguage system.
 
 #### Download
-Proporciona una descarga en formato de archivo comprimido de todos los archivos exportados.
+Downloads a zip file containing the files described above.
 
 #### New
-Abre un formulario para crear un nuevo término agrupando, por defecto, en el grupo *app*.
+Opens a form to create a new term. By default in the *app* group.
 
-
-### Acciones integradas
+### Inline actions
 
 #### Create
-Cada grupo también se puede plegar/desplegar por separado haciendo clic en el nombre. En la parte derecha hay un botón con el signo + que abre un formulario para crear una nueva entrada que pone el valor inicial de la *key* indicando el grupo actual, preparada para introducir el nuevo término. Pero también se puede introducir nuevas *keys* para crear nuevos grupos.
+Each group can also be collapsed/unfolded separately by clicking on the name.
+On the right side there is a button with the + sign that opens a form to create
+a new entry that puts the initial value of the *key* indicating the current
+group, ready to introduce the new term. But you can also enter new *keys*
+to create new groups.
 
 #### Edit
-Las traducciones se pueden editar de 2 formas:
+Translations can be updated in 2 ways:
 
-##### Inmediata
-La forma inmediata de editar las traducciones es introducir directamente el valor de cada traducción en los inputs de idiomas editables. Los valores se guardan cada vez que se sale del input.
+##### Inline (individual)
+Directly enter the value of each translation in the editable inputs. This mode
+depends on the languages enabled as visible and editable in
+the *Langs* section.
 
-Este modo depende de los idiomas que estén activados como visibles y editables en el apartado de *Langs*.
-
-##### Completa
-Para editar una traducción al completo se puede pulsar la *key* correspondiente. Se abrirá un formulario que permitirá editar tanto la *key*, por si se quiere cambiar el término o asignar a otro grupo, como todos los idiomas disponibles.
+##### On form or full
+Click a *key* to open a form and edit in full mode.
 
 #### Delete
-Al final de cada fila se muestra un icono de papelera que muestra un formulario con todas las traducciones, independientemente de si el idioma está marcado como *visible* y/o *editable*.
+Click on the trash icon at the end of the row,
 
-## Langs
+## Langs section
 
-El apartado **Langs** gestiona la lista de idiomas de la aplicacion. Desde aquí se pueden añadir, activar o desactivar para edición y mostrar u ocultar en la vista del apartado **Translations**. También se pueden arrastrar y reordenar por filas para forzar el orden.
+The **Langs** section manages the list of languages of the application.
+From here they can be added, turned on or off for editing, and shown or hidden
+in the **Translations** section view. They can also be dragged and reordered
+by rows to force the order.
 
-### Acciones en la barra de herramientas superior
+### Top bar actions
 
 #### New
-Se pedirá introducir el código ISO de un idioma. Una vez enviado el formulario, se recargará la lista de idiomas con la nueva incorporación. Aunque no se identifique la bandera de país, eso no impide que se puede gestionar igualmente aunque conviene asegurarse de que se ha intoducido un [código ISO de idioma válido](https://es.wikipedia.org/wiki/ISO_639-1).
+Enter the ISO code of a language. Once the form is submitted, the language
+list will be reloaded with the new addition.
 
-### Acciones integradas
+### Inline actions
 
-#### Conmutadores Visible / Editable
-Cada idioma tiene 2 conmutadores para activar o desactivar su estado de visibilidad y edición.
+#### Visible/Editable toggle switchs
+Each language has 2 toggle switches to toggle its visibility and editing
+status on or off.
 
-Si no está activado como visible, no aparecerá en las página de traducciones.
+If not enabled as visible, it will not be on the translations page.
 
-Si no está activado como editable, aparecerá en la página de traducciones pero no se podrá editar la traducción directamente, aunque siempre se puede editar de forma global pulsando en la *key*.
+If not enabled as editable, it will be on the translations page but not
+enabled for inline edition.
 
-#### Botón de borrado
-Borrar el idioma lo elimina de la lista de idiomas gestionados pero no borra las traducciones que se hayan podido guardar previaemente. Es decir, si se borra accidentalmente un idioma que ya tenía las traducciones completadas, éstas se pueden recuperar volviendo a añadir el idioma a la lista de idiomas.
+#### Delete button
+Deleting the language removes it from the list of managed languages but does
+not delete any translations that may have been previously saved. That is, if a
+language that already had the translations completed is accidentally deleted,
+the translations can be recovered by adding the language back to the
+language list.
 
-## Configuration
+## Configuration section
 
 ### Paths
 
-Formulario para establecer las rutas de exportación de los archivos de traducciones.
+Displays the export paths of the translation files.
 
-Normalmente, estas rutas deberían apuntar a las carpetas que utilicen las soluciones *frontend* o *backend* para su gestión multi-idioma, en caso de que este gestor esté en el mismo servidor.
+In case this manager is on the same server, these paths should point to the
+folders consumed by the *frontend* or *backend* solutions for the
+multi-language management, .
 
 ### Env
 
-Es una página informativa con datos del entorno de ejecución.
+Environment information.
 
-### Dependencias
-
-Este es el contenido del archivo ```composer.json```, con las dependencias de software, que se han mantenido a los mínimos necesarios para que la aplicación sea independiente. Lo que, en teoría, significa que podría integrarse en cualquier sistema, simplemente ubicando el paquete en una carpeta de acceso público html.
-
-
-```json
-{
-    "name": "zentric/i18n-manager",
-    "description": "i18n Manager",
-    "autoload": {
-        "psr-4": {
-            "App\\": "app/"
-        }
-    },
-    "authors": [
-        {
-            "name": "Juan Ángel Celdrán",
-            "email": "jaceldran@gmail.com"
-        }
-    ],
-    "require": {
-        "mikecao/flight": "^2.0",
-        "eftec/bladeone": "^4.5",
-        "erusev/parsedown": "^1.7"
-    }
-}
-```
-
-## References
+## Dependencies
 
 - [Flight - An extensible microframework in PHP](https://flightphp.com/)
-- [Standalone version of Blade Template Engine](https://github.com/EFTEC/BladeOne)
-- [Better Markdown Parser in PHP](https://github.com/erusev/parsedown)
+- [Tailwind CSS - Build modern websites](https://tailwindcss.com/)
+- [BladeOne - Standalone version of Blade Template Engine](https://github.com/EFTEC/BladeOne)
+- [Parsedown - Better Markdown Parser in PHP](https://github.com/erusev/parsedown)
 - [Free Country Flags in SVG - Flag icons](https://flagicons.lipis.dev/)
 - [Ultralight icons created by Freepik - Flaticon](https://www.flaticon.com/free-icons/ultralight)

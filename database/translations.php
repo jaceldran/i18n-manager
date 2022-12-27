@@ -6,12 +6,14 @@
     'group' => 'button',
     'key' => 'button.accept',
     'fr' => '',
+    'de' => '',
   ),
   'button.apply' => 
   array (
     'es' => 'Aplicar',
     'en' => 'Apply',
     'group' => 'button',
+    'key' => 'button.apply',
   ),
   'button.cancel' => 
   array (
@@ -24,6 +26,7 @@
     'es' => 'Confirmar',
     'en' => 'Confirm',
     'group' => 'button',
+    'key' => 'button.confirm',
   ),
   'button.submit' => 
   array (

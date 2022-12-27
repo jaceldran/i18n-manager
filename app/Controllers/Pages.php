@@ -25,7 +25,6 @@ class Pages extends Controller
 
 		$data['readme'] = $readme;
 
-
 		Flight::render('pages.readme', $data);
 	}
 }

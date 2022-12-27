@@ -1,8 +1,6 @@
 @extends('config.index')
 
 @section('config_content')
-    <a href="https://www.flaticon.com/free-icons/ultralight" title="ultralight icons">Ultralight icons created by Freepik -
-        Flaticon</a>
     <pre>{{ print_r($env, 1) }}</pre>
     <div id="phpinfo">
         {!! $phpinfo !!}
