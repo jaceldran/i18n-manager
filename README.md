@@ -13,7 +13,8 @@ git clone https://github.com/jaceldran/i18n-manager.git
 cd i18n-manager
 composer install
 ```
-Then rename or copy `.env-sample` to `.env` and configure the url base and export pahts.
+Then rename or copy `.env-sample` to `.env` and configure the url base
+and export paths to fit your needs or just leave the defaults.
 
 ```ini
 [environment]
@@ -28,7 +29,8 @@ EXPORT_PHP={APP_PATH}/export/php
 EXPORT_CSV={APP_PATH}/export/csv
 ```
 
-Finally, start the PHP Development Server from a terminal pointing to the URL_BASE set in `.env`:
+Finally, start the PHP Development Server from a terminal pointing to
+the URL_BASE set in `.env`:
 
 ```
 php -S i18n.local:80
@@ -38,26 +40,15 @@ And then open a browser and access to that address.
 Alternatives to PHP development Server:
 
 - Use a plugin like [PHP Server](https://marketplace.visualstudio.com/items?itemName=brapifra.phpserver) (Visual Studio Code) or
-[PHP Built-in server](https://www.jetbrains.com/help/phpstorm/php-built-in-web-server.html) (PHP Storm)
-- Or, if you already have a local server (Xampp, Laragon...), allocate the application in a public folder.
+[PHP Built-in server](https://www.jetbrains.com/help/phpstorm/php-built-in-web-server.html) (PHP Storm).
+- Or, if you already have a local server (Xampp, Laragon...), allocate the
+application in a public folder.
 
-## Development
+Anyway, don't forget to set the proper URL_BASE in `.env` file.
 
-Init development mode by these instructions on a terminal:
+# Sections
 
-```
-npm install
-npm run dev
-```
-
-Compile css for production with:
-
-```
-npm run prod
-```
-
-
-## Translations section
+## Translations
 
 **Translations** is the main page where translations are managed.
 The translations list is grouped into drop-down sections and each translation is
@@ -147,12 +138,12 @@ Click a *key* to open a form and edit in full mode.
 #### Delete
 Click on the trash icon at the end of the row,
 
-## Langs section
+## Langs
 
 The **Langs** section manages the list of languages of the application.
-From here they can be added, turned on or off for editing, and shown or hidden
-in the **Translations** section view. They can also be dragged and reordered
-by rows to force the order.
+From here you can add, enable/disable for editing, and show/hide
+in the **Translations** section view. You can also drag and reorder
+by rows.
 
 ### Top bar actions
 
@@ -178,7 +169,7 @@ language that already had the translations completed is accidentally deleted,
 the translations can be recovered by adding the language back to the
 language list.
 
-## Configuration section
+## Configuration
 
 ### Paths
 
