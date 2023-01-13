@@ -169,7 +169,7 @@ final class Translation
 			Datafile::writePhp("$phpPath/$lang.php", $data);
 			Datafile::writeJson("$jsonPath/$lang.json", $data);
 			$exported[$phpPath][] = "$phpPath/$lang.php";
-			$exported[$jsonPath][] = "$phpPath/$lang.php";
+			$exported[$jsonPath][] = "$phpPath/$lang.json";
 		}
 
 		return $exported;
