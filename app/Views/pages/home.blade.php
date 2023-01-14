@@ -8,10 +8,8 @@
     <div class="h-screen flex justify-center items-center">
         <div id="intro" class="cursor-default fixed left-[25%] right-[25%]">
             <div class="container mx-auto w-auto">
-                <span style="font-family:'Fjalla One',sans-serif"
-                    class="tracking-tighter font-ser font-bold text-4xl text-amber-600">i18n</span>
-
-                <div class="text-black font-extrabold text-9xl -translate-y-8">
+                <span class="tracking-tighter font-ser font-bold text-4xl text-amber-600  font-fjalla-one">i18n</span>
+                <div class="text-black font-extrabold text-9xl -translate-x-1 -translate-y-12" style="font-family:sans-serif">
                     <span class="stroke">man<span id="button-play">a</span>ger</span>
                 </div>
             </div>
