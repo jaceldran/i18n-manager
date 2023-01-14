@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Montserrat&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Roboto:wght@100;300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,8 +9,8 @@
         font-family: 'Fjalla One';
     }
 
-    .font-montserrat {
-        font-family: Montserrat;
+    .font-inter {
+        font-family: Inter;
     }
 
     .text-accent {
@@ -31,7 +31,7 @@
 
     input[type=file]::-webkit-file-upload-button,
     input[type=file]::file-selector-button {
-        @apply text-white bg-gray-700 hover: bg-gray-600 font-normal cursor-pointer border-0 py-2.5 pl-8 pr-4 text-base;
+        @apply text-white bg-gray-700 hover:bg-gray-600 font-normal cursor-pointer border-0 py-2.5 pl-8 pr-4 text-base;
         margin-inline-start: -1rem;
         margin-inline-end: 1rem;
     }
