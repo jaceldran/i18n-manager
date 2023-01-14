@@ -6,7 +6,7 @@
 /*global
  screen, window, navigator
  */
- (function (exports) {
+(function (exports) {
     'use strict';
 
     var BOTS = [
@@ -1019,10 +1019,10 @@
             pref = 'b';
             var tmpUuid = du.hashMD5(dua.join(':'));
             var uuid = [
-                tmpUuid.slice(0,8),
-                tmpUuid.slice(8,12),
-                '4' + tmpUuid.slice(12,15),
-                pref + tmpUuid.slice(15,18),
+                tmpUuid.slice(0, 8),
+                tmpUuid.slice(8, 12),
+                '4' + tmpUuid.slice(12, 15),
+                pref + tmpUuid.slice(15, 18),
                 tmpUuid.slice(20)
             ];
             return uuid.join('-');

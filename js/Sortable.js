@@ -6,9 +6,10 @@
  */
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
-  typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global.Sortable = factory());
-}(this, (function () { 'use strict';
+    typeof define === 'function' && define.amd ? define(factory) :
+      (global = global || self, global.Sortable = factory());
+}(this, (function () {
+  'use strict';
 
   function ownKeys(object, enumerableOnly) {
     var keys = Object.keys(object);
@@ -195,10 +196,10 @@
   }
 
   function matches(
-  /**HTMLElement*/
-  el,
-  /**String*/
-  selector) {
+    /**HTMLElement*/
+    el,
+    /**String*/
+    selector) {
     if (!selector) return;
     selector[0] === '>' && (selector = selector.substring(1));
 
@@ -224,12 +225,12 @@
   }
 
   function closest(
-  /**HTMLElement*/
-  el,
-  /**String*/
-  selector,
-  /**HTMLElement*/
-  ctx, includeCTX) {
+    /**HTMLElement*/
+    el,
+    /**String*/
+    selector,
+    /**HTMLElement*/
+    ctx, includeCTX) {
     if (el) {
       ctx = ctx || document;
 
@@ -307,8 +308,8 @@
   function find(ctx, tagName, iterator) {
     if (ctx) {
       var list = ctx.getElementsByTagName(tagName),
-          i = 0,
-          n = list.length;
+        i = 0,
+        n = list.length;
 
       if (iterator) {
         for (; i < n; i++) {
@@ -388,8 +389,8 @@
     if (undoScale && el !== window) {
       // Adjust for scale()
       var elMatrix = matrix(container || el),
-          scaleX = elMatrix && elMatrix.a,
-          scaleY = elMatrix && elMatrix.d;
+        scaleX = elMatrix && elMatrix.a,
+        scaleY = elMatrix && elMatrix.d;
 
       if (elMatrix) {
         top /= scaleY;
@@ -421,12 +422,12 @@
 
   function isScrolledPast(el, elSide, parentSide) {
     var parent = getParentAutoScrollElement(el, true),
-        elSideVal = getRect(el)[elSide];
+      elSideVal = getRect(el)[elSide];
     /* jshint boss:true */
 
     while (parent) {
       var parentSideVal = getRect(parent)[parentSide],
-          visible = void 0;
+        visible = void 0;
 
       if (parentSide === 'top' || parentSide === 'left') {
         visible = elSideVal >= parentSideVal;
@@ -453,8 +454,8 @@
 
   function getChild(el, childNum, options, includeDragEl) {
     var currentChild = 0,
-        i = 0,
-        children = el.children;
+      i = 0,
+      children = el.children;
 
     while (i < children.length) {
       if (children[i].style.display !== 'none' && children[i] !== Sortable.ghost && (includeDragEl || children[i] !== Sortable.dragged) && closest(children[i], options.draggable, el, false)) {
@@ -523,14 +524,14 @@
 
   function getRelativeScrollOffset(el) {
     var offsetLeft = 0,
-        offsetTop = 0,
-        winScroller = getWindowScrollingElement();
+      offsetTop = 0,
+      winScroller = getWindowScrollingElement();
 
     if (el) {
       do {
         var elMatrix = matrix(el),
-            scaleX = elMatrix.a,
-            scaleY = elMatrix.d;
+          scaleX = elMatrix.a,
+          scaleY = elMatrix.d;
         offsetLeft += el.scrollLeft * scaleX;
         offsetTop += el.scrollTop * scaleY;
       } while (el !== winScroller && (el = el.parentNode));
@@ -604,7 +605,7 @@
     return function () {
       if (!_throttleTimeout) {
         var args = arguments,
-            _this = this;
+          _this = this;
 
         if (args.length === 1) {
           callback.call(_this, args[0]);
@@ -662,7 +663,7 @@
 
   function AnimationStateManager() {
     var animationStates = [],
-        animationCallbackId;
+      animationCallbackId;
     return {
       captureAnimationState: function captureAnimationState() {
         animationStates = [];
@@ -708,16 +709,16 @@
         }
 
         var animating = false,
-            animationTime = 0;
+          animationTime = 0;
         animationStates.forEach(function (state) {
           var time = 0,
-              target = state.target,
-              fromRect = target.fromRect,
-              toRect = getRect(target),
-              prevFromRect = target.prevFromRect,
-              prevToRect = target.prevToRect,
-              animatingRect = state.rect,
-              targetMatrix = matrix(target, true);
+            target = state.target,
+            fromRect = target.fromRect,
+            toRect = getRect(target),
+            prevFromRect = target.prevFromRect,
+            prevToRect = target.prevToRect,
+            animatingRect = state.rect,
+            targetMatrix = matrix(target, true);
 
           if (targetMatrix) {
             // Compensate for current animation
@@ -730,7 +731,7 @@
           if (target.thisAnimationDuration) {
             // Could also check if animatingRect is between fromRect and toRect
             if (isRectEqual(prevFromRect, toRect) && !isRectEqual(fromRect, toRect) && // Make sure animatingRect is on line between toRect & fromRect
-            (animatingRect.top - toRect.top) / (animatingRect.left - toRect.left) === (fromRect.top - toRect.top) / (fromRect.left - toRect.left)) {
+              (animatingRect.top - toRect.top) / (animatingRect.left - toRect.left) === (fromRect.top - toRect.top) / (fromRect.left - toRect.left)) {
               // If returning to same place as started from animation and on same axis
               time = calculateRealTime(animatingRect, prevFromRect, prevToRect, _this.options);
             }
@@ -779,10 +780,10 @@
           css(target, 'transition', '');
           css(target, 'transform', '');
           var elMatrix = matrix(this.el),
-              scaleX = elMatrix && elMatrix.a,
-              scaleY = elMatrix && elMatrix.d,
-              translateX = (currentRect.left - toRect.left) / (scaleX || 1),
-              translateY = (currentRect.top - toRect.top) / (scaleY || 1);
+            scaleX = elMatrix && elMatrix.a,
+            scaleY = elMatrix && elMatrix.d,
+            translateX = (currentRect.left - toRect.left) / (scaleX || 1),
+            translateY = (currentRect.top - toRect.top) / (scaleY || 1);
           target.animatingX = !!translateX;
           target.animatingY = !!translateY;
           css(target, 'transform', 'translate3d(' + translateX + 'px,' + translateY + 'px,0)');
@@ -905,24 +906,24 @@
 
   function dispatchEvent(_ref) {
     var sortable = _ref.sortable,
-        rootEl = _ref.rootEl,
-        name = _ref.name,
-        targetEl = _ref.targetEl,
-        cloneEl = _ref.cloneEl,
-        toEl = _ref.toEl,
-        fromEl = _ref.fromEl,
-        oldIndex = _ref.oldIndex,
-        newIndex = _ref.newIndex,
-        oldDraggableIndex = _ref.oldDraggableIndex,
-        newDraggableIndex = _ref.newDraggableIndex,
-        originalEvent = _ref.originalEvent,
-        putSortable = _ref.putSortable,
-        extraEventProperties = _ref.extraEventProperties;
+      rootEl = _ref.rootEl,
+      name = _ref.name,
+      targetEl = _ref.targetEl,
+      cloneEl = _ref.cloneEl,
+      toEl = _ref.toEl,
+      fromEl = _ref.fromEl,
+      oldIndex = _ref.oldIndex,
+      newIndex = _ref.newIndex,
+      oldDraggableIndex = _ref.oldDraggableIndex,
+      newDraggableIndex = _ref.newDraggableIndex,
+      originalEvent = _ref.originalEvent,
+      putSortable = _ref.putSortable,
+      extraEventProperties = _ref.extraEventProperties;
     sortable = sortable || rootEl && rootEl[expando];
     if (!sortable) return;
     var evt,
-        options = sortable.options,
-        onName = 'on' + name.charAt(0).toUpperCase() + name.substr(1); // Support for new CustomEvent feature
+      options = sortable.options,
+      onName = 'on' + name.charAt(0).toUpperCase() + name.substr(1); // Support for new CustomEvent feature
 
     if (window.CustomEvent && !IE11OrLess && !Edge) {
       evt = new CustomEvent(name, {
@@ -964,8 +965,8 @@
 
   var pluginEvent = function pluginEvent(eventName, sortable) {
     var _ref = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : {},
-        originalEvent = _ref.evt,
-        data = _objectWithoutProperties(_ref, _excluded);
+      originalEvent = _ref.evt,
+      data = _objectWithoutProperties(_ref, _excluded);
 
     PluginManager.pluginEvent.bind(Sortable)(eventName, sortable, _objectSpread2({
       dragEl: dragEl,
@@ -1016,60 +1017,60 @@
   }
 
   var dragEl,
-      parentEl,
-      ghostEl,
-      rootEl,
-      nextEl,
-      lastDownEl,
-      cloneEl,
-      cloneHidden,
-      oldIndex,
-      newIndex,
-      oldDraggableIndex,
-      newDraggableIndex,
-      activeGroup,
-      putSortable,
-      awaitingDragStarted = false,
-      ignoreNextClick = false,
-      sortables = [],
-      tapEvt,
-      touchEvt,
-      lastDx,
-      lastDy,
-      tapDistanceLeft,
-      tapDistanceTop,
-      moved,
-      lastTarget,
-      lastDirection,
-      pastFirstInvertThresh = false,
-      isCircumstantialInvert = false,
-      targetMoveDistance,
-      // For positioning ghost absolutely
-  ghostRelativeParent,
-      ghostRelativeParentInitialScroll = [],
-      // (left, top)
-  _silent = false,
-      savedInputChecked = [];
+    parentEl,
+    ghostEl,
+    rootEl,
+    nextEl,
+    lastDownEl,
+    cloneEl,
+    cloneHidden,
+    oldIndex,
+    newIndex,
+    oldDraggableIndex,
+    newDraggableIndex,
+    activeGroup,
+    putSortable,
+    awaitingDragStarted = false,
+    ignoreNextClick = false,
+    sortables = [],
+    tapEvt,
+    touchEvt,
+    lastDx,
+    lastDy,
+    tapDistanceLeft,
+    tapDistanceTop,
+    moved,
+    lastTarget,
+    lastDirection,
+    pastFirstInvertThresh = false,
+    isCircumstantialInvert = false,
+    targetMoveDistance,
+    // For positioning ghost absolutely
+    ghostRelativeParent,
+    ghostRelativeParentInitialScroll = [],
+    // (left, top)
+    _silent = false,
+    savedInputChecked = [];
   /** @const */
 
   var documentExists = typeof document !== 'undefined',
-      PositionGhostAbsolutely = IOS,
-      CSSFloatProperty = Edge || IE11OrLess ? 'cssFloat' : 'float',
-      // This will not pass for IE9, because IE9 DnD only works on anchors
-  supportDraggable = documentExists && !ChromeForAndroid && !IOS && 'draggable' in document.createElement('div'),
-      supportCssPointerEvents = function () {
-    if (!documentExists) return; // false when <= IE11
+    PositionGhostAbsolutely = IOS,
+    CSSFloatProperty = Edge || IE11OrLess ? 'cssFloat' : 'float',
+    // This will not pass for IE9, because IE9 DnD only works on anchors
+    supportDraggable = documentExists && !ChromeForAndroid && !IOS && 'draggable' in document.createElement('div'),
+    supportCssPointerEvents = function () {
+      if (!documentExists) return; // false when <= IE11
 
-    if (IE11OrLess) {
-      return false;
-    }
+      if (IE11OrLess) {
+        return false;
+      }
 
-    var el = document.createElement('x');
-    el.style.cssText = 'pointer-events:auto';
-    return el.style.pointerEvents === 'auto';
-  }(),
-      _detectDirection = function _detectDirection(el, options) {
-    var elCSS = css(el),
+      var el = document.createElement('x');
+      el.style.cssText = 'pointer-events:auto';
+      return el.style.pointerEvents === 'auto';
+    }(),
+    _detectDirection = function _detectDirection(el, options) {
+      var elCSS = css(el),
         elWidth = parseInt(elCSS.width) - parseInt(elCSS.paddingLeft) - parseInt(elCSS.paddingRight) - parseInt(elCSS.borderLeftWidth) - parseInt(elCSS.borderRightWidth),
         child1 = getChild(el, 0, options),
         child2 = getChild(el, 1, options),
@@ -1078,99 +1079,99 @@
         firstChildWidth = firstChildCSS && parseInt(firstChildCSS.marginLeft) + parseInt(firstChildCSS.marginRight) + getRect(child1).width,
         secondChildWidth = secondChildCSS && parseInt(secondChildCSS.marginLeft) + parseInt(secondChildCSS.marginRight) + getRect(child2).width;
 
-    if (elCSS.display === 'flex') {
-      return elCSS.flexDirection === 'column' || elCSS.flexDirection === 'column-reverse' ? 'vertical' : 'horizontal';
-    }
+      if (elCSS.display === 'flex') {
+        return elCSS.flexDirection === 'column' || elCSS.flexDirection === 'column-reverse' ? 'vertical' : 'horizontal';
+      }
 
-    if (elCSS.display === 'grid') {
-      return elCSS.gridTemplateColumns.split(' ').length <= 1 ? 'vertical' : 'horizontal';
-    }
+      if (elCSS.display === 'grid') {
+        return elCSS.gridTemplateColumns.split(' ').length <= 1 ? 'vertical' : 'horizontal';
+      }
 
-    if (child1 && firstChildCSS["float"] && firstChildCSS["float"] !== 'none') {
-      var touchingSideChild2 = firstChildCSS["float"] === 'left' ? 'left' : 'right';
-      return child2 && (secondChildCSS.clear === 'both' || secondChildCSS.clear === touchingSideChild2) ? 'vertical' : 'horizontal';
-    }
+      if (child1 && firstChildCSS["float"] && firstChildCSS["float"] !== 'none') {
+        var touchingSideChild2 = firstChildCSS["float"] === 'left' ? 'left' : 'right';
+        return child2 && (secondChildCSS.clear === 'both' || secondChildCSS.clear === touchingSideChild2) ? 'vertical' : 'horizontal';
+      }
 
-    return child1 && (firstChildCSS.display === 'block' || firstChildCSS.display === 'flex' || firstChildCSS.display === 'table' || firstChildCSS.display === 'grid' || firstChildWidth >= elWidth && elCSS[CSSFloatProperty] === 'none' || child2 && elCSS[CSSFloatProperty] === 'none' && firstChildWidth + secondChildWidth > elWidth) ? 'vertical' : 'horizontal';
-  },
-      _dragElInRowColumn = function _dragElInRowColumn(dragRect, targetRect, vertical) {
-    var dragElS1Opp = vertical ? dragRect.left : dragRect.top,
+      return child1 && (firstChildCSS.display === 'block' || firstChildCSS.display === 'flex' || firstChildCSS.display === 'table' || firstChildCSS.display === 'grid' || firstChildWidth >= elWidth && elCSS[CSSFloatProperty] === 'none' || child2 && elCSS[CSSFloatProperty] === 'none' && firstChildWidth + secondChildWidth > elWidth) ? 'vertical' : 'horizontal';
+    },
+    _dragElInRowColumn = function _dragElInRowColumn(dragRect, targetRect, vertical) {
+      var dragElS1Opp = vertical ? dragRect.left : dragRect.top,
         dragElS2Opp = vertical ? dragRect.right : dragRect.bottom,
         dragElOppLength = vertical ? dragRect.width : dragRect.height,
         targetS1Opp = vertical ? targetRect.left : targetRect.top,
         targetS2Opp = vertical ? targetRect.right : targetRect.bottom,
         targetOppLength = vertical ? targetRect.width : targetRect.height;
-    return dragElS1Opp === targetS1Opp || dragElS2Opp === targetS2Opp || dragElS1Opp + dragElOppLength / 2 === targetS1Opp + targetOppLength / 2;
-  },
+      return dragElS1Opp === targetS1Opp || dragElS2Opp === targetS2Opp || dragElS1Opp + dragElOppLength / 2 === targetS1Opp + targetOppLength / 2;
+    },
 
-  /**
-   * Detects first nearest empty sortable to X and Y position using emptyInsertThreshold.
-   * @param  {Number} x      X position
-   * @param  {Number} y      Y position
-   * @return {HTMLElement}   Element of the first found nearest Sortable
-   */
-  _detectNearestEmptySortable = function _detectNearestEmptySortable(x, y) {
-    var ret;
-    sortables.some(function (sortable) {
-      var threshold = sortable[expando].options.emptyInsertThreshold;
-      if (!threshold || lastChild(sortable)) return;
-      var rect = getRect(sortable),
+    /**
+     * Detects first nearest empty sortable to X and Y position using emptyInsertThreshold.
+     * @param  {Number} x      X position
+     * @param  {Number} y      Y position
+     * @return {HTMLElement}   Element of the first found nearest Sortable
+     */
+    _detectNearestEmptySortable = function _detectNearestEmptySortable(x, y) {
+      var ret;
+      sortables.some(function (sortable) {
+        var threshold = sortable[expando].options.emptyInsertThreshold;
+        if (!threshold || lastChild(sortable)) return;
+        var rect = getRect(sortable),
           insideHorizontally = x >= rect.left - threshold && x <= rect.right + threshold,
           insideVertically = y >= rect.top - threshold && y <= rect.bottom + threshold;
 
-      if (insideHorizontally && insideVertically) {
-        return ret = sortable;
-      }
-    });
-    return ret;
-  },
-      _prepareGroup = function _prepareGroup(options) {
-    function toFn(value, pull) {
-      return function (to, from, dragEl, evt) {
-        var sameGroup = to.options.group.name && from.options.group.name && to.options.group.name === from.options.group.name;
-
-        if (value == null && (pull || sameGroup)) {
-          // Default pull value
-          // Default pull and put value if same group
-          return true;
-        } else if (value == null || value === false) {
-          return false;
-        } else if (pull && value === 'clone') {
-          return value;
-        } else if (typeof value === 'function') {
-          return toFn(value(to, from, dragEl, evt), pull)(to, from, dragEl, evt);
-        } else {
-          var otherGroup = (pull ? to : from).options.group.name;
-          return value === true || typeof value === 'string' && value === otherGroup || value.join && value.indexOf(otherGroup) > -1;
+        if (insideHorizontally && insideVertically) {
+          return ret = sortable;
         }
-      };
-    }
+      });
+      return ret;
+    },
+    _prepareGroup = function _prepareGroup(options) {
+      function toFn(value, pull) {
+        return function (to, from, dragEl, evt) {
+          var sameGroup = to.options.group.name && from.options.group.name && to.options.group.name === from.options.group.name;
 
-    var group = {};
-    var originalGroup = options.group;
+          if (value == null && (pull || sameGroup)) {
+            // Default pull value
+            // Default pull and put value if same group
+            return true;
+          } else if (value == null || value === false) {
+            return false;
+          } else if (pull && value === 'clone') {
+            return value;
+          } else if (typeof value === 'function') {
+            return toFn(value(to, from, dragEl, evt), pull)(to, from, dragEl, evt);
+          } else {
+            var otherGroup = (pull ? to : from).options.group.name;
+            return value === true || typeof value === 'string' && value === otherGroup || value.join && value.indexOf(otherGroup) > -1;
+          }
+        };
+      }
 
-    if (!originalGroup || _typeof(originalGroup) != 'object') {
-      originalGroup = {
-        name: originalGroup
-      };
-    }
+      var group = {};
+      var originalGroup = options.group;
 
-    group.name = originalGroup.name;
-    group.checkPull = toFn(originalGroup.pull, true);
-    group.checkPut = toFn(originalGroup.put);
-    group.revertClone = originalGroup.revertClone;
-    options.group = group;
-  },
-      _hideGhostForTarget = function _hideGhostForTarget() {
-    if (!supportCssPointerEvents && ghostEl) {
-      css(ghostEl, 'display', 'none');
-    }
-  },
-      _unhideGhostForTarget = function _unhideGhostForTarget() {
-    if (!supportCssPointerEvents && ghostEl) {
-      css(ghostEl, 'display', '');
-    }
-  }; // #1184 fix - Prevent click event on fallback if dragged but item not changed position
+      if (!originalGroup || _typeof(originalGroup) != 'object') {
+        originalGroup = {
+          name: originalGroup
+        };
+      }
+
+      group.name = originalGroup.name;
+      group.checkPull = toFn(originalGroup.pull, true);
+      group.checkPut = toFn(originalGroup.put);
+      group.revertClone = originalGroup.revertClone;
+      options.group = group;
+    },
+    _hideGhostForTarget = function _hideGhostForTarget() {
+      if (!supportCssPointerEvents && ghostEl) {
+        css(ghostEl, 'display', 'none');
+      }
+    },
+    _unhideGhostForTarget = function _unhideGhostForTarget() {
+      if (!supportCssPointerEvents && ghostEl) {
+        css(ghostEl, 'display', '');
+      }
+    }; // #1184 fix - Prevent click event on fallback if dragged but item not changed position
 
 
   if (documentExists && !ChromeForAndroid) {
@@ -1333,19 +1334,19 @@
       return typeof this.options.direction === 'function' ? this.options.direction.call(this, evt, target, dragEl) : this.options.direction;
     },
     _onTapStart: function _onTapStart(
-    /** Event|TouchEvent */
-    evt) {
+      /** Event|TouchEvent */
+      evt) {
       if (!evt.cancelable) return;
 
       var _this = this,
-          el = this.el,
-          options = this.options,
-          preventOnFilter = options.preventOnFilter,
-          type = evt.type,
-          touch = evt.touches && evt.touches[0] || evt.pointerType && evt.pointerType === 'touch' && evt,
-          target = (touch || evt).target,
-          originalTarget = evt.target.shadowRoot && (evt.path && evt.path[0] || evt.composedPath && evt.composedPath()[0]) || target,
-          filter = options.filter;
+        el = this.el,
+        options = this.options,
+        preventOnFilter = options.preventOnFilter,
+        type = evt.type,
+        touch = evt.touches && evt.touches[0] || evt.pointerType && evt.pointerType === 'touch' && evt,
+        target = (touch || evt).target,
+        originalTarget = evt.target.shadowRoot && (evt.path && evt.path[0] || evt.composedPath && evt.composedPath()[0]) || target,
+        filter = options.filter;
 
       _saveInputCheckedState(el); // Don't trigger start event when an element is been dragged, otherwise the evt.oldindex always wrong when set option.group.
 
@@ -1435,17 +1436,17 @@
       this._prepareDragStart(evt, touch, target);
     },
     _prepareDragStart: function _prepareDragStart(
-    /** Event */
-    evt,
-    /** Touch */
-    touch,
-    /** HTMLElement */
-    target) {
+      /** Event */
+      evt,
+      /** Touch */
+      touch,
+      /** HTMLElement */
+      target) {
       var _this = this,
-          el = _this.el,
-          options = _this.options,
-          ownerDocument = el.ownerDocument,
-          dragStartFn;
+        el = _this.el,
+        options = _this.options,
+        ownerDocument = el.ownerDocument,
+        dragStartFn;
 
       if (target && !dragEl && target.parentNode === el) {
         var dragRect = getRect(target);
@@ -1543,8 +1544,8 @@
       }
     },
     _delayedDragTouchMoveHandler: function _delayedDragTouchMoveHandler(
-    /** TouchEvent|PointerEvent **/
-    e) {
+      /** TouchEvent|PointerEvent **/
+      e) {
       var touch = e.touches ? e.touches[0] : e;
 
       if (Math.max(Math.abs(touch.clientX - this._lastX), Math.abs(touch.clientY - this._lastY)) >= Math.floor(this.options.touchStartThreshold / (this.nativeDraggable && window.devicePixelRatio || 1))) {
@@ -1567,10 +1568,10 @@
       off(ownerDocument, 'pointermove', this._delayedDragTouchMoveHandler);
     },
     _triggerDragStart: function _triggerDragStart(
-    /** Event */
-    evt,
-    /** Touch */
-    touch) {
+      /** Event */
+      evt,
+      /** Touch */
+      touch) {
       touch = touch || evt.pointerType == 'touch' && evt;
 
       if (!this.nativeDraggable || touch) {
@@ -1595,7 +1596,7 @@
         } else {
           window.getSelection().removeAllRanges();
         }
-      } catch (err) {}
+      } catch (err) { }
     },
     _dragStarted: function _dragStarted(fallback, evt) {
 
@@ -1670,19 +1671,19 @@
       }
     },
     _onTouchMove: function _onTouchMove(
-    /**TouchEvent*/
-    evt) {
+      /**TouchEvent*/
+      evt) {
       if (tapEvt) {
         var options = this.options,
-            fallbackTolerance = options.fallbackTolerance,
-            fallbackOffset = options.fallbackOffset,
-            touch = evt.touches ? evt.touches[0] : evt,
-            ghostMatrix = ghostEl && matrix(ghostEl, true),
-            scaleX = ghostEl && ghostMatrix && ghostMatrix.a,
-            scaleY = ghostEl && ghostMatrix && ghostMatrix.d,
-            relativeScrollOffset = PositionGhostAbsolutely && ghostRelativeParent && getRelativeScrollOffset(ghostRelativeParent),
-            dx = (touch.clientX - tapEvt.clientX + fallbackOffset.x) / (scaleX || 1) + (relativeScrollOffset ? relativeScrollOffset[0] - ghostRelativeParentInitialScroll[0] : 0) / (scaleX || 1),
-            dy = (touch.clientY - tapEvt.clientY + fallbackOffset.y) / (scaleY || 1) + (relativeScrollOffset ? relativeScrollOffset[1] - ghostRelativeParentInitialScroll[1] : 0) / (scaleY || 1); // only set the status to dragging, when we are actually dragging
+          fallbackTolerance = options.fallbackTolerance,
+          fallbackOffset = options.fallbackOffset,
+          touch = evt.touches ? evt.touches[0] : evt,
+          ghostMatrix = ghostEl && matrix(ghostEl, true),
+          scaleX = ghostEl && ghostMatrix && ghostMatrix.a,
+          scaleY = ghostEl && ghostMatrix && ghostMatrix.d,
+          relativeScrollOffset = PositionGhostAbsolutely && ghostRelativeParent && getRelativeScrollOffset(ghostRelativeParent),
+          dx = (touch.clientX - tapEvt.clientX + fallbackOffset.x) / (scaleX || 1) + (relativeScrollOffset ? relativeScrollOffset[0] - ghostRelativeParentInitialScroll[0] : 0) / (scaleX || 1),
+          dy = (touch.clientY - tapEvt.clientY + fallbackOffset.y) / (scaleY || 1) + (relativeScrollOffset ? relativeScrollOffset[1] - ghostRelativeParentInitialScroll[1] : 0) / (scaleY || 1); // only set the status to dragging, when we are actually dragging
 
         if (!Sortable.active && !awaitingDragStarted) {
           if (fallbackTolerance && Math.max(Math.abs(touch.clientX - this._lastX), Math.abs(touch.clientY - this._lastY)) < fallbackTolerance) {
@@ -1725,8 +1726,8 @@
       // Not being adjusted for
       if (!ghostEl) {
         var container = this.options.fallbackOnBody ? document.body : rootEl,
-            rect = getRect(dragEl, true, PositionGhostAbsolutely, true, container),
-            options = this.options; // Position absolutely
+          rect = getRect(dragEl, true, PositionGhostAbsolutely, true, container),
+          options = this.options; // Position absolutely
 
         if (PositionGhostAbsolutely) {
           // Get relatively positioned parent
@@ -1770,10 +1771,10 @@
       }
     },
     _onDragStart: function _onDragStart(
-    /**Event*/
-    evt,
-    /**boolean*/
-    fallback) {
+      /**Event*/
+      evt,
+      /**boolean*/
+      fallback) {
       var _this = this;
 
       var dataTransfer = evt.dataTransfer;
@@ -1850,22 +1851,22 @@
     },
     // Returns true - if no further action is needed (either inserted or another condition)
     _onDragOver: function _onDragOver(
-    /**Event*/
-    evt) {
+      /**Event*/
+      evt) {
       var el = this.el,
-          target = evt.target,
-          dragRect,
-          targetRect,
-          revert,
-          options = this.options,
-          group = options.group,
-          activeSortable = Sortable.active,
-          isOwner = activeGroup === group,
-          canSort = options.sort,
-          fromSortable = putSortable || activeSortable,
-          vertical,
-          _this = this,
-          completedFired = false;
+        target = evt.target,
+        dragRect,
+        targetRect,
+        revert,
+        options = this.options,
+        group = options.group,
+        activeSortable = Sortable.active,
+        isOwner = activeGroup === group,
+        canSort = options.sort,
+        fromSortable = putSortable || activeSortable,
+        vertical,
+        _this = this,
+        completedFired = false;
 
       if (_silent) return;
 
@@ -1988,7 +1989,7 @@
       ignoreNextClick = false;
 
       if (activeSortable && !options.disabled && (isOwner ? canSort || (revert = parentEl !== rootEl) // Reverting item into the original list
-      : putSortable === this || (this.lastPutMode = activeGroup.checkPull(this, activeSortable, dragEl, evt)) && group.checkPut(this, activeSortable, dragEl, evt))) {
+        : putSortable === this || (this.lastPutMode = activeGroup.checkPull(this, activeSortable, dragEl, evt)) && group.checkPut(this, activeSortable, dragEl, evt))) {
         vertical = this._getDirection(evt, target) === 'vertical';
         dragRect = getRect(dragEl);
         dragOverEvent('dragOverValid');
@@ -2069,12 +2070,12 @@
         } else if (target.parentNode === el) {
           targetRect = getRect(target);
           var direction = 0,
-              targetBeforeFirstSwap,
-              differentLevel = dragEl.parentNode !== el,
-              differentRowCol = !_dragElInRowColumn(dragEl.animated && dragEl.toRect || dragRect, target.animated && target.toRect || targetRect, vertical),
-              side1 = vertical ? 'top' : 'left',
-              scrolledPastTop = isScrolledPast(target, 'top', 'top') || isScrolledPast(dragEl, 'top', 'top'),
-              scrollBefore = scrolledPastTop ? scrolledPastTop.scrollTop : void 0;
+            targetBeforeFirstSwap,
+            differentLevel = dragEl.parentNode !== el,
+            differentRowCol = !_dragElInRowColumn(dragEl.animated && dragEl.toRect || dragRect, target.animated && target.toRect || targetRect, vertical),
+            side1 = vertical ? 'top' : 'left',
+            scrolledPastTop = isScrolledPast(target, 'top', 'top') || isScrolledPast(dragEl, 'top', 'top'),
+            scrollBefore = scrolledPastTop ? scrolledPastTop.scrollTop : void 0;
 
           if (lastTarget !== target) {
             targetBeforeFirstSwap = targetRect[side1];
@@ -2103,7 +2104,7 @@
           lastTarget = target;
           lastDirection = direction;
           var nextSibling = target.nextElementSibling,
-              after = false;
+            after = false;
           after = direction === 1;
 
           var moveVector = _onMove(rootEl, el, dragEl, dragRect, target, targetRect, evt, after);
@@ -2165,10 +2166,10 @@
       off(document, 'selectstart', this);
     },
     _onDrop: function _onDrop(
-    /**Event*/
-    evt) {
+      /**Event*/
+      evt) {
       var el = this.el,
-          options = this.options; // Get the index of the dragged element within its parent
+        options = this.options; // Get the index of the dragged element within its parent
 
       newIndex = index(dragEl);
       newDraggableIndex = index(dragEl, options.draggable);
@@ -2339,8 +2340,8 @@
       savedInputChecked.length = lastDx = lastDy = 0;
     },
     handleEvent: function handleEvent(
-    /**Event*/
-    evt) {
+      /**Event*/
+      evt) {
       switch (evt.type) {
         case 'drop':
         case 'dragend':
@@ -2370,11 +2371,11 @@
      */
     toArray: function toArray() {
       var order = [],
-          el,
-          children = this.el.children,
-          i = 0,
-          n = children.length,
-          options = this.options;
+        el,
+        children = this.el.children,
+        i = 0,
+        n = children.length,
+        options = this.options;
 
       for (; i < n; i++) {
         el = children[i];
@@ -2393,7 +2394,7 @@
      */
     sort: function sort(order, useAnimation) {
       var items = {},
-          rootEl = this.el;
+        rootEl = this.el;
       this.toArray().forEach(function (id, i) {
         var el = rootEl.children[i];
 
@@ -2526,8 +2527,8 @@
   };
 
   function _globalDragOver(
-  /**Event*/
-  evt) {
+    /**Event*/
+    evt) {
     if (evt.dataTransfer) {
       evt.dataTransfer.dropEffect = 'move';
     }
@@ -2537,9 +2538,9 @@
 
   function _onMove(fromEl, toEl, dragEl, dragRect, targetEl, targetRect, originalEvent, willInsertAfter) {
     var evt,
-        sortable = fromEl[expando],
-        onMoveFn = sortable.options.onMove,
-        retVal; // Support for new CustomEvent feature
+      sortable = fromEl[expando],
+      onMoveFn = sortable.options.onMove,
+      retVal; // Support for new CustomEvent feature
 
     if (window.CustomEvent && !IE11OrLess && !Edge) {
       evt = new CustomEvent('move', {
@@ -2590,10 +2591,10 @@
 
   function _getSwapDirection(evt, target, targetRect, vertical, swapThreshold, invertedSwapThreshold, invertSwap, isLastTarget) {
     var mouseOnAxis = vertical ? evt.clientY : evt.clientX,
-        targetLength = vertical ? targetRect.height : targetRect.width,
-        targetS1 = vertical ? targetRect.top : targetRect.left,
-        targetS2 = vertical ? targetRect.bottom : targetRect.right,
-        invert = false;
+      targetLength = vertical ? targetRect.height : targetRect.width,
+      targetS1 = vertical ? targetRect.top : targetRect.left,
+      targetS2 = vertical ? targetRect.bottom : targetRect.right,
+      invert = false;
 
     if (!invertSwap) {
       // Never invert or create dragEl shadow when target movemenet causes mouse to move past the end of regular swapThreshold
@@ -2608,7 +2609,7 @@
         if (!pastFirstInvertThresh) {
           // dragEl shadow (target move distance shadow)
           if (lastDirection === 1 ? mouseOnAxis < targetS1 + targetMoveDistance // over dragEl shadow
-          : mouseOnAxis > targetS2 - targetMoveDistance) {
+            : mouseOnAxis > targetS2 - targetMoveDistance) {
             return -lastDirection;
           }
         } else {
@@ -2658,8 +2659,8 @@
 
   function _generateId(el) {
     var str = el.tagName + el.className + el.src + el.href + el.textContent,
-        i = str.length,
-        sum = 0;
+      i = str.length,
+      sum = 0;
 
     while (i--) {
       sum += str.charCodeAt(i);
@@ -2761,13 +2762,13 @@
   Sortable.version = version;
 
   var autoScrolls = [],
-      scrollEl,
-      scrollRootEl,
-      scrolling = false,
-      lastAutoScrollX,
-      lastAutoScrollY,
-      touchEvt$1,
-      pointerElemChangedInterval;
+    scrollEl,
+    scrollRootEl,
+    scrolling = false,
+    lastAutoScrollX,
+    lastAutoScrollY,
+    touchEvt$1,
+    pointerElemChangedInterval;
 
   function AutoScrollPlugin() {
     function AutoScroll() {
@@ -2834,8 +2835,8 @@
         var _this = this;
 
         var x = (evt.touches ? evt.touches[0] : evt).clientX,
-            y = (evt.touches ? evt.touches[0] : evt).clientY,
-            elem = document.elementFromPoint(x, y);
+          y = (evt.touches ? evt.touches[0] : evt).clientY,
+          elem = document.elementFromPoint(x, y);
         touchEvt$1 = evt; // IE does not seem to have native autoscroll,
         // Edge's autoscroll seems too conditional,
         // MACOS Safari does not have autoscroll,
@@ -2894,12 +2895,12 @@
     // Bug: https://bugzilla.mozilla.org/show_bug.cgi?id=505521
     if (!options.scroll) return;
     var x = (evt.touches ? evt.touches[0] : evt).clientX,
-        y = (evt.touches ? evt.touches[0] : evt).clientY,
-        sens = options.scrollSensitivity,
-        speed = options.scrollSpeed,
-        winScroller = getWindowScrollingElement();
+      y = (evt.touches ? evt.touches[0] : evt).clientY,
+      sens = options.scrollSensitivity,
+      speed = options.scrollSpeed,
+      winScroller = getWindowScrollingElement();
     var scrollThisInstance = false,
-        scrollCustomFn; // New scroll root, set scrollEl
+      scrollCustomFn; // New scroll root, set scrollEl
 
     if (scrollRootEl !== rootEl) {
       scrollRootEl = rootEl;
@@ -2917,20 +2918,20 @@
 
     do {
       var el = currentParent,
-          rect = getRect(el),
-          top = rect.top,
-          bottom = rect.bottom,
-          left = rect.left,
-          right = rect.right,
-          width = rect.width,
-          height = rect.height,
-          canScrollX = void 0,
-          canScrollY = void 0,
-          scrollWidth = el.scrollWidth,
-          scrollHeight = el.scrollHeight,
-          elCSS = css(el),
-          scrollPosX = el.scrollLeft,
-          scrollPosY = el.scrollTop;
+        rect = getRect(el),
+        top = rect.top,
+        bottom = rect.bottom,
+        left = rect.left,
+        right = rect.right,
+        width = rect.width,
+        height = rect.height,
+        canScrollX = void 0,
+        canScrollY = void 0,
+        scrollWidth = el.scrollWidth,
+        scrollHeight = el.scrollHeight,
+        elCSS = css(el),
+        scrollPosX = el.scrollLeft,
+        scrollPosY = el.scrollTop;
 
       if (el === winScroller) {
         canScrollX = width < scrollWidth && (elCSS.overflowX === 'auto' || elCSS.overflowX === 'scroll' || elCSS.overflowX === 'visible');
@@ -2992,12 +2993,12 @@
 
   var drop = function drop(_ref) {
     var originalEvent = _ref.originalEvent,
-        putSortable = _ref.putSortable,
-        dragEl = _ref.dragEl,
-        activeSortable = _ref.activeSortable,
-        dispatchSortableEvent = _ref.dispatchSortableEvent,
-        hideGhostForTarget = _ref.hideGhostForTarget,
-        unhideGhostForTarget = _ref.unhideGhostForTarget;
+      putSortable = _ref.putSortable,
+      dragEl = _ref.dragEl,
+      activeSortable = _ref.activeSortable,
+      dispatchSortableEvent = _ref.dispatchSortableEvent,
+      hideGhostForTarget = _ref.hideGhostForTarget,
+      unhideGhostForTarget = _ref.unhideGhostForTarget;
     if (!originalEvent) return;
     var toSortable = putSortable || activeSortable;
     hideGhostForTarget();
@@ -3014,7 +3015,7 @@
     }
   };
 
-  function Revert() {}
+  function Revert() { }
 
   Revert.prototype = {
     startIndex: null,
@@ -3024,7 +3025,7 @@
     },
     onSpill: function onSpill(_ref3) {
       var dragEl = _ref3.dragEl,
-          putSortable = _ref3.putSortable;
+        putSortable = _ref3.putSortable;
       this.sortable.captureAnimationState();
 
       if (putSortable) {
@@ -3052,12 +3053,12 @@
     pluginName: 'revertOnSpill'
   });
 
-  function Remove() {}
+  function Remove() { }
 
   Remove.prototype = {
     onSpill: function onSpill(_ref4) {
       var dragEl = _ref4.dragEl,
-          putSortable = _ref4.putSortable;
+        putSortable = _ref4.putSortable;
       var parentSortable = putSortable || this.sortable;
       parentSortable.captureAnimationState();
       dragEl.parentNode && dragEl.parentNode.removeChild(dragEl);
@@ -3086,14 +3087,14 @@
       },
       dragOverValid: function dragOverValid(_ref2) {
         var completed = _ref2.completed,
-            target = _ref2.target,
-            onMove = _ref2.onMove,
-            activeSortable = _ref2.activeSortable,
-            changed = _ref2.changed,
-            cancel = _ref2.cancel;
+          target = _ref2.target,
+          onMove = _ref2.onMove,
+          activeSortable = _ref2.activeSortable,
+          changed = _ref2.changed,
+          cancel = _ref2.cancel;
         if (!activeSortable.options.swap) return;
         var el = this.sortable.el,
-            options = this.options;
+          options = this.options;
 
         if (target && target !== el) {
           var prevSwapEl = lastSwapEl;
@@ -3116,8 +3117,8 @@
       },
       drop: function drop(_ref3) {
         var activeSortable = _ref3.activeSortable,
-            putSortable = _ref3.putSortable,
-            dragEl = _ref3.dragEl;
+          putSortable = _ref3.putSortable,
+          dragEl = _ref3.dragEl;
         var toSortable = putSortable || this.sortable;
         var options = this.options;
         lastSwapEl && toggleClass(lastSwapEl, options.swapClass, false);
@@ -3148,9 +3149,9 @@
 
   function swapNodes(n1, n2) {
     var p1 = n1.parentNode,
-        p2 = n2.parentNode,
-        i1,
-        i2;
+      p2 = n2.parentNode,
+      i1,
+      i2;
     if (!p1 || !p2 || p1.isEqualNode(n2) || p2.isEqualNode(n1)) return;
     i1 = index(n1);
     i2 = index(n2);
@@ -3164,18 +3165,18 @@
   }
 
   var multiDragElements = [],
-      multiDragClones = [],
-      lastMultiDragSelect,
-      // for selection with modifier key down (SHIFT)
-  multiDragSortable,
-      initialFolding = false,
-      // Initial multi-drag fold when drag started
-  folding = false,
-      // Folding any other time
-  dragStarted = false,
-      dragEl$1,
-      clonesFromRect,
-      clonesHidden;
+    multiDragClones = [],
+    lastMultiDragSelect,
+    // for selection with modifier key down (SHIFT)
+    multiDragSortable,
+    initialFolding = false,
+    // Initial multi-drag fold when drag started
+    folding = false,
+    // Folding any other time
+    dragStarted = false,
+    dragEl$1,
+    clonesFromRect,
+    clonesHidden;
 
   function MultiDragPlugin() {
     function MultiDrag(sortable) {
@@ -3229,7 +3230,7 @@
       },
       setupClone: function setupClone(_ref2) {
         var sortable = _ref2.sortable,
-            cancel = _ref2.cancel;
+          cancel = _ref2.cancel;
         if (!this.isMultiDrag) return;
 
         for (var i = 0; i < multiDragElements.length; i++) {
@@ -3247,9 +3248,9 @@
       },
       clone: function clone(_ref3) {
         var sortable = _ref3.sortable,
-            rootEl = _ref3.rootEl,
-            dispatchSortableEvent = _ref3.dispatchSortableEvent,
-            cancel = _ref3.cancel;
+          rootEl = _ref3.rootEl,
+          dispatchSortableEvent = _ref3.dispatchSortableEvent,
+          cancel = _ref3.cancel;
         if (!this.isMultiDrag) return;
 
         if (!this.options.removeCloneOnHide) {
@@ -3262,8 +3263,8 @@
       },
       showClone: function showClone(_ref4) {
         var cloneNowShown = _ref4.cloneNowShown,
-            rootEl = _ref4.rootEl,
-            cancel = _ref4.cancel;
+          rootEl = _ref4.rootEl,
+          cancel = _ref4.cancel;
         if (!this.isMultiDrag) return;
         insertMultiDragClones(false, rootEl);
         multiDragClones.forEach(function (clone) {
@@ -3277,8 +3278,8 @@
         var _this = this;
 
         var sortable = _ref5.sortable,
-            cloneNowHidden = _ref5.cloneNowHidden,
-            cancel = _ref5.cancel;
+          cloneNowHidden = _ref5.cloneNowHidden,
+          cancel = _ref5.cancel;
         if (!this.isMultiDrag) return;
         multiDragClones.forEach(function (clone) {
           css(clone, 'display', 'none');
@@ -3355,8 +3356,8 @@
       },
       dragOver: function dragOver(_ref8) {
         var target = _ref8.target,
-            completed = _ref8.completed,
-            cancel = _ref8.cancel;
+          completed = _ref8.completed,
+          cancel = _ref8.cancel;
 
         if (folding && ~multiDragElements.indexOf(target)) {
           completed(false);
@@ -3365,9 +3366,9 @@
       },
       revert: function revert(_ref9) {
         var fromSortable = _ref9.fromSortable,
-            rootEl = _ref9.rootEl,
-            sortable = _ref9.sortable,
-            dragRect = _ref9.dragRect;
+          rootEl = _ref9.rootEl,
+          sortable = _ref9.sortable,
+          dragRect = _ref9.dragRect;
 
         if (multiDragElements.length > 1) {
           // Setup unfold animation
@@ -3386,11 +3387,11 @@
       },
       dragOverCompleted: function dragOverCompleted(_ref10) {
         var sortable = _ref10.sortable,
-            isOwner = _ref10.isOwner,
-            insertion = _ref10.insertion,
-            activeSortable = _ref10.activeSortable,
-            parentEl = _ref10.parentEl,
-            putSortable = _ref10.putSortable;
+          isOwner = _ref10.isOwner,
+          insertion = _ref10.insertion,
+          activeSortable = _ref10.activeSortable,
+          parentEl = _ref10.parentEl,
+          putSortable = _ref10.putSortable;
         var options = this.options;
 
         if (insertion) {
@@ -3445,8 +3446,8 @@
       },
       dragOverAnimationCapture: function dragOverAnimationCapture(_ref11) {
         var dragRect = _ref11.dragRect,
-            isOwner = _ref11.isOwner,
-            activeSortable = _ref11.activeSortable;
+          isOwner = _ref11.isOwner,
+          activeSortable = _ref11.activeSortable;
         multiDragElements.forEach(function (multiDragElement) {
           multiDragElement.thisAnimationDuration = null;
         });
@@ -3466,16 +3467,16 @@
       },
       drop: function drop(_ref12) {
         var evt = _ref12.originalEvent,
-            rootEl = _ref12.rootEl,
-            parentEl = _ref12.parentEl,
-            sortable = _ref12.sortable,
-            dispatchSortableEvent = _ref12.dispatchSortableEvent,
-            oldIndex = _ref12.oldIndex,
-            putSortable = _ref12.putSortable;
+          rootEl = _ref12.rootEl,
+          parentEl = _ref12.parentEl,
+          sortable = _ref12.sortable,
+          dispatchSortableEvent = _ref12.dispatchSortableEvent,
+          oldIndex = _ref12.oldIndex,
+          putSortable = _ref12.putSortable;
         var toSortable = putSortable || this.sortable;
         if (!evt) return;
         var options = this.options,
-            children = parentEl.children; // Multi-drag selection
+          children = parentEl.children; // Multi-drag selection
 
         if (!dragStarted) {
           if (options.multiDragKey && !this.multiDragKeyDown) {
@@ -3496,7 +3497,7 @@
 
             if (evt.shiftKey && lastMultiDragSelect && sortable.el.contains(lastMultiDragSelect)) {
               var lastIndex = index(lastMultiDragSelect),
-                  currentIndex = index(dragEl$1);
+                currentIndex = index(dragEl$1);
 
               if (~lastIndex && ~currentIndex && lastIndex !== currentIndex) {
                 // Must include lastMultiDragSelect (select it), in case modified selection from no selection
@@ -3548,7 +3549,7 @@
 
           if ((parentEl[expando].options.sort || parentEl !== rootEl) && multiDragElements.length > 1) {
             var dragRect = getRect(dragEl$1),
-                multiDragIndex = index(dragEl$1, ':not(.' + this.options.selectedClass + ')');
+              multiDragIndex = index(dragEl$1, ':not(.' + this.options.selectedClass + ')');
             if (!initialFolding && options.animation) dragEl$1.thisAnimationDuration = null;
             toSortable.captureAnimationState();
 
@@ -3691,7 +3692,7 @@
          */
         deselect: function deselect(el) {
           var sortable = el.parentNode[expando],
-              index = multiDragElements.indexOf(el);
+            index = multiDragElements.indexOf(el);
           if (!sortable || !sortable.options.multiDrag || !~index) return;
           toggleClass(el, sortable.options.selectedClass, false);
           multiDragElements.splice(index, 1);
@@ -3701,7 +3702,7 @@
         var _this3 = this;
 
         var oldIndicies = [],
-            newIndicies = [];
+          newIndicies = [];
         multiDragElements.forEach(function (multiDragElement) {
           oldIndicies.push({
             multiDragElement: multiDragElement,

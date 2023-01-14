@@ -8,23 +8,23 @@ use App\Models\Translation;
 
 class Translations extends Controller
 {
-	public static function index()
-	{
-		$translations = Translation::all();
-		$langs = Lang::all();
+    public static function index()
+    {
+        $translations = Translation::all();
+        $langs = Lang::all();
 
-		$data = self::commonData();
-		$data['langs'] = $langs;
-		$data['visible_langs'] = count(array_filter($langs, function ($lang) {
-			return $lang['visible'];
-		}));
-		$data['translations'] = Translation::byGroup($translations);
+        $data = self::commonData();
+        $data['langs'] = $langs;
+        $data['visible_langs'] = count(array_filter($langs, function ($lang) {
+            return $lang['visible'];
+        }));
+        $data['translations'] = Translation::byGroup($translations);
 
-		Flight::render('translations.index', $data);
-	}
+        Flight::render('translations.index', $data);
+    }
 
-	public static function download()
-	{
-		Flight::download(APP_PATH."/.tmp/translations.zip");
-	}
+    public static function download()
+    {
+        Flight::download(APP_PATH . "/.tmp/translations.zip");
+    }
 }

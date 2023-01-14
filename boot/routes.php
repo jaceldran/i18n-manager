@@ -42,5 +42,4 @@ Flight::route('DELETE /api/langs', [LangsApi::class, 'delete']);
 Flight::route('PUT /api/langs', [LangsApi::class, 'put']);
 Flight::route('PUT /api/langs/order', [LangsApi::class, 'order']);
 
-
 Flight::route('GET /sandbox', [Sandbox::class, 'index']);

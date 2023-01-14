@@ -57,21 +57,21 @@
         }
 
         /* #phpinfo table th
-            #phpinfo table td {
-                padding: 0.5rem;
-                border-bottom: 1px dotted #aaa;
-                text-align: left;
-            }
-            #phpinfo table td.e {
-                font-weight: bold;
-                width:1%;
-                white-space: nowrap;
-            }
-            #phpinfo table td.v {
-                background-color: #ddd;
-                --max-width: 300px;
-                overflow-x: auto;
-                word-wrap: break-word;
-            } */
+                #phpinfo table td {
+                    padding: 0.5rem;
+                    border-bottom: 1px dotted #aaa;
+                    text-align: left;
+                }
+                #phpinfo table td.e {
+                    font-weight: bold;
+                    width:1%;
+                    white-space: nowrap;
+                }
+                #phpinfo table td.v {
+                    background-color: #ddd;
+                    --max-width: 300px;
+                    overflow-x: auto;
+                    word-wrap: break-word;
+                } */
     </style>
 @endsection

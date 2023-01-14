@@ -1,6 +1,7 @@
 <p class="flex justify-center">
-    <input type="checkbox" id="{{ $id }}" {{ $checked }} @isset($name) name="{{ $name }}" @endisset
-    class="
+    <input type="checkbox" id="{{ $id }}" {{ $checked }}
+        @isset($name) name="{{ $name }}" @endisset
+        class="
         appearance-none
         cursor-pointer
         rounded-full

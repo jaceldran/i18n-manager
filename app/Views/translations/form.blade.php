@@ -5,8 +5,7 @@
 @endsection
 
 @section('modal-content')
-
-{{-- <pre>
+    {{-- <pre>
     {{ print_r($translation, 1) }}
     {{ print_r($langs, 1) }}
 </pre> --}}
@@ -33,7 +32,7 @@
             @endswitch
 
 
-            @foreach ($langs as $key=>$lang)
+            @foreach ($langs as $key => $lang)
                 <label class="border-b p-4 flex items-center justify-center gap-2">
                     <i class="fi fi-{{ $key }}"></i>
                     <span class="text-sm font-semibold text-gray-500 uppercase">{{ $key }}</span>
@@ -41,8 +40,7 @@
                 @switch($action)
                     @case('create')
                         <input class="border-b p-4 w-full cursor-pointer outline-none focus:font-semibold"
-                            name="{{ $key }}" placeholder="{{ strtoupper($key) }}"
-                            value="" />
+                            name="{{ $key }}" placeholder="{{ strtoupper($key) }}" value="" />
                     @break
 
                     @case('update')

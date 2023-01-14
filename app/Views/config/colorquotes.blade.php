@@ -4,12 +4,14 @@
     <div style="height: calc(100vh - 200px)" class="flex justify-center items-center">
 
         <div id="intro" class="container mx-auto">
-			<div class="ml-24">
-				<span class="tracking-tighter font-ser font-extrabold text-4xl text-amber-600" style="font-family:'Fjalla One'">i18n</span>
-				<div class="text-black tracking-tighter font-extrabold text-9xl -translate-y-8">
-					<span class="stroke">manager</span></div>
-			</div>
-		</div>
+            <div class="ml-24">
+                <span class="tracking-tighter font-ser font-extrabold text-4xl text-amber-600"
+                    style="font-family:'Fjalla One'">i18n</span>
+                <div class="text-black tracking-tighter font-extrabold text-9xl -translate-y-8">
+                    <span class="stroke">manager</span>
+                </div>
+            </div>
+        </div>
 
         <div id="color-quote" class="mx-auto">
             <span id="quote"></span>
@@ -20,17 +22,19 @@
 
 @section('style')
     <style>
-		#intro {
-			opacity: 1;
-			transition-property: all;
+        #intro {
+            opacity: 1;
+            transition-property: all;
             transition-timing-function: ease;
             transition-duration: 750ms;
-		}
-		.stroke {
+        }
+
+        .stroke {
             -webkit-text-fill-color: transparent;
             -webkit-text-stroke-width: 2px;
             -webkit-text-stroke-color: #aaa;
         }
+
         #color-quote {
             font-family: 'Fjalla One', Roboto, georgia, serif;
             font-size: xx-large;
@@ -77,25 +81,25 @@
 @endsection
 
 @section('script')
-	<script src="@asset('js/colorquote.js')"></script>
+    <script src="@asset('js/colorquote.js')"></script>
     <script>
         const settings = {
-			container: document.querySelector('#color-quote'),
-			quote: document.querySelector('#quote'),
-			source: document.querySelector('#source')
-		};
+            container: document.querySelector('#color-quote'),
+            quote: document.querySelector('#quote'),
+            source: document.querySelector('#source')
+        };
 
-		//Colorquote.fetchAndWrite(settings);
+        //Colorquote.fetchAndWrite(settings);
 
-		setTimeout(() => {
-			const intro = document.querySelector('#intro');
-			intro.style.opacity = '0';
-			setTimeout(() => {
-				intro.style.display = 'none';
-			}, 1000);
-		}, 14000);
+        setTimeout(() => {
+            const intro = document.querySelector('#intro');
+            intro.style.opacity = '0';
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 1000);
+        }, 14000);
 
 
-		Colorquote.play(settings);
+        Colorquote.play(settings);
     </script>
 @endsection

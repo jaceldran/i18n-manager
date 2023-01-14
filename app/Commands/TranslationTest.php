@@ -2,14 +2,9 @@
 
 use App\Models\Translation;
 
-require './boot/app.php';
+require_once './boot/app.php';
 
-// $data = Translation::all();
-// print_r($data);
-// $data['export'] = Translation::export();
+$data['translations'] = Translation::all();
+$data['export'] = Translation::export();
 
-
-
-
-
-print_r ($data);
+print_r($data);

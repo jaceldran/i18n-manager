@@ -1,9 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Merriweather:300italic,300);
 
 .markdown {
-	font-family: Merriweather, Georgia, 'Times New Roman', Times, serif;
-	padding: 1rem 0 4rem 0;
-	color: #111;
+    font-family: Merriweather, Georgia, 'Times New Roman', Times, serif;
+    padding: 1rem 0 4rem 0;
+    color: #111;
 }
 
 .markdown a,
@@ -11,74 +11,75 @@
 .markdown a:link,
 .markdown a:hover,
 .markdown a:active {
-	color: steelblue;
-	text-decoration: underline;
+    color: steelblue;
+    text-decoration: underline;
 }
 
 h1 {
-	font-size: xx-large;
-	margin-bottom: 1rem;
+    font-size: xx-large;
+    margin-bottom: 1rem;
 }
 
 h2 {
-	/* background-color: #131313; */
-	/* color: #ccc; */
-	border-radius: 4px;
-	background-color: #e3e3e3;
-	padding: .25rem .75rem;
-	border: 1px solid #ccc;
-	margin-bottom: 1rem;
-	font-size: x-large;
+    /* background-color: #131313; */
+    /* color: #ccc; */
+    border-radius: 4px;
+    background-color: #e3e3e3;
+    padding: .25rem .75rem;
+    border: 1px solid #ccc;
+    margin-bottom: 1rem;
+    font-size: x-large;
 }
 
 h3 {
-	/* padding: .25rem 0; */
-	/* border-radius: 4px; */
-	border-bottom: 1px solid #ccc;
-	font-size: large;
-	font-weight: bold;
-	margin: 1rem 0;
+    /* padding: .25rem 0; */
+    /* border-radius: 4px; */
+    border-bottom: 1px solid #ccc;
+    font-size: large;
+    font-weight: bold;
+    margin: 1rem 0;
 }
 
 h4 {
-	color: darkred;
-	font-size: normal;
-	margin: 1rem 0 0.15rem 0;
-	font-weight: bold;
+    color: darkred;
+    font-size: normal;
+    margin: 1rem 0 0.15rem 0;
+    font-weight: bold;
 }
 
 h5 {
-	color: #666;
-	font-size: normal;
-	margin: 1rem 0 0.15rem 0;
-	font-weight: bold;
-	text-decoration: underline;
+    color: #666;
+    font-size: normal;
+    margin: 1rem 0 0.15rem 0;
+    font-weight: bold;
+    text-decoration: underline;
 }
 
 code {
-	padding: .15rem .5rem;
-	font-size: medium;
-	border-radius: .25rem;
-	background-color: #eee;
-	border: 1px solid #ddd;
+    padding: .15rem .5rem;
+    font-size: medium;
+    border-radius: .25rem;
+    background-color: #eee;
+    border: 1px solid #ddd;
 }
 
-pre > code {
-	background-color: #333;
-	border: none;
-	color: white;
-	display: block;
-	overflow: auto;
-	max-height: 600px;
-	margin: 1rem 0;
+pre>code {
+    background-color: #333;
+    border: none;
+    color: white;
+    display: block;
+    overflow: auto;
+    max-height: 600px;
+    margin: 1rem 0;
 }
 
-p, ul {
-	margin: 0 0 1rem 0;
-	line-height: 1.75;
+p,
+ul {
+    margin: 0 0 1rem 0;
+    line-height: 1.75;
 }
 
 ul {
-	list-style-type: disc;
-	margin-left: 2rem;
+    list-style-type: disc;
+    margin-left: 2rem;
 }

@@ -42,8 +42,6 @@
         </p> --}}
 
     </form>
-
-
 @endsection
 
 @section('script')

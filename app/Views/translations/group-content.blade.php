@@ -64,7 +64,8 @@
                                 disabled:hover:bg-transparent
                                 disabled:text-gray-600"
                                 {{ $langs[$lang]['editable'] ? '' : 'disabled' }} value="{{ $translation ?? '' }}"
-                                placeholder="{{ strtoupper($lang) }}" data-key="{{ $group }}.{{ $key }}" data-lang="{{ $lang }}">
+                                placeholder="{{ strtoupper($lang) }}" data-key="{{ $group }}.{{ $key }}"
+                                data-lang="{{ $lang }}">
                         </p>
                     @endif
                 @endforeach

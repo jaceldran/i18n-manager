@@ -2,7 +2,7 @@
 
 ## What is i18n Manager?
 
-**i18n Manager** is a web application intended to manage language packs based on structured text files (json, csv...) so it doesn't needs a database server like MySQL or PostrgreSql.
+**i18n Manager** is a web application intended to manage language packs based on structured text files (json, csv...) so it doesn't need a database server like MySQL or PostrgreSql.
 
 ## Installation
 

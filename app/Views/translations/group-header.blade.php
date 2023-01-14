@@ -1,6 +1,7 @@
 @set($toggable_id = str_replace('.', '-', $group))
 
-<section id="header-{{ $group }}" class="flex justify-between items-center cursor-pointer border-b border-gray-300 mb-2 px-2 sm:px-0">
+<section id="header-{{ $group }}"
+    class="flex justify-between items-center cursor-pointer border-b border-gray-300 mb-2 px-2 sm:px-0">
 
     <div id="toggler-{{ $toggable_id }}" class="toggler cursor-pointer flex-grow py-2 text-stone-700"
         data-toggle="#content-{{ $toggable_id }}">

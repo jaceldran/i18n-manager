@@ -1,18 +1,18 @@
 {
-  "name": "i18n-manager",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "dev": "npx tailwindcss -i ./tailwind.css -o ./css/style.css --watch",
-    "prod": "npx tailwindcss -i ./tailwind.css -o ./css/style.css --minify"
-  },
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "tailwindcss": "^3.1.4"
-  },
-  "dependencies": {
-    "sortablejs": "^1.15.0"
-  }
+    "name": "i18n-manager",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "dev": "npx tailwindcss -i ./tailwind.css -o ./css/style.css --watch",
+        "prod": "npx tailwindcss -i ./tailwind.css -o ./css/style.css --minify"
+    },
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "tailwindcss": "^3.1.4"
+    },
+    "dependencies": {
+        "sortablejs": "^1.15.0"
+    }
 }

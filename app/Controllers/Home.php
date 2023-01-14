@@ -1,4 +1,6 @@
-<?php namespace App\Controllers;
+<?php
+
+namespace App\Controllers;
 
 use Flight;
 
@@ -7,10 +9,10 @@ use App\Models\Lang;
 
 class Home extends Controller
 {
-	public static function index()
-	{
-		$data = self::commonData();
+    public static function index()
+    {
+        $data = self::commonData();
 
-		Flight::render('pages.home', $data);
-	}
+        Flight::render('pages.home', $data);
+    }
 }

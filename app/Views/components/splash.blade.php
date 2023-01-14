@@ -1,11 +1,11 @@
-
 @section('main')
     <div class="h-screen flex justify-center items-center">
 
         <div id="intro" class="absolute left-0 right-0 pt-6">
             <div class="container mx-auto">
                 <div class="ml-24">
-                    <span style="font-family:'Fjalla One',sans-serif" class="tracking-tighter font-ser font-bold text-4xl text-amber-600">i18n</span>
+                    <span style="font-family:'Fjalla One',sans-serif"
+                        class="tracking-tighter font-ser font-bold text-4xl text-amber-600">i18n</span>
                     <div class="text-black --tracking-tighter font-extrabold text-9xl -translate-y-8">
                         <span class="stroke">manager</span>
                     </div>

@@ -1,4 +1,6 @@
-<?php namespace App\Controllers\Api;
+<?php
+
+namespace App\Controllers\Api;
 
 use Flight;
 
@@ -8,244 +10,244 @@ use ZipArchive;
 
 class Translations
 {
-	const FORM_VIEW = 'translations.form';
+    const FORM_VIEW = 'translations.form';
 
-	public static function sanitizeKey(string $key): string
-	{
-		$key = strtolower($key);
-		$key = str_replace(' ', '-', $key);
-		$parts = explode('.', $key);
+    public static function sanitizeKey(string $key): string
+    {
+        $key = strtolower($key);
+        $key = str_replace(' ', '-', $key);
+        $parts = explode('.', $key);
 
-		$parts = array_filter($parts, function ($value){
-			return !empty($value);
-		});
+        $parts = array_filter($parts, function ($value) {
+            return !empty($value);
+        });
 
-		return implode('.', $parts);
-	}
+        return implode('.', $parts);
+    }
 
-	public static function normalizeKey(string $key): string
-	{
-		$key = self::sanitizeKey($key);
+    public static function normalizeKey(string $key): string
+    {
+        $key = self::sanitizeKey($key);
 
-		if (substr_count($key, '.')===0) {
-			$key = "app.$key";
-		}
+        if (substr_count($key, '.') === 0) {
+            $key = "app.$key";
+        }
 
-		return $key;
-	}
+        return $key;
+    }
 
-	public static function updateOrCreate()
-	{
-		$translations = [];
-		$request_values = Flight::request()->data;
+    public static function updateOrCreate()
+    {
+        $translations = [];
+        $request_values = Flight::request()->data;
 
-		$key = self::normalizeKey($request_values->key);
-		$translation = Translation::find($key);
+        $key = self::normalizeKey($request_values->key);
+        $translation = Translation::find($key);
 
-		$group = $translation['group'];
+        $group = $translation['group'];
 
-		foreach($request_values as $k => $v) {
-			$translation[$k] = $v;
-		}
+        foreach ($request_values as $k => $v) {
+            $translation[$k] = $v;
+        }
 
-		Translation::updateOrCreate($key, $translation);
+        Translation::updateOrCreate($key, $translation);
 
-		$response = self::groupResponse($group);
+        $response = self::groupResponse($group);
 
-		Flight::json($response);
-	}
+        Flight::json($response);
+    }
 
-	private static function groupResponse(string $group): array
-	{
-		$group_translations = Translation::getGroup($group);
+    private static function groupResponse(string $group): array
+    {
+        $group_translations = Translation::getGroup($group);
 
-		$group_content = [
-			'visible_langs' => Lang::count(Lang::VISIBLE),
-			'group' => $group,
-			'translations' => $group_translations,
-			'langs' => Lang::all(),
-			'open' => true,
-		];
+        $group_content = [
+            'visible_langs' => Lang::count(Lang::VISIBLE),
+            'group' => $group,
+            'translations' => $group_translations,
+            'langs' => Lang::all(),
+            'open' => true,
+        ];
 
-		return [
-			'group_header_id' => 'header-' . str_replace('.', '-', $group),
-			'group_content_id' => 'content-' . str_replace('.', '-', $group),
-			'group_is_empty' => empty($group_translations),
-			'render_group_content' => Flight::render(
-				'translations.group-content',
-				$group_content,
-				true
-			),
-			'__group_content' => $group_content,
-		];
-	}
+        return [
+            'group_header_id' => 'header-' . str_replace('.', '-', $group),
+            'group_content_id' => 'content-' . str_replace('.', '-', $group),
+            'group_is_empty' => empty($group_translations),
+            'render_group_content' => Flight::render(
+                'translations.group-content',
+                $group_content,
+                true
+            ),
+            '__group_content' => $group_content,
+        ];
+    }
 
-	public static function put()
-	{
-		self::updateOrCreate();
-	}
+    public static function put()
+    {
+        self::updateOrCreate();
+    }
 
-	public static function post()
-	{
-		self::updateOrCreate();
-	}
+    public static function post()
+    {
+        self::updateOrCreate();
+    }
 
-	public static function delete()
-	{
-		$values = Flight::request()->data;
+    public static function delete()
+    {
+        $values = Flight::request()->data;
 
-		$key = self::sanitizeKey($values->key);
-		$group = self::sanitizeKey($values->group);
+        $key = self::sanitizeKey($values->key);
+        $group = self::sanitizeKey($values->group);
 
-		Translation::delete($key);
+        Translation::delete($key);
 
-		$response = self::groupResponse($group);
+        $response = self::groupResponse($group);
 
-		Flight::json($response);
-	}
+        Flight::json($response);
+    }
 
-	public static function export()
-	{
-		Flight::render('translations.export', [
-			'title' => 'Exported files',
-			'exports' => Translation::export()
-		]);
-	}
+    public static function export()
+    {
+        Flight::render('translations.export', [
+            'title' => 'Exported files',
+            'exports' => Translation::export()
+        ]);
+    }
 
-	public static function import()
-	{
-		$errors = [];
-		$response = [];
-		$file = Flight::request()->files['file-input'];
+    public static function import()
+    {
+        $errors = [];
+        $response = [];
+        $file = Flight::request()->files['file-input'];
 
-		if ($file['error']) {
-			$errors[] = 'Error loading file';
-		} else {
-			$path = pathinfo($file['name']);
+        if ($file['error']) {
+            $errors[] = 'Error loading file';
+        } else {
+            $path = pathinfo($file['name']);
 
-			if ($path['extension'] !== 'csv') {
-				$errors[] = "Only CSV files are allowed to upload";
-			}
+            if ($path['extension'] !== 'csv') {
+                $errors[] = "Only CSV files are allowed to upload";
+            }
 
-			if (empty($errors)) {
-				$response['result'] = Translation::importCsv($file['tmp_name']);
-			}
-		}
+            if (empty($errors)) {
+                $response['result'] = Translation::importCsv($file['tmp_name']);
+            }
+        }
 
-		$response['success'] = empty($errors);
-		$response['errors'] = $errors;
+        $response['success'] = empty($errors);
+        $response['errors'] = $errors;
 
-		Flight::json($response);
-	}
+        Flight::json($response);
+    }
 
-	public static function download()
-	{
-		$errors = [];
-		$response = [];
+    public static function download()
+    {
+        $errors = [];
+        $response = [];
 
-		$dir = APP_PATH . '/export';
-		$path = APP_PATH . '/.tmp/translations.zip';
+        $dir = APP_PATH . '/export';
+        $path = APP_PATH . '/.tmp/translations.zip';
 
-		@unlink($path);
-		$scandir = self::scandir($dir);
+        @unlink($path);
+        $scandir = self::scandir($dir);
 
-		$zip = new ZipArchive;
-		if ($zip->open($path, ZipArchive::CREATE) === TRUE) {
-			foreach($scandir as $folder => $files) {
-				$zip->addEmptyDir($folder);
-				foreach($files as $file) {
-					$fullpath = "$dir/$folder/$file";
-					$zip->addFile($fullpath, "$folder/$file");
-				}
-			}
-		}
+        $zip = new ZipArchive;
+        if ($zip->open($path, ZipArchive::CREATE) === TRUE) {
+            foreach ($scandir as $folder => $files) {
+                $zip->addEmptyDir($folder);
+                foreach ($files as $file) {
+                    $fullpath = "$dir/$folder/$file";
+                    $zip->addFile($fullpath, "$folder/$file");
+                }
+            }
+        }
 
-		$zip->close();
+        $zip->close();
 
-		$response['success'] = empty($errors);
-		$response['errors'] = $errors;
-		$response['scandir'] = $scandir;
+        $response['success'] = empty($errors);
+        $response['errors'] = $errors;
+        $response['scandir'] = $scandir;
 
-		Flight::json($response);
-	}
+        Flight::json($response);
+    }
 
-	public static function scandir($dir): array
-	{
-		$result = [];
+    public static function scandir($dir): array
+    {
+        $result = [];
 
-		$cdir = scandir($dir);
+        $cdir = scandir($dir);
 
-		foreach ($cdir as $key => $value) {
-			$fullpath = "$dir/$value";
+        foreach ($cdir as $key => $value) {
+            $fullpath = "$dir/$value";
 
-			if (in_array($value, ['.', '..'])) {
-				continue;
-			}
+            if (in_array($value, ['.', '..'])) {
+                continue;
+            }
 
-			if (is_file($fullpath)) {
-				$result[] = $value;
-			}
+            if (is_file($fullpath)) {
+                $result[] = $value;
+            }
 
-			if (is_dir($fullpath)) {
-				$result[$value] = self::scandir($fullpath);
-			}
-		}
+            if (is_dir($fullpath)) {
+                $result[$value] = self::scandir($fullpath);
+            }
+        }
 
-		return $result;
-	}
+        return $result;
+    }
 
-	public static function renderImport(): void
-	{
-		Flight::render('translations.import', [
-			'title' => 'Import CSV file'
-		]);
-	}
+    public static function renderImport(): void
+    {
+        Flight::render('translations.import', [
+            'title' => 'Import CSV file'
+        ]);
+    }
 
-	public static function renderCreate(): void
-	{
-		$group = Flight::request()->query['group'];
+    public static function renderCreate(): void
+    {
+        $group = Flight::request()->query['group'];
 
-		Flight::render(self::FORM_VIEW, [
-			'title' => "New translation in group [$group]",
-			'action' => 'create',
-			'button' => 'Create translation',
-			'button_icon' => '<i class="fas fa-plus"></i>',
-			'translation' => [],
-			'group' => $group,
-			'langs' => Lang::all()
-		]);
-	}
+        Flight::render(self::FORM_VIEW, [
+            'title' => "New translation in group [$group]",
+            'action' => 'create',
+            'button' => 'Create translation',
+            'button_icon' => '<i class="fas fa-plus"></i>',
+            'translation' => [],
+            'group' => $group,
+            'langs' => Lang::all()
+        ]);
+    }
 
-	public static function renderUpdate(): void
-	{
-		$key = Flight::request()->query['key'];
-		$key = self::sanitizeKey($key);
-		$translation = Translation::find($key);
+    public static function renderUpdate(): void
+    {
+        $key = Flight::request()->query['key'];
+        $key = self::sanitizeKey($key);
+        $translation = Translation::find($key);
 
-		Flight::render(self::FORM_VIEW, [
-			'title' => "Edit \"$key\"",
-			'action' => 'update',
-			'button' => "Update",
-			'button_icon' => '<i class="fas fa-check"></i>',
-			'translation' => $translation,
-			'langs' => Lang::all(),
-		]);
-	}
+        Flight::render(self::FORM_VIEW, [
+            'title' => "Edit \"$key\"",
+            'action' => 'update',
+            'button' => "Update",
+            'button_icon' => '<i class="fas fa-check"></i>',
+            'translation' => $translation,
+            'langs' => Lang::all(),
+        ]);
+    }
 
-	public static function renderDelete()
-	{
-		$key = Flight::request()->query['key'];
-		$key = self::sanitizeKey($key);
-		$translation = Translation::find($key);
+    public static function renderDelete()
+    {
+        $key = Flight::request()->query['key'];
+        $key = self::sanitizeKey($key);
+        $translation = Translation::find($key);
 
-		Flight::render(self::FORM_VIEW, [
-			'title' => "Delete \"$key\"",
-			'action' => 'delete',
-			'button' => 'Delete translation',
-			'button_apply' => 'bg-red-700 text-white',
-			'button_icon' => '<i class="fas fa-trash"></i>',
-			'translation' => $translation,
-			'langs' => Lang::all(),
-		]);
-	}
+        Flight::render(self::FORM_VIEW, [
+            'title' => "Delete \"$key\"",
+            'action' => 'delete',
+            'button' => 'Delete translation',
+            'button_apply' => 'bg-red-700 text-white',
+            'button_icon' => '<i class="fas fa-trash"></i>',
+            'translation' => $translation,
+            'langs' => Lang::all(),
+        ]);
+    }
 }

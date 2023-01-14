@@ -10,34 +10,34 @@ Flight::set('env', (object) $_ENV);
 Flight::set('theme', (object) require_once APP_PATH . '/config/theme.php');
 
 Flight::map('download', function (string $path) {
-	if (file_exists($path)) {
-		header('Content-Description: File Transfer');
-		header('Content-Type: application/octet-stream');
-		header('Content-Disposition: attachment; filename="' . basename($path) . '"');
-		header('Expires: 0');
-		header('Cache-Control: must-revalidate');
-		header('Pragma: public');
-		header('Content-Length: ' . filesize($path));
-		readfile($path);
-		exit;
-	}
+    if (file_exists($path)) {
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="' . basename($path) . '"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . filesize($path));
+        readfile($path);
+        exit;
+    }
 });
 
 Flight::register('view', BladeOne::class, [
-	BLADE_VIEWS,
-	BLADE_COMPILED
+    BLADE_VIEWS,
+    BLADE_COMPILED
 ], function (BladeOne $blade) {
-	$blade->setPath(BLADE_VIEWS, BLADE_COMPILED);
-	$blade->setBaseUrl(Flight::get('env')->URL_BASE);
+    $blade->setPath(BLADE_VIEWS, BLADE_COMPILED);
+    $blade->setBaseUrl(Flight::get('env')->URL_BASE);
 
-	if ($_ENV['ENV'] === 'develop') {
-		$blade->setMode(BladeOne::MODE_SLOW);
-	}
+    if ($_ENV['ENV'] === 'develop') {
+        $blade->setMode(BladeOne::MODE_SLOW);
+    }
 });
 
 Flight::map('render', function ($template, $data, $return = false) {
-	if ($return) {
-		return Flight::view()->run($template, $data);
-	}
-	echo Flight::view()->run($template, $data);
+    if ($return) {
+        return Flight::view()->run($template, $data);
+    }
+    echo Flight::view()->run($template, $data);
 });
