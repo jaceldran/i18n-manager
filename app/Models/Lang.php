@@ -4,7 +4,7 @@ namespace App\Models;
 
 use App\Services\Datafile;
 
-final class Lang // extends DatafileModel
+final class Lang
 {
     const PATH = APP_PATH . "/database/langs.php";
     const KEY = 'key';

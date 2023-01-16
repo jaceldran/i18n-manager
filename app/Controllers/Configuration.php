@@ -6,7 +6,7 @@ use Flight;
 
 use App\Models\Path;
 
-class Configuration extends Controller
+final class Configuration extends Controller
 {
     public static function index()
     {

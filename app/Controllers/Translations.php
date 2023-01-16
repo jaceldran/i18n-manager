@@ -6,7 +6,7 @@ use Flight;
 use App\Models\Lang;
 use App\Models\Translation;
 
-class Translations extends Controller
+final class Translations extends Controller
 {
     public static function index()
     {

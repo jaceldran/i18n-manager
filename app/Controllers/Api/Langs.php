@@ -6,7 +6,7 @@ use Flight;
 
 use App\Models\Lang;
 
-class Langs
+final class Langs
 {
     const KEY = 'key';
     const VISIBLE = 'visible';
@@ -64,7 +64,7 @@ class Langs
     {
         $values = Flight::request()->data;
 
-        $key = trim(strtolower($values->key));
+        $key = trim(strtolower((string) $values->key));
 
         Lang::delete($key);
 
@@ -75,7 +75,7 @@ class Langs
 
     public static function renderCreate(): void
     {
-        $group = Flight::request()->query['group'];
+        // $group = Flight::request()->query['group'];
 
         Flight::render(self::FORM_VIEW, [
             'title' => "Add language to manager",

@@ -1,6 +1,7 @@
 {
     "name": "zentric/i18n-manager",
     "description": "i18n Manager",
+    "homepage": "https://github.com/jaceldran/i18n-manager",
     "autoload": {
         "psr-4": {
             "App\\": "app/"
@@ -13,8 +14,15 @@
         }
     ],
     "require": {
+        "php": "^8.1",
         "mikecao/flight": "^2.0",
         "eftec/bladeone": "^4.5",
         "erusev/parsedown": "^1.7"
+    },
+    "require-dev": {
+        "rector/rector": "^0.15.7"
+    },
+    "scripts": {
+        "rector": "vendor/bin/rector process"
     }
 }

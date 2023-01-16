@@ -2,7 +2,7 @@
 
 use App\Models\Translation;
 
-require_once './boot/app.php';
+require_once __DIR__ . '/boot/app.php';
 
 $data['translations'] = Translation::all();
 $data['export'] = Translation::export();

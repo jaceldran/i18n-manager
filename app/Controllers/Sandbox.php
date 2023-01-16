@@ -7,7 +7,7 @@ use Flight;
 
 use App\Services\Navigation;
 
-class Sandbox extends Controller
+final class Sandbox extends Controller
 {
     public static function index()
     {

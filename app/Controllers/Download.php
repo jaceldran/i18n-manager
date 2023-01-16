@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Flight;
 
-class Download extends Controller
+final class Download extends Controller
 {
     public static function index()
     {

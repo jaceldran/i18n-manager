@@ -4,7 +4,7 @@ namespace App\Services;
 
 use Flight;
 
-class Navigation
+final class Navigation
 {
     const URL = 'url';
     const LABEL = 'label';

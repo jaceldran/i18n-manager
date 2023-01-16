@@ -4,7 +4,7 @@ namespace App\Controllers;
 
 use Flight;
 
-class Upload extends Controller
+final class Upload extends Controller
 {
     public static function index()
     {

@@ -13,16 +13,16 @@ final class Path
     public static function all(): object
     {
         return (object) self::compute([
-            self::EXPORT_JSON => Flight::get('env')->EXPORT_JSON,
-            self::EXPORT_PHP => Flight::get('env')->EXPORT_PHP,
-            self::EXPORT_CSV => Flight::get('env')->EXPORT_CSV,
+            self::EXPORT_JSON => Flight::env('EXPORT_JSON'),
+            self::EXPORT_PHP => Flight::env('EXPORT_PHP'),
+            self::EXPORT_CSV => Flight::env('EXPORT_CSV'),
         ]);
     }
 
     private static function compute(array $data): array
     {
         foreach ($data as $index => $value) {
-            $data[$index] = str_replace(['{APP_PATH}'], [APP_PATH], $value);
+            $data[$index] = str_replace(['{APP_PATH}'], [APP_PATH], (string) $value);
         }
 
         return $data;

@@ -8,7 +8,7 @@ use App\Models\Translation;
 use App\Models\Lang;
 use ZipArchive;
 
-class Translations
+final class Translations
 {
     const FORM_VIEW = 'translations.form';
 
@@ -38,15 +38,14 @@ class Translations
 
     public static function updateOrCreate()
     {
-        $translations = [];
-        $request_values = Flight::request()->data;
+        $requestValues = Flight::request()->data;
 
-        $key = self::normalizeKey($request_values->key);
+        $key = self::normalizeKey($requestValues->key);
         $translation = Translation::find($key);
 
         $group = $translation['group'];
 
-        foreach ($request_values as $k => $v) {
+        foreach ($requestValues as $k => $v) {
             $translation[$k] = $v;
         }
 
@@ -59,12 +58,12 @@ class Translations
 
     private static function groupResponse(string $group): array
     {
-        $group_translations = Translation::getGroup($group);
+        $groupTranslations = Translation::getGroup($group);
 
-        $group_content = [
+        $groupContent = [
             'visible_langs' => Lang::count(Lang::VISIBLE),
             'group' => $group,
-            'translations' => $group_translations,
+            'translations' => $groupTranslations,
             'langs' => Lang::all(),
             'open' => true,
         ];
@@ -72,13 +71,13 @@ class Translations
         return [
             'group_header_id' => 'header-' . str_replace('.', '-', $group),
             'group_content_id' => 'content-' . str_replace('.', '-', $group),
-            'group_is_empty' => empty($group_translations),
+            'group_is_empty' => $groupTranslations === [],
             'render_group_content' => Flight::render(
                 'translations.group-content',
-                $group_content,
+                $groupContent,
                 true
             ),
-            '__group_content' => $group_content,
+            '__group_content' => $groupContent,
         ];
     }
 
@@ -123,7 +122,7 @@ class Translations
         if ($file['error']) {
             $errors[] = 'Error loading file';
         } else {
-            $path = pathinfo($file['name']);
+            $path = pathinfo((string) $file['name']);
 
             if ($path['extension'] !== 'csv') {
                 $errors[] = "Only CSV files are allowed to upload";
@@ -144,29 +143,35 @@ class Translations
     {
         $errors = [];
         $response = [];
+        $exportPaths = [
+            Flight::env('EXPORT_JSON'),
+            Flight::env('EXPORT_PHP'),
+            Flight::env('EXPORT_CSV'),
+        ];
 
-        $dir = APP_PATH . '/export';
-        $path = APP_PATH . '/.tmp/translations.zip';
+        $zipArchivePath = APP_PATH . '/.tmp/translations.zip';
 
-        @unlink($path);
-        $scandir = self::scandir($dir);
-
-        $zip = new ZipArchive;
-        if ($zip->open($path, ZipArchive::CREATE) === TRUE) {
-            foreach ($scandir as $folder => $files) {
-                $zip->addEmptyDir($folder);
-                foreach ($files as $file) {
-                    $fullpath = "$dir/$folder/$file";
-                    $zip->addFile($fullpath, "$folder/$file");
+        @unlink($zipArchivePath);
+        $zipArchive = new ZipArchive;
+        if ($zipArchive->open($zipArchivePath, ZipArchive::CREATE) === true) {
+            foreach ($exportPaths as $exportPath) {
+                $scandir = $data[$exportPath] = Translations::scandir($exportPath);
+                foreach ($scandir as $file) {
+                    $extension = pathinfo($file, PATHINFO_EXTENSION);
+                    $filepath = "{$exportPath}/$file";
+                    $entryname = "$extension/$file";
+                    $zipArchive->addFile($filepath, $entryname);
                 }
             }
         }
 
-        $zip->close();
+        $zipArchive->close();
 
-        $response['success'] = empty($errors);
+        $response['success'] = $errors === [];
         $response['errors'] = $errors;
-        $response['scandir'] = $scandir;
+        // $response['export_paths'] = $exportPaths;
+        // $response['files'] = $files;
+        // $response['zip'] = $zipArchivePath;
 
         Flight::json($response);
     }
@@ -177,7 +182,7 @@ class Translations
 
         $cdir = scandir($dir);
 
-        foreach ($cdir as $key => $value) {
+        foreach ($cdir as $value) {
             $fullpath = "$dir/$value";
 
             if (in_array($value, ['.', '..'])) {

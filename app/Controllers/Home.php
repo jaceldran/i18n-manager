@@ -4,10 +4,7 @@ namespace App\Controllers;
 
 use Flight;
 
-use App\Services\Navigation;
-use App\Models\Lang;
-
-class Home extends Controller
+final class Home extends Controller
 {
     public static function index()
     {

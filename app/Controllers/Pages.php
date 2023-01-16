@@ -4,8 +4,7 @@ namespace App\Controllers;
 
 use Flight;
 
-
-class Pages extends Controller
+final class Pages extends Controller
 {
     public static function home()
     {

@@ -85,9 +85,9 @@ final class Translation
     {
         $count = [];
         $data  = Datafile::readPhp(self::PATH);
-        $langs = Lang::all();
+        $langs = Lang::keys();
 
-        foreach ($langs as $lang => $config) {
+        foreach ($langs as $lang) {
             $dictionary = array_column($data, $lang);
             $filled = array_filter($dictionary, function ($value) {
                 return !empty($value);

@@ -7,6 +7,10 @@ define('BLADE_COMPILED', APP_PATH . "/.tmp/blade");
 
 Flight::set('env', (object) $_ENV);
 
+Flight::map('env', function ($key) {
+    return $_ENV[$key ?? null];
+});
+
 Flight::set('theme', (object) require_once APP_PATH . '/config/theme.php');
 
 Flight::map('download', function (string $path) {
@@ -28,7 +32,8 @@ Flight::register('view', BladeOne::class, [
     BLADE_COMPILED
 ], function (BladeOne $blade) {
     $blade->setPath(BLADE_VIEWS, BLADE_COMPILED);
-    $blade->setBaseUrl(Flight::get('env')->URL_BASE);
+    // $blade->setBaseUrl(Flight::get('env')->URL_BASE);
+    $blade->setBaseUrl(Flight::env('URL_BASE'));
 
     if ($_ENV['ENV'] === 'develop') {
         $blade->setMode(BladeOne::MODE_SLOW);
